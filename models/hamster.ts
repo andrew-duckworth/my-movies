@@ -1,5 +1,5 @@
 export interface Hamsters {
   id: number
-  hamster_name: string
+  name: string
   image: string
 }
