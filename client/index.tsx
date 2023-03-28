@@ -6,6 +6,7 @@ import store from './store'
 import App from './components/App'
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.title = 'Wall of desire'
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Router>
       <Provider store={store}>

@@ -1,10 +1,17 @@
+import Books from './Books'
+
 function App() {
   return (
     <>
+      <head>
+        <title>Test</title>
+      </head>
       <header className="header">
         <h1>Things I want but can&apos;t afford</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <section className="main">
+        <Books />
+      </section>
     </>
   )
 }
@@ -19,3 +26,4 @@ export default App
 // Covers are hard - sometimes the API only has data for particular editions
 
 // Finish book seeds
+// Finish apiClient
