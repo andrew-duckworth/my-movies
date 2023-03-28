@@ -3,9 +3,27 @@ body {
   top: 0;
   left: 0;
   margin: 0;
-  padding: 20px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+header {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  h1{padding-left: 20px;}
+  button{margin: 0px 20px}
+}
 
+section {
+  margin: auto;
+}
 
+.nav__button {
+  display: flex;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  button {margin: 200px 40px; padding: 10px;}
+}

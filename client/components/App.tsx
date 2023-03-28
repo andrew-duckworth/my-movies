@@ -1,10 +1,11 @@
+import Nav from './Nav'
+import Main from './Main'
+
 function App() {
   return (
     <>
-      <header className="header">
-        <h1>My Collection</h1>
-      </header>
-      <section className="main">{/* add your code here */}</section>
+      <Nav />
+      <Main />
     </>
   )
 }
