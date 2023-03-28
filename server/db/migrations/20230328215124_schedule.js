@@ -5,14 +5,10 @@
 exports.up = function (knex) {
   return knex.schema.createTable('scheduler', (table) => {
     table.increments('id').primary()
-    table.string('show')
+    table.integer('show_id')
     table.string('host')
     table.string('day')
     table.string('time')
-    table.string('audio_length')
-    table.string('description')
-    table.string('image')
-    table.string('resource')
   })
 }
 

@@ -68,6 +68,16 @@ exports.seed = async function (knex) {
     },
     {
       id: 7,
+      name: 'Breakfast Show with Flo',
+      genres: 'Folk, Outsider Pop',
+      description: 'asdafsd',
+      tracklist: 'asdasfad',
+      audio_length: '56:58',
+      img: 'asdas',
+      resource: 'asdafsdasd',
+    },
+    {
+      id: 8,
       name: 'Illian Tape',
       genres: 'techno, bass',
       description: 'asdafsd',
