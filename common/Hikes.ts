@@ -3,3 +3,5 @@ export interface HikesInterface {
   name: string
   location: string
 }
+
+export type RawHikesInterfaceArr = { data: HikesInterface }[]
