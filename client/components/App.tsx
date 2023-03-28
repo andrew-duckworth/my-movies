@@ -1,10 +1,13 @@
+import Jokes from './Jokes'
 function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>Olivia&apos;s Very Bad Dad Jokes</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <section className="main">
+        <Jokes />
+      </section>
     </>
   )
 }
