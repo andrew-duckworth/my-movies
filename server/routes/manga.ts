@@ -7,6 +7,10 @@ const router = Router()
 router.get('/', (req, res) => {
   getAllManga()
     .then((mangaArr) => {
+      mangaArr.forEach((mangaItem) => {
+        delete mangaItem.series_num
+        delete mangaItem.image_src
+      })
       res.json(mangaArr)
     })
     .catch((e: Error) => res.status(500).send(e.message))

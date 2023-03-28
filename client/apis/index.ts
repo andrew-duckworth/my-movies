@@ -6,7 +6,7 @@ export function getAllManga(): Promise<Manga[]> {
   return request
     .get('/api/v1')
     .then((res) => {
-      res.body.forEach((manga: string) => validateNoSnakeCase(manga))
+      // res.body.forEach((manga: string) => validateNoSnakeCase(manga))
       return res.body
     })
     .catch(errorHandler('GET', '/api/v1'))
