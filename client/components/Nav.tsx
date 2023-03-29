@@ -1,5 +1,3 @@
-import { Router } from 'express'
-import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 function Nav() {
