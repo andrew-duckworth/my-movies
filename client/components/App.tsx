@@ -1,10 +1,28 @@
+import { useEffect, useState } from 'react'
+import { getAllCoffee } from '../apiClient'
+import * as Types from '../models/Coffee'
+import CoffeeSingle from './CoffeeSingle'
+
 function App() {
+  const [coffee, setCoffee] = useState([] as Types.CoffeeData[])
+
+  useEffect(() => {
+    getAllCoffee()
+      .then((coffee) => {
+        setCoffee(coffee)
+      })
+      .catch((err) => alert(err.message))
+  })
   return (
     <>
       <header className="header">
         <h1>My Collection</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <section className="main">
+        {coffee.map((coffee) => (
+          <CoffeeSingle coffeeProp={coffee} key={coffee.id} />
+        ))}
+      </section>
     </>
   )
 }
