@@ -1,4 +1,4 @@
-import { Book, Bookdata } from '../../common/interfaces'
+import { Bookdata } from '../../common/interfaces'
 
 const environment = process.env.NODE_ENV || 'development'
 const config = require('./knexfile')[environment]
