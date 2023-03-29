@@ -1,17 +1,12 @@
-.signs {
+.users {
   background-color: $bg-card;
-  @include flex;
+  @include centre-flex;
   @include round-corners;
   margin: 50px;
   margin-top: 20px;
 
   &__each {
   padding: 5px;
-}
-
-  img {
-    max-width: 250px;
-    @include round-corners;
-    @include shadow;
   }
+
 }
