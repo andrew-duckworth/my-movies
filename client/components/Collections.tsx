@@ -14,7 +14,7 @@ function Collections() {
 
   useEffect(() => {
     dispatch(fetchAllCollections())
-  },[])  
+  },[dispatch])  
   
 
   return (
