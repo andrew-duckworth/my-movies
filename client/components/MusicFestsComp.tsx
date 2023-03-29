@@ -1,4 +1,12 @@
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { addMusicFestival } from '../actions/musicFestival'
+
 function MusicFestivals() {
+  const musicFestivals = useAppSelector(
+    (globalState) => globalState.musicFestRdcrs
+  )
+  const dispatch = useAppDispatch
+
   return (
     <div>
       <h1>Here is where the music fests be at:</h1>

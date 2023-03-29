@@ -1,3 +1,4 @@
+import { useAppSelector } from '../hooks/redux'
 import MusicFestivals from './MusicFestsComp'
 
 function App() {
