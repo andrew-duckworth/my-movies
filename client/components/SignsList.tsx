@@ -14,18 +14,16 @@ function SignsList() {
   })
 
   return (
-    <section>
+    <section className="signs">
       <br />
-      <div className="signs">
-        {signs.map((sign) => (
-          <div className="sign" key={sign.id}>
-            <h3>{sign.sign}</h3>
-            <p>Date of Birth: {sign.dates}</p>
-            {/* <img src={sign.image} alt="art with cat" /> */}
-            <img src={'../../images/' + sign.image} alt="art with cat" />
-          </div>
-        ))}
-      </div>
+      {signs.map((sign) => (
+        <div className="signs__each" key={sign.id}>
+          <h3>{sign.sign}</h3>
+          <p>Date of Birth: {sign.dates}</p>
+          {/* <img src={sign.image} alt="art with cat" /> */}
+          <img src={'../../images/' + sign.image} alt="art with cat" />
+        </div>
+      ))}
     </section>
   )
 }

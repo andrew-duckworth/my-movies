@@ -8,8 +8,10 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>Starsigns!</h1>
-        <Nav />
+        <h1 className="header__1">Starsigns!</h1>
+        <div className="header__2">
+          <Nav />
+        </div>
       </header>
       <section className="main">
         <Routes>

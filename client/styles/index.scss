@@ -11,3 +11,24 @@ body {
   padding: 20px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+header {
+  text-align: left;
+  @include flex;
+
+  h1 {
+    padding: 20px;
+    font-size: 30px;
+  }
+
+  a {
+    padding: 10px;
+    color: $text-color;
+    text-decoration: none;
+    font-size: 15px;
+    background-color: $bg-card;
+    @include round-corners;
+    @include shadow;
+  }
+
+}

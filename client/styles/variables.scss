@@ -9,8 +9,8 @@ $text-color: rgb(245, 43, 144);
 
 // Mixins
 
-@mixin card-shadow() {
-
+@mixin shadow() {
+  box-shadow: rgb(243, 121, 182) 0px 3px 8px;
 }
 
 @mixin flex() {
@@ -18,10 +18,12 @@ $text-color: rgb(245, 43, 144);
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
 @mixin round-corners() {
   border-radius: 20px;
 }
+
 
 // Media Queries

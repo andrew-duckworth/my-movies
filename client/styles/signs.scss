@@ -2,19 +2,20 @@
   background-color: $bg-card;
   @include flex;
   @include round-corners;
-  // padding: 40px, 50px, 50px, 50px;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-right: 10px;
   padding-bottom: 50px;
   padding-left: 10px;
   margin: 50px;
+  margin-top: 20px;
+
+  &__each {
+  padding: 5px;
+}
 
   img {
     max-width: 250px;
     @include round-corners;
+    @include shadow;
   }
-}
-
-.sign {
-  padding: 5px;
 }
