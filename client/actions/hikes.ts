@@ -5,9 +5,11 @@ import { getAllHikes } from '../apis/apiClient'
 
 export const SAVE_HIKES = 'SAVE_HIKES'
 export const SHOW_ERROR = 'SHOW_ERROR'
+export const ADD_HIKES = 'ADD_HIKES'
 
 export type Action =
   | { type: typeof SAVE_HIKES; payload: HikesInterface[] }
+  | { type: typeof ADD_HIKES; payload: string }
   | { type: typeof SHOW_ERROR; payload: string }
 
 // export function requestHikes(): Action {

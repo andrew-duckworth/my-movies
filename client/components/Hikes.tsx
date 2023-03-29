@@ -27,7 +27,9 @@ function Hikes() {
 
   return (
     <div>
-      <button onClick={button}>Test</button>
+      <button className="button" onClick={button}>
+        Show Hikes
+      </button>
       {/* Button (onClick) dispatch*/}
       {/* Get info from stroe, load on page */}
       {data &&

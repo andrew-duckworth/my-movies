@@ -1,4 +1,4 @@
-import { Action, SAVE_HIKES } from '../actions/hikes'
+import { Action, ADD_HIKES, SAVE_HIKES } from '../actions/hikes'
 import { HikesInterface } from '../../common/Hikes'
 
 const initialState: HikesInterface[] = []
