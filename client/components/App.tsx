@@ -5,15 +5,13 @@ import Loading from './Loading'
 function App() {
   return (
     <>
-      <head>
-        <title>Test</title>
-      </head>
       <header className="header">
         <h1>Things I want but can&apos;t afford</h1>
       </header>
       <section className="main">
         <Loading />
         <Books />
+        <Booksearch />
         <Games />
       </section>
     </>
