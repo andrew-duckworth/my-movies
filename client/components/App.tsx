@@ -18,6 +18,7 @@ function App() {
       <section className="main">
         <Routes>
           <Route path="/" element={<SignsList />} />
+          <Route path="/chart" element={<Chart />} />
         </Routes>
       </section>
     </>

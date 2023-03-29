@@ -1,3 +1,4 @@
+import { Router } from 'express'
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
@@ -6,7 +7,12 @@ function Nav() {
 
   const renderHomeLink = () => <Link to="/">Home</Link>
 
-  return <nav>{pathname === '/' ? renderHomeLink() : renderHomeLink()}</nav>
+  return (
+    <nav>
+      {pathname === '/' ? renderHomeLink() : renderHomeLink()}
+      <Link to="/chart">Chart</Link>
+    </nav>
+  )
 }
 
 export default Nav
