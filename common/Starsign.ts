@@ -6,3 +6,11 @@ export interface Starsign {
 }
 
 export type RawStarSignArr = { data: Starsign }[]
+
+export interface BigThree {
+  sun: string
+  moon: string
+  rising: string
+}
+
+export type RawBigThreeArr = { data: BigThree }[]
