@@ -4,7 +4,7 @@ export function fetchSchedule() {
   console.log('Internal API Call')
 
   return request
-    .get('/api/v1/scheduler')
+    .get('/api/v1/scheduler/allschedule')
     .then((res) => {
       return res.body
     })
