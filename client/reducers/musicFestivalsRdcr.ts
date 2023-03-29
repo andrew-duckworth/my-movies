@@ -12,6 +12,8 @@ function reducer(state = initialState, action: MusicFestivalAction): object[] {
   switch (type) {
     case 'ADD_MUSICFESTIVAL':
       return [...state, payload]
+    default:
+      return state
   }
 }
 
