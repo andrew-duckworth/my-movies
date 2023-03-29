@@ -1,8 +1,8 @@
 exports.up = (knex) => {
   return knex.schema.createTable('Albums', (table) => {
-    table.increments().primary()
+    table.increments('id').primary()
     table.string('name')
-    table.string('year')
+    table.integer('year')
     table.string('image')
   })
 }

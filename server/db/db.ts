@@ -1,5 +1,5 @@
 import connection from './connection'
 
-export function getAllPhotos(db = connection): Promise<Albums> {
-  return db('albums').select('name', 'year', 'image')
+export function getAllPhotos(db = connection): Promise<string> {
+  return db('albums').select('id', 'name', 'year', 'image')
 }
