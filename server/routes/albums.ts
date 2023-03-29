@@ -1,13 +1,12 @@
 import express from 'express'
-import request from 'superagent'
+import { getAllAlbums } from '../db/db'
 
 const router = express.Router()
-const db = require('../db/db')
 
 router.use(express.json())
 
 router.get('/', (req, res) => {
-  db.getAllAlbums()
+  getAllAlbums()
     .then((albums) => {
       res.json(albums)
     })
