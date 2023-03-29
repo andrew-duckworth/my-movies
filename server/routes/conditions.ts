@@ -3,10 +3,15 @@ import express from 'express'
 
 const router = express.Router()
 
+// JSON.stringify(req.body.list)
+
 // router.get('./conditions', (req, res) => {
 //   getConditions()
 //     .then((conditions) => {
-//       res.json(conditions)
+
+// const data = JSON.parse(ingredients)
+
+//       res.json(data)
 //     })
 //     .catch((err) => {
 //       res.status(500).send(err.message)

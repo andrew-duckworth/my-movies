@@ -8,7 +8,6 @@ const server = express()
 
 server.use(express.json())
 server.use(express.static(join(__dirname, './public')))
-// server.use(cors('*' as CorsOptions))
 
 // EXAMPLE INTERNAL API -------------------------------------------------------------------------------
 
@@ -20,6 +19,8 @@ server.use(express.static(join(__dirname, './public')))
 // })
 
 // EXAMPLE EXTERNAL CORS API --------------------------------------------------------------------------
+
+// server.use(cors('*' as CorsOptions)) <- put this at the top
 
 // server.get('/affirmations', (req, res) => {
 //   request
