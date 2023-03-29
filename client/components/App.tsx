@@ -4,7 +4,7 @@ import { getTeamsApi } from '../apis/clientApi'
 
 import { TeamsData } from '../../models/Teams'
 
-import { fetchTeams } from '../actions/teams'
+import { fetchTeams, deleteTeams, deleteTeamsThunk } from '../actions/teams'
 
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
@@ -21,8 +21,9 @@ function App() {
 
   const showIndicator = useAppSelector((state) => state.waiting)
 
-  const deleteHandler = (team: string) => {
+  const deleteHandler = (team: TeamsData) => {
     console.log(team)
+    dispatch(deleteTeamsThunk(team))
   }
 
   // console.log(teams)
@@ -64,7 +65,7 @@ function App() {
             <img src={team.logo} alt={team.name} />
             <p>Manager: {team.manager}</p>
             <p>City: {team.city}</p>
-            <button onClick={() => deleteHandler(team.name)}>x</button>
+            <button onClick={() => deleteHandler(team)}>x</button>
             <br />
           </div>
         ))}

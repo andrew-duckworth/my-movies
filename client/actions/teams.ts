@@ -2,8 +2,9 @@ import type { ThunkAction } from '../store'
 
 import { TeamsData } from '../../models/Teams'
 
-import { getTeamsApi } from '../apis/clientApi'
+import { deleteTeamsApi, getTeamsApi } from '../apis/clientApi'
 import teams from '../reducers/teams'
+import { delTeam } from '../../server/db/db'
 
 export const REQUEST_TEAMS = 'REQUEST_TEAMS'
 export const RECEIVE_TEAMS = 'RECEIVE_TEAMS'
@@ -30,7 +31,7 @@ export function receiveTeams(teams: any): Action {
   }
 }
 
-export function deleteTeams(team: any): Action {
+export function deleteTeams(team: TeamsData): Action {
   return {
     type: DELETE_TEAM,
     payload: team,
@@ -44,5 +45,17 @@ export function fetchTeams(): ThunkAction {
       dispatch(receiveTeams(data))
       console.log(data)
     })
+  }
+}
+
+export function deleteTeamsThunk(team: TeamsData): ThunkAction {
+  return async (dispatch) => {
+    try {
+      await deleteTeamsApi(team)
+      await delTeam(team.id)
+      dispatch(deleteTeams(team))
+    } catch (err: unknown) {
+      return console.log(err.message)
+    }
   }
 }
