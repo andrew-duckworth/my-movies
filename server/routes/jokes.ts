@@ -1,10 +1,15 @@
 import express from 'express'
-import { getAllJokes, getJokeById, addJoke } from '../db/jokes-db/jokes-db'
+import {
+  getAllJokes,
+  getJokeById,
+  addJoke,
+  deleteJoke,
+} from '../db/jokes-db/jokes-db'
 
 export const router = express.Router()
 
-// GET /api/v1/database/jokes
-router.get('/jokes', (req, res) => {
+// GET /api/v1/database/jokes/all
+router.get('/all', (req, res) => {
   getAllJokes()
     .then((jokes) => {
       res.json(jokes)
@@ -12,8 +17,8 @@ router.get('/jokes', (req, res) => {
     .catch((err: Error) => console.log(err.message))
 })
 
-// GET /api/v1/database/joke/:id
-router.get('/joke/:id', (req, res) => {
+// GET /api/v1/database/jokes/:id
+router.get('/:id', (req, res) => {
   const id = Number(req.params.id)
 
   getJokeById(id)
@@ -23,8 +28,8 @@ router.get('/joke/:id', (req, res) => {
     .catch((err: Error) => console.log(err.message))
 })
 
-// GET /api/v1/database/joke/add
-router.post('/joke/add', (req, res) => {
+// POST /api/v1/database/jokes/add
+router.post('/add', (req, res) => {
   const { joke, punchline } = req.body
   const jokeToAdd = { joke, punchline }
   addJoke(jokeToAdd)
@@ -36,7 +41,10 @@ router.post('/joke/add', (req, res) => {
     })
 })
 
-router.delete('/joke/delete/:id', (req, res) => {
+// DELETE /api/v1/database/jokes/delete/:id
+router.delete('/delete/:id', (req, res) => {
   const id = Number(req.params.id)
-  deleteJoke()
+  deleteJoke(id)
+    .then((deletedJoke) => res.json(deletedJoke))
+    .catch((err) => console.log(err.message))
 })
