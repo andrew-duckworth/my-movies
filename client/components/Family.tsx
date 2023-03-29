@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import fetchTheFamily from '../apis/apiClient'
 import { Family } from '../../server/common/allModels'
 import { useAppSelector } from '../hooks/redux'
-import { isMemberName } from 'typescript'
 
 function showAllFamily() {
   const [relation, showRelations] = useState([] as Family[])
