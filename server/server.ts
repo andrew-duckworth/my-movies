@@ -2,7 +2,9 @@ import express from 'express'
 import path from 'path'
 
 import shows from './routes/shows'
+import schedule from './routes/scheduler'
 import placeholder from './routes/placeholder'
+import producer from './routes/producers'
 
 const server = express()
 
@@ -28,6 +30,8 @@ server.get('/testingapiroute', (req, res) => {
 
 server.use('/showsapi', shows)
 server.use('/', placeholder)
+server.use('/', schedule)
+server.use('/', producer)
 // server.use('*', placeholder)
 
 export default server
