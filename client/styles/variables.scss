@@ -1,0 +1,27 @@
+// Variables
+
+// Colours
+
+$bg-main: #f3e5dc;
+$bg-card: #f2c6d9;
+
+$text-color: rgb(245, 43, 144);
+
+// Mixins
+
+@mixin card-shadow() {
+
+}
+
+@mixin flex() {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@mixin round-corners() {
+  border-radius: 20px;
+}
+
+// Media Queries

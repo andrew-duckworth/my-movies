@@ -1,0 +1,20 @@
+.signs {
+  background-color: $bg-card;
+  @include flex;
+  @include round-corners;
+  // padding: 40px, 50px, 50px, 50px;
+  padding-top: 40px;
+  padding-right: 10px;
+  padding-bottom: 50px;
+  padding-left: 10px;
+  margin: 50px;
+
+  img {
+    max-width: 250px;
+    @include round-corners;
+  }
+}
+
+.sign {
+  padding: 5px;
+}

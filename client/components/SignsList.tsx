@@ -15,15 +15,17 @@ function SignsList() {
 
   return (
     <section>
-      <h2>Star Signs</h2>
-      {signs.map((sign) => (
-        <div key={sign.id}>
-          <p>{sign.sign}</p>
-          <p>Date of Birth: {sign.dates}</p>
-          {/* <img src={sign.image} alt="art with cat" /> */}
-          <img src={'../../images/' + sign.image} alt="art with cat" />
-        </div>
-      ))}
+      <br />
+      <div className="signs">
+        {signs.map((sign) => (
+          <div className="sign" key={sign.id}>
+            <h3>{sign.sign}</h3>
+            <p>Date of Birth: {sign.dates}</p>
+            {/* <img src={sign.image} alt="art with cat" /> */}
+            <img src={'../../images/' + sign.image} alt="art with cat" />
+          </div>
+        ))}
+      </div>
     </section>
   )
 }
