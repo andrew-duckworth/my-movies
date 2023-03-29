@@ -1,28 +1,32 @@
-import {useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { AlbumsInterface } from '../common/albums'
 import { getAllAlbums } from '../apis/apiClient'
 
 function Albums() {
-  const [albums, setAlbums] = useState(null as AlbumsInterface[] | null)
+  const [albums, setAlbums] = useState([] as AlbumsInterface[])
 
   useEffect(() => {
     getAllAlbums()
-    .then((albumsArr) => {
-      setAlbums(albumsArr)
-    })
-    .catch((err) => console.log(err.message))
+      .then((albumsArr) => {
+        setAlbums(albumsArr)
+      })
+      .catch((err) => console.log(err.message))
   }, [])
 
   return (
-    {Albums.map((album) => {
-      return(
-        <div key={album.id}>
-        <p>{album.name}</p>
-        <p>{album.year}</p>
-        <p>{album.image}</p>
-        </div>
-      )
-    })}
+    <div>
+      {albums.map((album) => {
+        return (
+          <div key={album.id}>
+            <br></br>
+            <p>Album name: {album.name}</p>
+            <p>Year of release: {album.year}</p>
+            <img src={album.image} alt={'Cover of ' + album.name} />
+            <br></br>
+          </div>
+        )
+      })}
+    </div>
   )
 }
 
