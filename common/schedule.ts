@@ -5,3 +5,5 @@ export interface Schedule {
   day: string
   time: string
 }
+
+export type RawScheduleData = Schedule

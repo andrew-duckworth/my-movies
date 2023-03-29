@@ -1,5 +1,6 @@
 import type { ThunkAction } from '../store'
 import { Schedule, RawScheduleData } from '../../common/schedule'
+import { fetchSchedule } from '../apis/apischedule'
 
 export const REQUEST_SCHEDULE = 'REQUEST_SCHEDULE'
 export const RECEIVE_SCHEDULE = 'RECEIVE_SCHEDULE'
@@ -27,7 +28,16 @@ export function receiveSchedule(schedule: RawScheduleData) {
 }
 
 export function fetchSchedule(): ThunkAction {
-  console.log('2: In Thunk')
+  console.log('2: Givin Up Da Thunk')
 
-  return (dispatch) => {}
+  return (dispatch) => {
+    dispatch(requestSchedule()) //this calls da API :)
+    return fetchSchedule()
+      .then((oneSchedule: <Promise: Schedule[]>) => {
+        dispatch(receiveSchedule(oneSchedule))
+      })
+      .catch((err: Error) => {
+        return err.message
+      })
+  }
 }
