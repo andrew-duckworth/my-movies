@@ -4,3 +4,5 @@ export interface Starsign {
   dates: string
   image: string
 }
+
+export type RawStarSignArr = { data: Starsign }[]
