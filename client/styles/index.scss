@@ -31,4 +31,8 @@ header {
     @include shadow;
   }
 
+  img {
+    max-width: 50px;
+  }
+
 }
