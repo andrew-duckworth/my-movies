@@ -1,5 +1,3 @@
-const { json } = require('express')
-
 exports.seed = (knex) =>
   knex('ingredients')
     .del()
