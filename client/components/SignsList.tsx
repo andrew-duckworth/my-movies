@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Starsign } from '../../common/Starsign'
 import { grabSigns } from '../apis/starsigns'
 
@@ -20,7 +20,6 @@ function SignsList() {
         <div className="signs__each" key={sign.id}>
           <h3>{sign.sign}</h3>
           <p>Date of Birth: {sign.dates}</p>
-          {/* <img src={sign.image} alt="art with cat" /> */}
           <img src={'../../images/' + sign.image} alt="art with cat" />
         </div>
       ))}

@@ -8,6 +8,8 @@ export interface Starsign {
 export type RawStarSignArr = { data: Starsign }[]
 
 export interface BigThree {
+  id?: number
+  name: string
   sun: string
   moon: string
   rising: string

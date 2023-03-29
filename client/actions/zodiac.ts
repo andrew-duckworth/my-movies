@@ -1,17 +1,26 @@
-import { BigThree, RawStarSignArr, Starsign } from '../../common/Starsign'
-import { grabSigns } from '../apis/starsigns'
+import {
+  BigThree,
+  RawBigThreeArr,
+  RawStarSignArr,
+  Starsign,
+} from '../../common/Starsign'
+import { grabSigns, grabUsers } from '../apis/starsigns'
 import type { ThunkAction } from '../store'
 
 export const REQUEST_SIGNS = 'REQUEST_SIGNS'
 export const RECEIVE_SIGNS = 'RECEIVE_SIGNS'
 export const SHOW_ERROR = 'SHOW_ERROR'
-export const ADD_SIGNS = 'ADD_SIGNS'
+export const REQUEST_USERS = 'REQUEST_USERS'
+export const RECEIVE_USERS = 'RECEIVE_USERS'
+// export const ADD_SIGNS = 'ADD_SIGNS'
 
 export type Action =
   | { type: typeof REQUEST_SIGNS; payload: null }
   | { type: typeof RECEIVE_SIGNS; payload: Starsign[] }
   | { type: typeof SHOW_ERROR; payload: string }
-  | { type: typeof ADD_SIGNS; payload: BigThree[] }
+  | { type: typeof REQUEST_USERS; payload: null }
+  | { type: typeof RECEIVE_USERS; payload: BigThree[] }
+// | { type: typeof ADD_SIGNS; payload: BigThree[] }
 
 export function requestSigns(): Action {
   return {
@@ -34,12 +43,26 @@ export function showError(errorMessage: string): Action {
   }
 }
 
-export function addSigns(): Action {
+export function requestUsers(): Action {
   return {
-    type: ADD_SIGNS,
-    payload: 
+    type: REQUEST_USERS,
+    payload: null,
   }
 }
+
+export function receiveUsers(users: RawBigThreeArr): Action {
+  return {
+    type: RECEIVE_USERS,
+    payload: users.map((user) => user.data),
+  }
+}
+
+// export function addSigns(): Action {
+//   return {
+//     type: ADD_SIGNS,
+//     payload: {},
+//   }
+// }
 
 export function fetchSigns(): ThunkAction {
   return (dispatch) => {
@@ -47,6 +70,19 @@ export function fetchSigns(): ThunkAction {
     return grabSigns()
       .then((signs) => {
         dispatch(receiveSigns(signs))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function fetchUsers(): ThunkAction {
+  return (dispatch) => {
+    dispatch(requestUsers())
+    return grabUsers()
+      .then((users) => {
+        dispatch(receiveUsers(users))
       })
       .catch((err) => {
         dispatch(showError(err.message))
