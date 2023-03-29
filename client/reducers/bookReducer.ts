@@ -1,7 +1,7 @@
 import { BookAction } from '../actions/bookAction'
 import { Book } from '../../common/interfaces'
 
-const initialState = [
+const initialState: Book[] = [
   {
     id: 1,
     title: 'Ready Player One',

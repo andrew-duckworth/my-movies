@@ -34,6 +34,8 @@ exports.seed = async function (knex) {
       title: "China's crony capitalism",
       publish_date: '2016',
       author_name: 'Minxin Pei',
+      cover_image:
+        'https://covers.openlibrary.org/b/olid/OL7443143140032M-S.jpg',
     },
   ])
 }

@@ -1,5 +1,4 @@
 import express from 'express'
-import request from 'superagent'
 import { getAllBooks, deleteBook, addBook } from '../db/db'
 import { Book, Bookdata } from '../../common/interfaces'
 

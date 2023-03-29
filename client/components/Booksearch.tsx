@@ -16,13 +16,14 @@ function Booksearch() {
   return (
     <form onSubmit={handleSubmit}>
       <h3>Add a Book</h3>
-      <label htmlFor="book-search">Search the Open Library</label>
+      <label htmlFor="book-search">Open Library Search</label>
       <input
         id="book-search"
         name="search"
         value={addBook}
         onChange={handleChange}
       ></input>
+      <button type="submit">Go</button>
     </form>
   )
 }
