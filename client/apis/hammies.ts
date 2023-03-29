@@ -1,7 +1,13 @@
 import request from 'superagent'
 
-const hamstersUrl = '/api/va/hamsters'
+const hamstersUrl = '/api/v1/hamsters'
 
-export function fetchHamsters() {
+function fetchHamsters() {
   return request.get(hamstersUrl).then((res) => res.body)
 }
+
+export function updateHammies() {
+  return request.patch(hamstersUrl).then((res) => res.body)
+}
+
+export default fetchHamsters

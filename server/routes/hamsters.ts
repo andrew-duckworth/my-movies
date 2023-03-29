@@ -3,7 +3,7 @@ import request from 'superagent'
 
 const router = Router()
 
-import { getAllHamsters } from '../db/connection'
+import { getAllHamsters, updHamsters } from '../db/connection'
 
 router.get('/', (req, res) => {
   getAllHamsters()
@@ -11,6 +11,16 @@ router.get('/', (req, res) => {
       res.json(hamsters)
     })
     .catch((err) => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.patch('/:id', (req, res) => {
+  updHamsters(Number(req.params.id), req.body)
+    .then((returned) => {
+      res.json(returned[0])
+    })
+    .catch((err: Error) => {
       res.status(500).send(err.message)
     })
 })

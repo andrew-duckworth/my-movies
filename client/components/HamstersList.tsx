@@ -1,35 +1,27 @@
-import { useAppDispatch } from '../hooks/redux'
-import { ReactNode, useState, ChangeEvent, useEffect } from 'react'
-import { getHamsters } from '../apis/apiClient'
-import { Hamsters } from '../../models/hamster'
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
+import { fetchAllHamsters } from '../actions/hamsters'
+import UpdateHamster from './UpdateHamster'
 
-import { fetchHamsters } from '../apis/hammies'
-
-function HamsterList() {
+function HamsterList(props: Props) {
   const dispatch = useAppDispatch()
-  const [hamsters, setHamsters] = useState([] as Hamsters[])
+  const hamsters = useAppSelector((state) => state.hamsters)
 
   useEffect(() => {
-    dispatch(fetchHamsters())
-      .then((data) => {
-        setHamsters(data)
-      })
-      .catch((err) => alert(err.message))
+    dispatch(fetchAllHamsters())
   }, [])
 
   return (
     <>
       <div className="hamsters">
-        {
-          <ul>
-            {hamsters.map((hamster) => (
-              <li key={hamster.id}>
-                {hamster.name}{' '}
-                <img src={`./${hamster.image}`} alt={hamster.name} />
-              </li>
-            ))}
-          </ul>
-        }
+        <ul>
+          {hamsters.map((hamster) => (
+            <li key={hamster.id}>
+              <UpdateHamster name={hamster.name} id={hamster.id} />
+              <img src={`./${hamster.image}`} alt={hamster.name} />
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   )

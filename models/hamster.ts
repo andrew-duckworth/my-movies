@@ -3,3 +3,5 @@ export interface Hamsters {
   name: string
   image: string
 }
+
+export type rawPostArr = { data: Hamsters }[]
