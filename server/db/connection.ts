@@ -1,6 +1,4 @@
 //DATABASE///
-
-
 import knexFile from './knexfile'
 import knex from 'knex'
 
@@ -17,6 +15,9 @@ export function getCollectionsBD(db = connection): Promise<CollectionData[]> {
     return db('collections').select()
 }
 
+export function getANoteBD (id:number, db = connection) : Promise<CollectionData[]> {
+    return db('collections').select().where('id', id).first()
+}
 
 
 

@@ -1,7 +1,7 @@
 import { useAppSelector, useAppDispatch } from '../hooks/redux'
 import { fetchAllCollections } from '../actions/collectionAction'
 import { useEffect } from 'react'
-
+import ACollection from './ACollection'
 
 function Collections() {
 
@@ -18,21 +18,15 @@ function Collections() {
   
 
   return (
-    <div>
-      <h1>Collections</h1>
-      <ul>
-        {collections.map((collection) => {
-        return (
-            <div key={collection.id}>
-                <h2>Title: {collection.title}</h2>
-                <p>Title: {collection.content}</p>
-            </div>
-        )  
-        })}
-      </ul>
-
-   </div>
+    <>
+      {collections.map((note, i) => (
+        <ACollection key={i} singleCollection={note} />
+      ))}
+    </>
   )
 }
 
 export default Collections
+
+
+
