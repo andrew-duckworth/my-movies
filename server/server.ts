@@ -28,10 +28,11 @@ server.get('/testingapiroute', (req, res) => {
 
 // server.use('/testform')
 
-server.use('/showsapi', shows)
-server.use('/', placeholder)
-server.use('/', schedule)
-server.use('/', producer)
+server.use('/api/v1/shows', shows)
+// server.use('/', placeholder)
+server.use('/api/v1/scheduler', schedule)
+server.use('/api/v1/producers', producer)
+// server.use('/',)
 // server.use('*', placeholder)
 
 export default server

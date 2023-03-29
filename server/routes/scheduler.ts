@@ -1,12 +1,20 @@
 import { Router } from 'express'
 const router = Router()
 
-import { getAllSchedule } from '../db/db'
+import { getAllSchedule, getAllScheduleWithShows } from '../db/db'
 
-router.get('/schedule', (req, res) => {
+router.get('/', (req, res) => {
   getAllSchedule()
     .then((schedule) => {
       res.json(schedule)
+    })
+    .catch((err: Error) => res.status(500).send(err.message))
+})
+
+router.get('/allschedule', (req, res) => {
+  getAllScheduleWithShows()
+    .then((e) => {
+      res.json(e)
     })
     .catch((err: Error) => res.status(500).send(err.message))
 })

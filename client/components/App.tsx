@@ -1,10 +1,17 @@
+import Shows from './Shows'
+import Scheduler from './Scheduler'
+
 function App() {
   return (
     <>
       <header className="header">
         <h1>My Collection</h1>
       </header>
-      <section className="main">{/* add your code here */}</section>
+      <section>
+        {' '}
+        <Scheduler />
+      </section>
+      <section className="main">{<Shows />}</section>
     </>
   )
 }

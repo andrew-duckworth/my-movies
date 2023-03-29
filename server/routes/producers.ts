@@ -3,7 +3,7 @@ const router = Router()
 
 import { getAllProducers } from '../db/db'
 
-router.get('/producers', (req, res) => {
+router.get('/', (req, res) => {
   getAllProducers()
     .then((producer) => {
       res.json(producer)

@@ -7,5 +7,23 @@ body {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.dark, .light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.dark {
+  background-color: #282727;
+  color: oldlace;
+}
+
+.light {
+  color: #282727;
+  background-color: oldlace;
+}
+
 
 
