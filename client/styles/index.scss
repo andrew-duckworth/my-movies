@@ -1,11 +1,35 @@
+@import './variables.scss';
+
 body {
   position: absolute;
   top: 0;
   left: 0;
   margin: 0;
   padding: 20px;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: $bg-light;
+  color: $text-colour;
+  font-family: $main-font;
+  text-align: center;
 }
+
+ul {
+  // position: -webkit-sticky; /* Safari */
+  // position: sticky;
+  top: 30px;
+  list-style: none;
+  white-space: wrap;
+  padding: 0;
+  margin:0;
+}
+
+.button {
+  font-family: $main-font;
+  padding: 5px;
+  margin: 10px;
+  background-color: $accent-colour;
+  border-radius: 5px;
+}
+
 
 
 
