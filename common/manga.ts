@@ -4,7 +4,7 @@ export interface Manga {
   books: string
   author: string
   location: string
-  imageSrc?: string
+  imageSrc?: string | null
 }
 
 export interface Routemanga extends Manga {
