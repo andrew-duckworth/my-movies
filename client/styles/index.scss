@@ -5,11 +5,20 @@ body {
   margin: 0;
   padding: 20px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: black;
+  color: azure;
 }
 
 
 .movies img {
-  height: 200px;
+  height: 350px;
+}
+
+li {
+  display: inline;
+  float: left;
+  margin-left: 20px;
+  margin-right: 30px;
 }
 
 

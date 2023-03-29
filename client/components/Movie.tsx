@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
-import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
+import { useEffect } from 'react'
 import { fetchMovies } from '../actions/movie'
-import { MoviesData } from '../models/Movies'
 
 function Movie() {
   const dispatch = useAppDispatch()
@@ -9,7 +8,7 @@ function Movie() {
 
   useEffect(() => {
     dispatch(fetchMovies())
-  }, [])
+  }, [dispatch])
 
   return (
     <>
@@ -17,7 +16,8 @@ function Movie() {
         <ul>
           {movies.map((movie) => (
             <li key={movie.id}>
-              {movie.title}
+              <p>{movie.title}</p>
+              <p>Director: {movie.director}</p>
               <img src={movie.movieImg} alt={movie.title} />
             </li>
           ))}

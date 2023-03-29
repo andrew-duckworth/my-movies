@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>Movies:</h1>
       </header>
       <section className="main">
         <Movie />
