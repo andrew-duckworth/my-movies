@@ -9,4 +9,4 @@ export interface CollectionData {
   //   id: number
   // }
 
-  export type RawCollectionData = CollectionData
+  // export type RawCollectionData = CollectionData

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
-import collectionsReducer from './collectionsReducer'
-// import stuff from './stuff'
+import theReducer from './collectionsReducer'
 
+
+//something comes from Collections Component
 export default combineReducers({
-  collectionsReducer
+  something: theReducer
 })
