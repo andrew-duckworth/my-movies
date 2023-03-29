@@ -13,13 +13,13 @@ export function getAllHamsters(db = connection): Promise<Hamsters[]> {
 }
 
 export function updHamsters(
-  id: number,
-  updatedName: Hamsters,
+  oldHammy: string,
+  newHammy: string,
   db = connection
 ) {
   return db('hamsters')
     .update({ ...updatedName }, ['id', 'name'])
-    .where('id', id)
+    .where('name', oldHammy)
 }
 
 export default connection

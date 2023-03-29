@@ -15,10 +15,10 @@ router.get('/', (req, res) => {
     })
 })
 
-router.patch('/:id', (req, res) => {
-  updHamsters(Number(req.params.id), req.body)
-    .then((returned) => {
-      res.json(returned[0])
+router.patch('/:name', (req, res) => {
+  updHamsters(req.params.name, req.body)
+    .then(() => {
+      res.sendStatus(200)
     })
     .catch((err: Error) => {
       res.status(500).send(err.message)

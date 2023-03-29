@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { useAppDispatch } from '../hooks/redux'
 import { useState, ChangeEvent, FormEvent } from 'react'
 import { updateHamsters } from '../actions/hamsters'
 
@@ -9,10 +9,10 @@ interface Props {
 
 function UpdateHamster(props: Props) {
   const dispatch = useAppDispatch()
-  const hamsters = useAppSelector((state) => state.hamsters)
-  const hammy = props.name
+  // const hamsters = useAppSelector((state) => state.hamsters)
+  const oldHammy = props.name
   const hammyId = props.id
-  const [data, setData] = useState(hammy)
+  const [data, setData] = useState(oldHammy)
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     setData(evt.target.value)
@@ -20,14 +20,14 @@ function UpdateHamster(props: Props) {
 
   const handleSubmit = (evt: FormEvent) => {
     evt.preventDefault()
-    console.log(hammy, data, hammyId)
-    dispatch(updateHamsters(hammy, data))
+    console.log(oldHammy, data, hammyId)
+    dispatch(updateHamsters(oldHammy, data))
   }
 
   return (
     <>
       <div className="hamsters">
-        {hammy}
+        {oldHammy}
         <form>
           <label htmlFor="ChangeName:"> | Change Name:</label>
           <input id="ChangeName" onChange={handleChange} name="name"></input>
