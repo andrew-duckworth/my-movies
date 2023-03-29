@@ -5,3 +5,5 @@ const connection = require('knex')(config)
 export function getAllBooks(db = connection) {
   return db('books').select()
 }
+
+export function addBook(book, db = connection)

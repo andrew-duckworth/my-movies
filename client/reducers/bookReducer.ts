@@ -16,8 +16,8 @@ function reducer(state = initialState, action: BookAction): Book[] {
   const { type, payload } = action
 
   switch (type) {
-    case 'DISPLAY':
-      return null
+    case 'GOT_BOOKS':
+      return payload
     default:
       return state
   }
