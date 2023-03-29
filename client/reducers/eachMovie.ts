@@ -1,7 +1,9 @@
 import { Action, RECEIVE_MOVIES } from '../actions/movie'
 import { MoviesData } from '../models/Movies'
 
-const initialState: MoviesData[] = []
+const initialState: MoviesData[] = [
+  { id: 99, title: 'Thebatman', director: 'lfdhsad', movieImg: './random' },
+]
 
 function eachMovie(state = initialState, action: Action): MoviesData[] {
   const { type, payload } = action
