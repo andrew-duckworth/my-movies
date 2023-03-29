@@ -9,8 +9,10 @@ function Nav() {
   }
 
   return (
-    <header className="nav">
-      <h1>Title</h1>
+    <nav className="nav">
+      <a href="/">
+        <h1>Title</h1>
+      </a>
       <div className="nav__button">
         {signedIn ? (
           <>
@@ -20,7 +22,7 @@ function Nav() {
           <button onClick={handleClick}>Log In</button>
         )}
       </div>
-    </header>
+    </nav>
   )
 }
 
