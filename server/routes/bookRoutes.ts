@@ -1,7 +1,7 @@
 import express from 'express'
 import request from 'superagent'
-import { getAllBooks } from '../db/db'
-import { Book } from '../../common/interfaces'
+import { getAllBooks, deleteBook, addBook } from '../db/db'
+import { Book, Bookdata } from '../../common/interfaces'
 
 const router = express.Router()
 
@@ -9,6 +9,20 @@ router.use(express.json())
 
 router.get('/', (req, res) => {
   return getAllBooks().then((books: Book[]) => res.json(books))
+})
+
+router.post('/', (req, res) => {
+  const bookData: Bookdata = req.body
+  return addBook(bookData).then((addedBook: Book) => {
+    res.json(addedBook)
+  })
+})
+
+router.delete('/', (req, res) => {
+  const id = Number(req.body.id)
+  return deleteBook(id).then((deleted) => {
+    res.json(deleted)
+  })
 })
 
 export default router
