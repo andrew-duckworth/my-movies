@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
   getAllManga()
     .then((mangaArr) => {
       mangaArr.forEach((mangaItem) => {
-        delete mangaItem.series_num
         delete mangaItem.image_src
       })
       res.json(mangaArr)

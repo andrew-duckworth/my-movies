@@ -1,13 +1,12 @@
 export interface Manga {
   id?: number
   title: string
-  seriesNum?: number
+  books: string
   author: string
   location: string
   imageSrc?: string
 }
 
 export interface Routemanga extends Manga {
-  series_num?: number
   image_src?: string
 }
