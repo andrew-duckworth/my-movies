@@ -9,7 +9,7 @@ function App() {
       <Jokes />
       <Routes>
         <Route path="/jokes" element={<App />}></Route>
-        <Route path="/jokes/add" element={<AddJoke />}></Route>
+        <Route path="/joke/add" element={<AddJoke />}></Route>
       </Routes>
     </>
   )

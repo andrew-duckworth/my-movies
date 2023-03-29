@@ -18,7 +18,7 @@ function Jokes() {
       <h2>Jokes</h2>
       <button
         className="button button__joke__add"
-        onClick={() => navigate('/jokes/add')}
+        onClick={() => navigate('/joke/add')}
       >
         Add a classic to the collection
       </button>

@@ -1,8 +1,9 @@
 import express from 'express'
-import { getAllJokes, getJokeById } from '../db/jokes-db/jokes-db'
+import { getAllJokes, getJokeById, addJoke } from '../db/jokes-db/jokes-db'
 
 export const router = express.Router()
 
+// GET /api/v1/database/jokes
 router.get('/jokes', (req, res) => {
   getAllJokes()
     .then((jokes) => {
@@ -11,7 +12,7 @@ router.get('/jokes', (req, res) => {
     .catch((err: Error) => console.log(err.message))
 })
 
-// get joke from db
+// GET /api/v1/database/joke/:id
 router.get('/joke/:id', (req, res) => {
   const id = Number(req.params.id)
 
@@ -20,4 +21,22 @@ router.get('/joke/:id', (req, res) => {
       res.json(joke)
     })
     .catch((err: Error) => console.log(err.message))
+})
+
+// GET /api/v1/database/joke/add
+router.post('/joke/add', (req, res) => {
+  const { joke, punchline } = req.body
+  const jokeToAdd = { joke, punchline }
+  addJoke(jokeToAdd)
+    .then((newJoke) => {
+      res.json(newJoke[0])
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+})
+
+router.delete('/joke/delete/:id', (req, res) => {
+  const id = Number(req.params.id)
+  deleteJoke()
 })
