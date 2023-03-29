@@ -1,5 +1,5 @@
-import type { ThunkAction } from 'redux-thunk'
-import { HikesInterface, RawHikesInterfaceArr } from '../../common/Hikes'
+import type { ThunkAction } from '../store'
+import { HikesInterface } from '../../common/Hikes'
 
 import { getAllHikes } from '../apis/apiClient'
 
@@ -7,7 +7,7 @@ export const SAVE_HIKES = 'SAVE_HIKES'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
 export type Action =
-  | { type: typeof SAVE_HIKES; payload: null }
+  | { type: typeof SAVE_HIKES; payload: HikesInterface[] }
   | { type: typeof SHOW_ERROR; payload: string }
 
 // export function requestHikes(): Action {
@@ -17,10 +17,10 @@ export type Action =
 //   }
 // }
 
-export function saveHikes(hikes: RawHikesInterfaceArr): Action {
+export function saveHikes(hikes: HikesInterface[]): Action {
   return {
     type: SAVE_HIKES,
-    payload: hikes.map((hike) => hike.data),
+    payload: hikes,
   }
 }
 
@@ -31,15 +31,15 @@ export function showError(errorMessage: string): Action {
   }
 }
 
-export function fetchHikes(subHikes: string): ThunkAction {
+export function fetchHikes(): ThunkAction {
   return (dispatch) => {
-    (getAllHikes(subHikes)
-  .then((hikes) => {
-    dispatch(saveHikes(hikes))
-  })
-  .catch((err) => {
-    dispatchEvent(showError(err.message))
-  })
+    return getAllHikes()
+      .then((hikes) => {
+        console.log(hikes, 'Testing yayaaa')
+        dispatch(saveHikes(hikes))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
   }
 }
-

@@ -4,4 +4,4 @@ export interface HikesInterface {
   location: string
 }
 
-export type RawHikesInterfaceArr = { data: HikesInterface }[]
+// export type RawHikesInterfaceArr = { data: HikesInterface }[]
