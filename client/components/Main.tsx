@@ -1,24 +1,23 @@
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Main() {
-  const nav = useNavigate()
-
-  const navigate = (evt: React.MouseEvent<HTMLButtonElement>) => {
-    evt.preventDefault()
-    nav(evt.target.name)
-  }
-
   return (
-    <div className="buttons">
-      <button name="/recipes" onClick={navigate}>
-        My Recipes
-      </button>
-      <button name="/addnew" onClick={navigate}>
-        Add Recipe
-      </button>
-      <button name="/shopping" onClick={navigate}>
-        Shopping List
-      </button>
+    <div className="links">
+      <p>
+        <Link className="/recipes" to="/recipes">
+          My Recipes
+        </Link>
+      </p>
+      <p>
+        <Link className="/addnew" to="/addnew">
+          Add Recipe
+        </Link>
+      </p>
+      <p>
+        <Link className="/shopping" to="/shopping">
+          Shopping List
+        </Link>
+      </p>
     </div>
   )
 }
