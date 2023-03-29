@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import Joke from './Joke'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { getJokesFromAPI } from '../actions'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Jokes() {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const jokes = useAppSelector((state) => state.jokes)
 
   useEffect(() => {
@@ -14,7 +16,10 @@ function Jokes() {
   return (
     <div>
       <h2>Jokes</h2>
-      <button className="button button__joke__add">
+      <button
+        className="button button__joke__add"
+        onClick={() => navigate('/jokes/add')}
+      >
         Add a classic to the collection
       </button>
       <ul>

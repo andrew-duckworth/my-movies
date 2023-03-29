@@ -1,13 +1,16 @@
+import { Routes, Route } from 'react-router-dom'
+import Header from './Header'
 import Jokes from './Jokes'
+import AddJoke from './AddJoke'
 function App() {
   return (
     <>
-      <header className="header">
-        <h1>Olivia&apos;s Very Bad Dad Jokes</h1>
-      </header>
-      <section className="main">
-        <Jokes />
-      </section>
+      <Header />
+      <Jokes />
+      <Routes>
+        <Route path="/jokes" element={<App />}></Route>
+        <Route path="/jokes/add" element={<AddJoke />}></Route>
+      </Routes>
     </>
   )
 }
