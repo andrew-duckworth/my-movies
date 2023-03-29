@@ -5,7 +5,7 @@ export function fetchAllBooks(): Promise<Book[]> {
   return request.get('/api/v1/books').then((bookres) => bookres.body)
 }
 
-export function postBook(searchStr: string): Promise<Book> {
+export function postBook(searchStr: string): Promise<Book[]> {
   const bookData = {
     title: '',
     author_name: '',
@@ -16,6 +16,7 @@ export function postBook(searchStr: string): Promise<Book> {
   return request
     .get(`https://openlibrary.org/search.json?q=${searchStr}`)
     .then((rawData) => {
+      console.log('requestin')
       bookData.title = rawData.body.docs[0].title
       bookData.author_name = rawData.body.docs[0].author_name[0]
       bookData.publish_date = rawData.body.docs[0].publish_date[0]
@@ -24,18 +25,5 @@ export function postBook(searchStr: string): Promise<Book> {
 
       return request.post('/api/v1/books').send(bookData)
     })
-    .then(
-      (res) => res.body
-      //
-      // cover api
-    )
-}
-
-/*
-export function insertWidget(widgetData: WidgetData): Promise<Widget> {
-  return request
-    .post(widgetUrl)
-    .send(widgetData)
     .then((res) => res.body)
 }
-*/

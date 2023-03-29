@@ -1,8 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { addBookToGlobal } from '../actions/bookAction'
 import { postBook } from '../apis/booksApi'
+import { useAppDispatch } from '../hooks/redux'
+import { Book } from '../../common/interfaces'
 
 function Booksearch() {
   const [addBook, setAddBook] = useState('')
+  const dispatch = useAppDispatch()
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     setAddBook(e.target.value)
@@ -10,7 +14,10 @@ function Booksearch() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    postBook(addBook)
+    return postBook(addBook).then(([addedBook]) => {
+      console.log(addedBook)
+      dispatch(addBookToGlobal(addedBook))
+    })
   }
 
   return (

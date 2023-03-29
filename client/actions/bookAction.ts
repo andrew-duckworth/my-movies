@@ -6,12 +6,20 @@ export type BookAction =
   | { type: 'DISPLAY_BOOKS'; payload: null }
   | { type: 'LOADING_BOOKS'; payload: boolean }
   | { type: 'GOT_BOOKS'; payload: Book[] }
+  | { type: 'ADD_BOOK'; payload: Book }
 
 export function loadingBooks(): BookAction {
   console.log('LOAD')
   return {
     type: 'LOADING_BOOKS',
     payload: true,
+  }
+}
+
+export function addBookToGlobal(book: Book): BookAction {
+  return {
+    type: 'ADD_BOOK',
+    payload: book,
   }
 }
 
