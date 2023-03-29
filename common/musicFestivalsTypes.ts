@@ -1,5 +1,6 @@
 export interface musicFestivalDetails {
-  name: string
-  country: string
-  date: string
+  id?: number
+  name?: string
+  country?: string
+  date?: string
 }
