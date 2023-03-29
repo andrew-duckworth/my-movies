@@ -20,7 +20,8 @@ function SignsList() {
         <div key={sign.id}>
           <p>{sign.sign}</p>
           <p>Date of Birth: {sign.dates}</p>
-          <img src={sign.image} alt="art with cat" />
+          {/* <img src={sign.image} alt="art with cat" /> */}
+          <img src={'../../images/' + sign.image} alt="art with cat" />
         </div>
       ))}
     </section>
