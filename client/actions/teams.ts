@@ -31,10 +31,10 @@ export function receiveTeams(teams: any): Action {
   }
 }
 
-export function deleteTeams(team: TeamsData): Action {
+export function deleteTeam(id: string): Action {
   return {
     type: DELETE_TEAM,
-    payload: team,
+    payload: id,
   }
 }
 
@@ -49,13 +49,11 @@ export function fetchTeams(): ThunkAction {
 }
 
 export function deleteTeamsThunk(team: TeamsData): ThunkAction {
-  return async (dispatch) => {
-    try {
-      await deleteTeamsApi(team)
-      await delTeam(team.id)
-      dispatch(deleteTeams(team))
-    } catch (err: unknown) {
-      return console.log(err.message)
-    }
+  return (dispatch) => {
+    return deleteTeamsApi(team.id)
+    .then(() => { 
+      dispatch(deleteTeam(team.id))
+    })
+    catch((err) => console.log(err.message))
   }
 }
