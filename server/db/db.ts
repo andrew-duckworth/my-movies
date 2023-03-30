@@ -13,5 +13,5 @@ export function addBook(book: Bookdata, db = connection) {
 }
 
 export function deleteBook(id: number, db = connection) {
-  return db('books').del().where('id', id).returning('*')
+  return db('books').del().where('id', id)
 }

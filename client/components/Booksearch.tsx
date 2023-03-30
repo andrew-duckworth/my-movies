@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { addBookToGlobal } from '../actions/bookAction'
+import { addBookToGlobal, loadingNewBooks } from '../actions/bookAction'
 import { postBook } from '../apis/booksApi'
 import { useAppDispatch } from '../hooks/redux'
 import { Book } from '../../common/interfaces'
@@ -14,7 +14,9 @@ function Booksearch() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    return postBook(addBook).then(([addedBook]) => {
+    const newBook = addBook
+    dispatch(loadingNewBooks())
+    return postBook(newBook).then(([addedBook]) => {
       console.log(addedBook)
       dispatch(addBookToGlobal(addedBook))
     })

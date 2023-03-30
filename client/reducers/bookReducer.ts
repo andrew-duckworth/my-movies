@@ -18,6 +18,8 @@ function reducer(state = initialState, action: BookAction): Book[] {
   switch (type) {
     case 'GOT_BOOKS':
       return payload
+    case 'ADD_BOOK':
+      return [...state, payload]
     default:
       return state
   }

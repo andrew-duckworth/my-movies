@@ -26,4 +26,12 @@ export function postBook(searchStr: string): Promise<Book[]> {
       return request.post('/api/v1/books').send(bookData)
     })
     .then((res) => res.body)
+    .catch((err) => console.log(err.message))
+}
+
+export function removeBook(id: number): Promise<any> {
+  return request
+    .delete('/api/v1/books')
+    .send({ id })
+    .then((res) => res.body)
 }

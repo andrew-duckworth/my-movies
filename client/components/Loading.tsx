@@ -4,7 +4,17 @@ function Loading() {
   const loading = useAppSelector((globalState) => globalState.loading)
 
   return (
-    <>{loading ? <img src="/images/loading.gif" alt="loading"></img> : ''}</>
+    <>
+      {loading ? (
+        <img
+          className="books-loading"
+          src="/images/loading.gif"
+          alt="loading"
+        ></img>
+      ) : (
+        ''
+      )}
+    </>
   )
 }
 

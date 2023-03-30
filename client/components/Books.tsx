@@ -1,6 +1,6 @@
 import { SyntheticEvent, useEffect } from 'react'
 import { Book } from '../../common/interfaces'
-import { displayBooks } from '../actions/bookAction'
+import { displayBooks, deleteBook } from '../actions/bookAction'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
 function Books() {
@@ -19,6 +19,10 @@ function Books() {
       el.currentTarget.src =
         'https://savanisbookshop.com/uploads/image/savanisbookshop.jpeg'
     }
+  }
+
+  function delHandler(id: number) {
+    dispatch(deleteBook(id))
   }
 
   return (
@@ -41,10 +45,16 @@ function Books() {
                 onLoad={usePlaceholder}
                 alt="Book cover"
               ></img>
+              <button
+                className="book-delbtn"
+                onClick={() => delHandler(book.id)}
+              >
+                X
+              </button>
             </div>
           ))
         ) : (
-          <p>NO BOOKS</p>
+          <p>NO BOOKS! PANIC!!!</p>
         )}
       </div>
     </>

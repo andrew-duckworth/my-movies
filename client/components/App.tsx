@@ -2,7 +2,7 @@ import Books from './Books'
 import Games from './Games'
 import Loading from './Loading'
 import Booksearch from './Booksearch'
-
+import LoadingNewBook from './LoadingNewBook'
 function App() {
   return (
     <>
@@ -13,6 +13,7 @@ function App() {
         <Loading />
         <Books />
         <Booksearch />
+        <LoadingNewBook />
         <Games />
       </section>
     </>
