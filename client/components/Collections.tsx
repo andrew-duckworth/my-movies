@@ -20,7 +20,7 @@ function Collections() {
   return (
     <>
       {collections.map((note, i) => (
-        <ACollection key={i} singleCollection={note} />
+        <ACollection key={i} note={note} />
       ))}
     </>
   )
