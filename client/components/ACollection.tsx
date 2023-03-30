@@ -25,6 +25,7 @@ function ACollection({ note }: Props) {
     <div>
       <h3>{note.title}</h3>
       <p>{note.content}</p>
+      <p>Category: {note.category}</p>
       <button className="del_button" onClick={() => handleDel(note.id)}>Delete</button>
     </div>
   )

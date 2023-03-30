@@ -37,42 +37,48 @@ const handleSubmit = (e: FormEvent) => {
 
   return (
     <>
+
+    <div className="note-wrapper">
+   
       {collections.map((note, i) => (
         <ACollection key={i} note={note} />
       ))}
+    </div>
+    <div className="form-wrapper">
+      <div>
+        <h1>My Collection</h1>
+        <h2>Add a new note</h2>
+        <form onSubmit={handleSubmit}>
+              
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                value={formData.title}
+                onChange={handleInputChange}
+                required
+              />
 
-      <form onSubmit={handleSubmit}>
-            <p>Add a new note</p>
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              id="title"
-              value={formData.title}
-              onChange={handleInputChange}
-              required
-            />
+              <label htmlFor="content">Content</label>
+              <input
+                id="content"
+                value={formData.content}
+                onChange={handleInputChange}
+                required
+              />
 
-            <label htmlFor="content">Content</label>
-            <input
-              type="text"
-              id="content"
-              value={formData.content}
-              onChange={handleInputChange}
-              required
-            />
-
-            <label htmlFor="category">Category</label>
-            <input
+              <label htmlFor="category">Category</label>
+              <input
               type="text"
               id="category"
               value={formData.category}
               onChange={handleInputChange}
               required
             />
-            <button>Submit</button>
-      </form>
-
-
+              <button>Submit</button>
+        </form>
+      </div>
+    </div>
     </>
   )
 }
