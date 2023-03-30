@@ -1,41 +1,28 @@
-import { useState, useEffect } from 'react'
-import { fetchTheFamily } from '../apis/apiClient'
-import { Family } from '../../server/common/allModels'
-import AddAMember from './AddAMember'
+import { fetchAllData } from '../actions/familyActions'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
-import { delFamMember } from '../../server/db/data/familyDb'
+import { deleteOneMember } from '../actions/familyActions'
+import { useEffect } from 'react'
+//IMPORTING ADD MEMBER COMPONENT INSTEAD OF TO APP
+import AddAMember from './AddAMember'
 
 function showAllFamily() {
-  const [relation, showRelations] = useState([] as Family[])
-
+  // note: family (globalState.family) comes from the index.ts main reducer file.
+  const knudsen = useAppSelector((globalState) => globalState.family)
   const dispatch = useAppDispatch()
 
-  // FOR WHEN USING REDUCER....
-  // const allFamily = useAppSelector((state) => state.something)
-  // console.log(allFamily)
-
   useEffect(() => {
-    // on load
-    dispatch(refreshFamily)
+    dispatch(fetchAllData())
   }, [dispatch])
 
-  const refreshFamily = () => {
-    fetchTheFamily()
-      .then((memberArr) => {
-        showRelations(memberArr)
-      })
-      .catch((err) => alert(err.message))
-  }
-
   const handleDel = (id: number) => {
-    dispatch(delFamMember(id))
+    dispatch(deleteOneMember(id))
   }
 
   return (
     <>
       <div>
         <h2>The Knudsen Family</h2>
-        {relation.map((member) => (
+        {knudsen.map((member) => (
           <p key={member.id}>
             Name: {member.name}
             <br></br>
@@ -45,7 +32,7 @@ function showAllFamily() {
             <br></br>
             Images: {member.image}
             <br></br>
-            <button onClick={() => handleDel(member)}>Delete</button>
+            <button onClick={() => handleDel(member.id)}>Delete</button>
           </p>
         ))}
         {<AddAMember />}
@@ -55,3 +42,28 @@ function showAllFamily() {
 }
 
 export default showAllFamily
+
+// FOR WHEN USING REDUCER....
+// const allFamily = useAppSelector((state) => state.something)
+// console.log(allFamily)
+
+// useEffect(() => {
+//   // on load
+//   dispatch(refreshFamily)
+// }, [dispatch])
+
+// const refreshFamily = () => {
+//   requestFamily()
+//     .then((memberArr) => {
+//       receiveFamily(memberArr)
+//     })
+//     .catch((err) => alert(err.message))
+// }
+
+// FOR WHEN USING REDUCER....
+// const allFamily = useAppSelector((state) => state.something)
+// console.log(allFamily)
+
+//FOR WHEN NOT USING REDUX AND USING USESTATE INSTEAD.
+// import { useState, useEffect } from 'react'
+// const [relation, showRelations] = useState([] as Family[])

@@ -36,7 +36,7 @@ export function delFamilyMember(memberId: number): Promise<Family> {
     .then((res) => {
       return res.body
     })
-    .catch(errorHandler('ADD', '/v1/family'))
+    .catch(errorHandler('DELETE', '/v1/family'))
 }
 
 //error handler for the catch above :)
