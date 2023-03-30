@@ -10,12 +10,14 @@ export const REQUEST_TEAMS = 'REQUEST_TEAMS'
 export const RECEIVE_TEAMS = 'RECEIVE_TEAMS'
 export const DELETE_TEAM = 'DELETE_TEAM'
 export const SHOW_ERROR = 'SHOW_ERROR'
+export const ADD_TEAM = 'ADD_TEAM'
 
 export type Action =
   | { type: typeof REQUEST_TEAMS; payload: null }
   | { type: typeof DELETE_TEAM; payload: string }
   | { type: typeof RECEIVE_TEAMS; payload: TeamsData[] }
   | { type: typeof SHOW_ERROR; payload: string }
+  | { type: typeof ADD_TEAM; payload: TeamsData }
 
 export function requestTeams(): Action {
   return {
@@ -38,6 +40,13 @@ export function deleteTeam(id: string): Action {
   }
 }
 
+export function addTeam(team: TeamsData) {
+  return {
+    type: ADD_TEAM,
+    payload: team,
+  }
+}
+
 export function fetchTeams(): ThunkAction {
   return (dispatch) => {
     dispatch(requestTeams())
@@ -48,12 +57,12 @@ export function fetchTeams(): ThunkAction {
   }
 }
 
-export function deleteTeamsThunk(team: TeamsData): ThunkAction {
-  return (dispatch) => {
-    return deleteTeamsApi(team.id)
-    .then(() => { 
-      dispatch(deleteTeam(team.id))
-    })
-    catch((err) => console.log(err.message))
-  }
-}
+// export function deleteTeamsThunk(team: TeamsData): ThunkAction {
+//   return (dispatch) => {
+//     return deleteTeamsApi(team.id)
+//     .then(() => {
+//       dispatch(deleteTeam(team.id))
+//     })
+//     catch((err) => console.log(err.message))
+//   }
+// }

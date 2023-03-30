@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { getTeamsApi } from '../apis/clientApi'
+import { deleteTeamsApi, getTeamsApi } from '../apis/clientApi'
 
 import { TeamsData } from '../../models/Teams'
 
@@ -23,7 +23,9 @@ function App() {
 
   const deleteHandler = (team: TeamsData) => {
     console.log(team)
-    dispatch(deleteTeamsThunk(team))
+    deleteTeamsApi(team)
+      .then(() => dispatch(fetchTeams()))
+      .catch((err) => console.log(err.message))
   }
 
   // console.log(teams)

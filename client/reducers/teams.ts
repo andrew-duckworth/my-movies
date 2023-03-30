@@ -1,4 +1,4 @@
-import { Action, RECEIVE_TEAMS, DELETE_TEAM } from '../actions/teams'
+import { Action, RECEIVE_TEAMS, DELETE_TEAM, ADD_TEAM } from '../actions/teams'
 import { TeamsData } from '../../models/Teams'
 
 const initialState = []
@@ -14,6 +14,10 @@ export default function reducer(
       return payload
     case DELETE_TEAM:
       return state.filter((team) => team !== payload)
+    case ADD_TEAM:
+      return {
+        ...state,
+      }
     default:
       return state
   }

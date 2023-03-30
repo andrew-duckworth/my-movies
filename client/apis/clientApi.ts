@@ -10,3 +10,10 @@ export function getTeamsApi() {
 export function deleteTeamsApi(team: TeamsData) {
   return request.delete(`${teamsUrl}/${team.id}`).then((res) => res)
 }
+
+export function addTeamsApi(newTeam: TeamsData) {
+  return request
+    .post(teamsUrl)
+    .send(newTeam)
+    .then((res) => res.body)
+}
