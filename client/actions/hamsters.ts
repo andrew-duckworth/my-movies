@@ -13,7 +13,7 @@ export type Action =
   | { type: typeof RECEIVE_HAMSTERS; payload: Hamsters[] }
   | { type: typeof SHOW_ERROR; payload: string }
   | { type: typeof REQUEST_HAMSTERS; payload: null }
-  | { type: typeof UPDATE_HAMSTERS; payload: { old: string; new: string } }
+  | { type: typeof UPDATE_HAMSTERS; payload: { old: number; new: string } }
 
 export function receiveHamsters(hamsters: Hamsters[]): Action {
   return {
@@ -36,10 +36,10 @@ export function requestHamsters(): Action {
   }
 }
 
-export function updateHamsters(data): Action {
+export function updateHamsters(hammyId: number, name: string): Action {
   return {
-    type: 'UPDATE_HAMSTERS',
-    payload: data,
+    type: UPDATE_HAMSTERS,
+    payload: { old: hammyId, new: name },
   }
 }
 // export function runUpdateHamsters(id: number, newName: string) {
@@ -54,11 +54,12 @@ export function runUpdateHamsters(
 ): ThunkAction {
   return (dispatch) => {
     return updateHammies(hammyId, newName)
-      .then((data) => {
-        // console.log(data)
-        // dispatch(updateHamsters(data))
+      .then((dataObj) => {
+        console.log('returned thunk data', dataObj)
+        dispatch(updateHamsters(hammyId, dataObj.name))
       })
       .catch((err) => {
+        console.log('Promise rejected with error:', err)
         dispatch(showError(err.message))
       })
   }

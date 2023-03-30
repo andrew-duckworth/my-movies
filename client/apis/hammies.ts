@@ -7,12 +7,13 @@ export function fetchHamsters() {
 }
 
 export function updateHammies(id: number, newHammy: string) {
-  console.log('updateHammies(API)', id, newHammy)
+  const obj = { name: newHammy }
+  console.log('updateHammies(API)', id, obj)
   return request
     .patch(`/api/v1/hamsters/${id}`)
-    .send(newHammy)
+    .send(obj)
     .then((res) => {
-      console.log('res.bdy:', res.body)
+      console.log('API response:', res.body)
       return res.body
     })
 }

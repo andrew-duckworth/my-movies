@@ -12,8 +12,10 @@ function hamsters(state = initialState, action: Action): Hamsters[] {
     case RECEIVE_HAMSTERS:
       return payload
     case UPDATE_HAMSTERS:
+      // state = payload
+      // return [...state]
       return state.map((hamster) => {
-        if (hamster.name === payload.old) {
+        if (hamster.id == payload.old) {
           hamster.name = payload.new
         }
         return hamster

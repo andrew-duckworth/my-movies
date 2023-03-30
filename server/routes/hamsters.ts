@@ -18,12 +18,17 @@ router.get('/', (req, res) => {
 router.patch('/:id', (req, res) => {
   const { id } = req.params
   const { name } = req.body
-  console.log('route:', id, name)
+  console.log('send route data:', id, name)
   updHamsters(id, name)
-    .then((data) => {
-      res.send(data)
-      res.sendStatus(200)
+    .then((dataArr) => {
+      res.json(dataArr[0])
+      console.log('returned route data:', dataArr[0])
     })
+    //db func returns vvvvvvvv
+    // .then((data) => {
+    //   console.log('returned route data:', data)
+    //   res.sendStatus(200)
+    // })
     .catch((err: Error) => {
       res.status(500).send(err.message)
     })
