@@ -1,18 +1,23 @@
-import { useState, useEffect } from 'react'
-import { AlbumsInterface } from '../common/albums'
-import { getAllAlbums } from '../apis/apiClient'
+import { useEffect } from 'react'
+import { getAlbumsThunk } from '../actions/albumAction'
+import { useAppDispatch } from '../hooks/redux'
+import { useAppSelector } from '../hooks/redux'
 
 function Albums() {
-  const [albums, setAlbums] = useState([] as AlbumsInterface[])
+  // const [albums, setAlbums] = useState([] as AlbumsInterface[])
+  const dispatch = useAppDispatch()
+  const albums = useAppSelector((state) => state.albumReducer)
 
+  // useEffect(() => {
+  //   getAllAlbums()
+  //     .then((albumsArr) => {
+  //       setAlbums(albumsArr)
+  //     })
+  //     .catch((err) => console.log(err.message))
+  // }, [])
   useEffect(() => {
-    getAllAlbums()
-      .then((albumsArr) => {
-        setAlbums(albumsArr)
-      })
-      .catch((err) => console.log(err.message))
+    dispatch(getAlbumsThunk())
   }, [])
-
   return (
     <div>
       {albums.map((album) => {
