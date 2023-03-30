@@ -38,8 +38,9 @@ router.patch('/:id', (req, res) => {
 
   updateCollectionBD(id, data)
     .then((post) => {
-      console.log(post)
-      res.json(post)
+      console.log('post', post[0])
+    const xxx = post[0]
+      res.json(xxx)
     })
     .catch((err: Error) => {
       res.status(500).send(err.message)

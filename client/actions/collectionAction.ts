@@ -44,7 +44,7 @@ export function addNewCollections(collection: CollectionData): CollectionsAction
 
 export function updateCollectionsACT(collection: CollectionData): CollectionsActions{
   return {
-    type: ADD_NEW_COLLECTION,
+    type: UPDATE_COLLECTION,
     payload:collection
   }
 }
@@ -115,7 +115,8 @@ export function updateCollectionAction(id: number, item: CollectionData): ThunkA
     //fetch from is api client
     return updateCollectionAPI(id, item)
     .then((anything) => {
-      console.log('UPDATE_COLLECTION is dispatched with payload:');
+      // console.log('anything', anything[0]);
+      // const collection = anything[0]
       //this is defined on this page
       dispatch(updateCollectionsACT(anything))
     })
