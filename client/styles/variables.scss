@@ -21,6 +21,14 @@ $text-color: rgb(245, 43, 144);
   align-items: center;
 }
 
+@mixin form-flex() {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin centre-flex() {
   display: flex;
   flex-wrap: wrap;
@@ -41,5 +49,18 @@ $text-color: rgb(245, 43, 144);
   border-radius: 20px;
 }
 
+@mixin button() {
+  padding: 10px;
+  background-color: $bg-card;
+  color: $text-color;
+  font-weight: 600;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: $text-color;
+  @include round-corners;
+  text-decoration: none;
+  @include shadow;
+  margin: 10px;
+}
 
 // Media Queries

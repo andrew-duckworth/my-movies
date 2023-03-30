@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import ChartList from './ChartList'
+import { AddChart } from './AddChart'
 
 import Nav from './Nav'
 import SignsList from './SignsList'
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SignsList />} />
           <Route path="/chart" element={<ChartList />} />
+          <Route path="/add" element={<AddChart />} />
         </Routes>
       </section>
     </>

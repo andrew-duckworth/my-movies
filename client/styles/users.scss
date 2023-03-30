@@ -4,8 +4,7 @@
   @include round-corners;
   margin: 50px;
   margin-top: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 
   &__each {
   padding: 20px;
@@ -21,4 +20,9 @@
 
   }
 
+  a {
+    @include button
+  }
+
 }
+

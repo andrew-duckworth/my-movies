@@ -1,0 +1,14 @@
+.add {
+  background-color: $bg-card;
+  @include form-flex;
+  @include round-corners;
+  margin: 50px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+
+  button {
+    @include button
+  }
+
+}
+
