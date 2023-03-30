@@ -17,12 +17,12 @@ export type CollectionsActions =
   |{type: typeof DEL_COLLECTION, payload: number}
 
 // ACTION CREATORS
-// export function getAllCollections(): CollectionsActions { 
-//   return {
-//     type: REQUEST_COLLECTION,
-//     payload:  null    
-//   }
-// }
+export function getAllCollections(): CollectionsActions { 
+  return {
+    type: REQUEST_COLLECTION,
+    payload:  null    
+  }
+}
 
 export function receiveAllCollections(collection: CollectionData[]): CollectionsActions{
   return {
@@ -36,31 +36,55 @@ export const delCollectionACT = (id: number) => ({
   payload: id,
 });
 
-export function fetchAllCollections(): ThunkAction {
-  return async (dispatch) => {
-    //fetch collection is api client
-    fetchCollections()
-      .then((things) => {
-        console.log(things)
+
+
+//////////////////////////////////////////
+
+export function fetchAllCollections(): ThunkAction{
+  return(dispatch) => {
+    //this is defined on this page
+    dispatch(getAllCollections())
+     //fetch collection is api client
+    return fetchCollections()
+      .then((anything) => {
         //this is defined on this page
-        dispatch(receiveAllCollections(things))
+        dispatch(receiveAllCollections(anything))
       })
       .catch((err) => {
-        console.log(err.message)
+        return err.message
       })
   }
 }
 
-export function delCollections(id:number): ThunkAction{
-  return(dispatch) => {
+// export function fetchAllCollections(): ThunkAction {
+//   return async (dispatch) => {
+//     //fetch collection is api client
+//     fetchCollections()
+//       .then((things) => {
+//         console.log(things)
+//         //this is defined on this page
+//         dispatch(receiveAllCollections(things))
+//       })
+//       .catch((err) => {
+//         console.log(err.message)
+//       })
+//   }
+// }
 
+
+
+export function delCollections(id:number): ThunkAction{
+  console.log('hi there')
+  return(dispatch) => {
       //delCollection is api client
     return delCollectionAPI(id)
       .then(() => {
         //function on this page
+        console.log('Item deleted successfully!');
         dispatch(delCollectionACT(id))
       })
       .catch((err) => {
+        console.log('Error deleting item:', err);
         return err.message
       })
   }

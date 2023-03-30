@@ -13,6 +13,7 @@ function ACollection({ note }: Props) {
   const dispatch = useAppDispatch()
 
   const handleDel = (id:number) => {
+    console.log(`Deleting collection with id ${id}`);
     dispatch(delCollectionACT(id))
   }
 
