@@ -22,20 +22,24 @@ function theReducer( state = initialState, action:CollectionsActions) : Collecti
       console.log('state before update:', state);
       console.log('payload:', payload);
       
-      return state.map(collection => {
-        if (collection.id === payload.id) {
-          console.log(collection.id);
-          return {
-            ...collection,
-            title: payload.title,
-            content: payload.content,
-            category: payload.category
-          };
-        } else {
-          return collection;
-        }
 
-      })
+      return state.map((collection) => (collection.id === payload.id ? payload : collection))
+
+
+      // return state.map(collection => {
+      //   if (collection.id === payload.id) {
+      //     console.log(collection.id);
+      //     return {
+      //       ...collection,
+      //       title: payload.title,
+      //       content: payload.content,
+      //       category: payload.category
+      //     };
+      //   } else {
+      //     return collection;
+      //   }
+
+      // })
 
 
       case DEL_COLLECTION:
