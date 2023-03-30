@@ -1,11 +1,15 @@
+import ErrorMessage from './ErrorMessage'
+import Header from './Header'
+import MangaList from './MangaList'
+// import Manga from './Manga'
+
 function App() {
   return (
-    <>
-      <header className="header">
-        <h1>My Collection</h1>
-      </header>
-      <section className="main">{/* add your code here */}</section>
-    </>
+    <div className="app">
+      <ErrorMessage />
+      <Header />
+      <MangaList />
+    </div>
   )
 }
 

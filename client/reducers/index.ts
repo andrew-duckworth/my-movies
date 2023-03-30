@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux'
 
-// import stuff from './stuff'
+import errorMessage from './errorMessage'
+import mangaReducer from './manga'
 
 export default combineReducers({
-  // stuff
+  errorMessage,
+  mangaReducer,
 })

@@ -1,14 +1,15 @@
 import { useAppSelector } from '../hooks/redux'
+import mangaReducer from '../reducers/manga'
 
 import Manga from './Manga'
 
 function MangaList() {
-  const allMangas = useAppSelector((state) => state.allMangas)
+  const allMangas = useAppSelector((state) => state.mangaReducer)
   return (
     <div>
-      {allMangas.map((manga, i) => (
+      {allMangas.map((manga) => (
         <Manga
-          key={i}
+          key={manga.id}
           title={manga.title}
           books={manga.books}
           author={manga.author}

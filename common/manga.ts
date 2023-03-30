@@ -4,9 +4,11 @@ export interface Manga {
   books: string
   author: string
   location: string
-  imageSrc?: string | null
+  imageSrc?: string
 }
 
 export interface Routemanga extends Manga {
   image_src?: string
 }
+
+export type RawMangaArr = { data: Manga }[]
