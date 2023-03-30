@@ -10,5 +10,8 @@
     @include button
   }
 
+  .text-item{
+    @include text-flex
+  }
 }
 
