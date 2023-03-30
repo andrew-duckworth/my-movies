@@ -1,13 +1,17 @@
 import Family from './Family'
-import AddAMember from './AddAMember'
+
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <>
-      <header className="header"></header>
+      <header className="header">
+        <h1>Welcome to the Knudsen Family List</h1>
+      </header>
       <section className="main">
-        {<Family />}
-        {<AddAMember />}
+        <Routes>
+          <Route path="/" element={<Family />} />
+        </Routes>
       </section>
     </>
   )

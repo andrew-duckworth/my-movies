@@ -5,6 +5,7 @@ export function fetchTheFamily(): Promise<Family[]> {
   return request
     .get('/api/v1/family')
     .then((responseObj) => {
+      console.log('receiving a response from APIclient:', responseObj.body)
       return responseObj.body
     })
     .catch(errorHandler('GET', '/v1/family'))

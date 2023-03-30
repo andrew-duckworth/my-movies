@@ -29,6 +29,15 @@ export default function addAMember() {
     // dispatch(setFormData())
   }
 
+  //////////////////////
+  // TO ADD IN A LOADING STATE (NEED COMPONENT)
+  // interface Props {
+  //   variant?: 'edit' | 'new'
+  //   loading?: boolean
+  // }
+
+  // if (props.loading) return <p>Loading...</p>
+
   return (
     <>
       <form onSubmit={handleSubmit}>

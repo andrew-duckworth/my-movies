@@ -1,15 +1,23 @@
 import { useState, useEffect } from 'react'
-import fetchTheFamily from '../apis/apiClient'
+import { fetchTheFamily } from '../apis/apiClient'
 import { Family } from '../../server/common/allModels'
-import { useAppSelector } from '../hooks/redux'
+import AddAMember from './AddAMember'
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { delFamMember } from '../../server/db/data/familyDb'
 
 function showAllFamily() {
   const [relation, showRelations] = useState([] as Family[])
 
+  const dispatch = useAppDispatch()
+
+  // FOR WHEN USING REDUCER....
+  // const allFamily = useAppSelector((state) => state.something)
+  // console.log(allFamily)
+
   useEffect(() => {
     // on load
-    refreshFamily()
-  }, [])
+    dispatch(refreshFamily)
+  }, [dispatch])
 
   const refreshFamily = () => {
     fetchTheFamily()
@@ -17,6 +25,10 @@ function showAllFamily() {
         showRelations(memberArr)
       })
       .catch((err) => alert(err.message))
+  }
+
+  const handleDel = (id: number) => {
+    dispatch(delFamMember(id))
   }
 
   return (
@@ -32,8 +44,11 @@ function showAllFamily() {
             Position in the family: {member.position}
             <br></br>
             Images: {member.image}
+            <br></br>
+            <button onClick={() => handleDel(member)}>Delete</button>
           </p>
         ))}
+        {<AddAMember />}
       </div>
     </>
   )

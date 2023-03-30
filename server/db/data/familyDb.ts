@@ -11,3 +11,7 @@ export function getAllFamily(db = connection): Promise<Family[]> {
 export function getFamilyById(id: number, db = connection): Promise<Family> {
   return db('family').select().where('id', id).first()
 }
+
+export function delFamMember(id: number, db = connection): Promise<number> {
+  return db('family').del().where('id', id)
+}
