@@ -1,6 +1,6 @@
 //API CLIENT//
 import request from 'superagent'
-import { CollectionData, UpdateData } from '../../models/Collections'
+import { CollectionData } from '../../models/Collections'
 const collUrl = '/api/v1/collections'
 
 export function fetchCollections() {
@@ -25,8 +25,8 @@ export function delCollectionAPI(id:number){
     .then((res) => {return res.body})
 }
 
-export function updateCollectionAPI(id:number, obj:UpdateData): Promise<UpdateData> {
-    console.log(request)
+
+export function updateCollectionAPI(id:number, obj:CollectionData): Promise<CollectionData> {
     return request
       .patch(`/api/v1/collections/${id}`)
       .send(obj)

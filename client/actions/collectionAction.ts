@@ -9,13 +9,14 @@ export const REQUEST_COLLECTION = 'ADD_COLLECTION'
 export const RECEIVE_COLLECTION = 'RECEIVE_COLLECTION'
 export const ADD_NEW_COLLECTION = 'ADD_NEW_COLLECTION'
 export const DEL_COLLECTION ='DEL_COLLECTION'
-// export const UPDATE_COLLECTION = 'UPDATE_COLLECTION'
+export const UPDATE_COLLECTION = 'UPDATE_COLLECTION'
 
 export type CollectionsActions =
   |{ type: typeof REQUEST_COLLECTION, payload: null }
   |{ type: typeof RECEIVE_COLLECTION, payload: CollectionData[]}
   |{ type: typeof ADD_NEW_COLLECTION, payload: CollectionData}
   |{type: typeof DEL_COLLECTION, payload: number}
+  |{ type: typeof UPDATE_COLLECTION, payload: CollectionData}
 
 // ACTION CREATORS
 export function getAllCollections(): CollectionsActions { 
@@ -35,6 +36,13 @@ export function receiveAllCollections(collection: CollectionData[]): Collections
 
 //giving one object, not an array
 export function addNewCollections(collection: CollectionData): CollectionsActions{
+  return {
+    type: ADD_NEW_COLLECTION,
+    payload:collection
+  }
+}
+
+export function updateCollectionsACT(collection: CollectionData): CollectionsActions{
   return {
     type: ADD_NEW_COLLECTION,
     payload:collection
@@ -96,14 +104,27 @@ export function addNewAction(item: CollectionData): ThunkAction {
       dispatch(addNewCollections(anything))
     })
 
-
     .catch((err) => {
       return err.message
     })
   }
 }
 
+export function updateCollectionAction(id: number, item: CollectionData): ThunkAction {
+  return (dispatch) => {
+    //fetch from is api client
+    return updateCollectionAPI(id, item)
+    .then((anything) => {
+      console.log('UPDATE_COLLECTION is dispatched with payload:');
+      //this is defined on this page
+      dispatch(updateCollectionsACT(anything))
+    })
 
+    .catch((err) => {
+      return err.message
+    })
+  }
+}
 
 
 
