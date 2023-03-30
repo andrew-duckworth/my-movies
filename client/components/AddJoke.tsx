@@ -1,17 +1,24 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { UserJoke } from '../../common/models'
+import { useAppDispatch } from '../hooks/redux'
+import { addNewJoke } from '../actions'
+import { useNavigate } from 'react-router-dom'
 
 function AddJoke() {
-  const [userJoke, setUserJoke] = useState('')
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const [userJoke, setUserJoke] = useState({ joke: '', punchline: '' })
 
   const handleJokeChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    setUserJoke(evt.target.value)
+    setUserJoke({ ...userJoke, [evt.target.id]: evt.target.value })
   }
 
   const handleJokeSubmit = (evt: FormEvent) => {
     evt.preventDefault()
-    //add joke to db
-    //add joke to redux store
-    //thunk?
+    console.log(userJoke)
+    dispatch(addNewJoke(userJoke))
+    setUserJoke({ joke: '', punchline: '' })
+    navigate('/jokes')
   }
 
   return (
@@ -21,9 +28,19 @@ function AddJoke() {
         id="joke"
         name="joke"
         type="text"
-        value={userJoke}
+        value={userJoke.joke}
         onChange={handleJokeChange}
       />
+      <label htmlFor="punchline">enter your punchline:</label>
+      <input
+        id="punchline"
+        name="punchline"
+        type="text"
+        value={userJoke.punchline}
+        onChange={handleJokeChange}
+      />
+      <br />
+      <button type="submit">Add this joke</button>
     </form>
   )
 }

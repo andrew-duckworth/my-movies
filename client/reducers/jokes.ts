@@ -11,6 +11,9 @@ export function jokeReducer(
     case 'RECEIVE_JOKES': {
       return payload
     }
+    case 'ADD_JOKE': {
+      return [...state, payload]
+    }
     default:
       return state
   }
