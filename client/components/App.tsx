@@ -13,16 +13,18 @@ function App() {
       })
       .catch((err) => alert(err.message))
   })
-  
+
   return (
     <>
       <header className="header">
         <h1>Manual Coffee Brewing Methods</h1>
       </header>
       <section className="main">
-        {coffee.map((coffee) => (
-          <CoffeeSingle coffeeProp={coffee} key={coffee.id} />
-        ))}
+        <div className="card-list">
+          {coffee.map((coffee) => (
+            <CoffeeSingle coffeeProp={coffee} key={coffee.id} />
+          ))}
+        </div>
       </section>
     </>
   )

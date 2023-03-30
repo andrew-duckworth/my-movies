@@ -1,4 +1,3 @@
-import { response } from 'express'
 import request from 'superagent'
 import { CoffeeData } from './models/Coffee'
 
