@@ -18,7 +18,7 @@ function SignsList() {
       <br />
       {signs.map((sign) => (
         <div className="signs__each" key={sign.id}>
-          <h3>{sign.sign}</h3>
+          <h2>{sign.sign}</h2>
           <p>Date of Birth: {sign.dates}</p>
           <img src={'../../images/' + sign.image} alt="art with cat" />
         </div>

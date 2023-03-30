@@ -4,9 +4,21 @@
   @include round-corners;
   margin: 50px;
   margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   &__each {
-  padding: 5px;
+  padding: 20px;
+
+    .text-item{
+      @include text-flex
+    }
+
+    p {
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+
   }
 
 }

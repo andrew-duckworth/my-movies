@@ -7,8 +7,12 @@ function Nav() {
 
   return (
     <nav>
-      {pathname === '/' ? renderHomeLink() : renderHomeLink()}
-      <Link to="/chart">Chart</Link>
+      <div className="nav-button">
+        {pathname === '/' ? renderHomeLink() : renderHomeLink()}
+      </div>
+      <div className="nav-button">
+        <Link to="/chart">Chart</Link>
+      </div>
     </nav>
   )
 }

@@ -27,10 +27,19 @@ function ChartList() {
       <div className="users">
         {user.map((user) => (
           <div className="users__each" key={user.id}>
-            <h3>{user.name}</h3>
-            <p>Sun: {user.sun}</p>
-            <p>Moon: {user.moon}</p>
-            <p>Rising: {user.rising}</p>
+            <h2>{user.name}</h2>
+            <div className="text-item">
+              <h3>Sun: </h3>
+              <p>{user.sun}</p>
+            </div>
+            <div className="text-item">
+              <h3>Moon: </h3>
+              <p>{user.moon}</p>
+            </div>
+            <div className="text-item">
+              <h3>Rising: </h3>
+              <p>{user.rising}</p>
+            </div>
           </div>
         ))}
       </div>
