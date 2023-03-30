@@ -3,8 +3,9 @@ import path from 'path'
 
 import shows from './routes/shows'
 import schedule from './routes/scheduler'
-import placeholder from './routes/placeholder'
+// import placeholder from './routes/placeholder'
 import producer from './routes/producers'
+import schedulerthunk from './routes/schedulerthunk'
 
 const server = express()
 
@@ -32,6 +33,8 @@ server.use('/api/v1/shows', shows)
 // server.use('/', placeholder)
 server.use('/api/v1/scheduler', schedule)
 server.use('/api/v1/producers', producer)
+server.use('/schedule')
+server.use('schedulethunk', schedulerthunk)
 // server.use('/',)
 // server.use('*', placeholder)
 

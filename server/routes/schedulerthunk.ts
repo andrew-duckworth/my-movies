@@ -1,7 +1,6 @@
 import { Router } from 'express'
 import express from 'express'
 import request from 'superagent'
-import bodyparser from 'body-parser'
 const router = express.Router()
 
 router.use(express.json())
@@ -12,10 +11,11 @@ router.get('/', (req, res) => {
   request
     .get('http://localhost:3000/api/v1/scheduler/allschedule') // external api call
     .then((e) => {
-      const bodyparsejson = bodyparser.json(e)
-      console.log('6: quote resp: ', bodyparsejson)
+      // const bodyparsejson = bodyparser.json(e)
 
-      return bodyparsejson // use res.json on server side
+      console.log('6: quote resp: ', e)
+
+      return res.json(e.body) // use res.json on server side
     })
     .catch((err) => console.log(err.message))
 })

@@ -1,6 +1,6 @@
 import type { ThunkAction } from '../store'
 import { Schedule, RawScheduleData } from '../../common/schedule'
-import { fetchScheduler } from '../apis/apischedule'
+import fetchScheduler from '../apis/apischedule'
 
 export const REQUEST_SCHEDULE = 'REQUEST_SCHEDULE'
 export const RECEIVE_SCHEDULE = 'RECEIVE_SCHEDULE'
@@ -28,16 +28,18 @@ export function receiveSchedule(schedule: RawScheduleData): ScheduleAction {
 }
 
 export function fetchSchedule(): ThunkAction {
-  console.log('2: Givin Up Da Thunk')
+  console.log('2: In Thunk')
 
   return (dispatch) => {
-    //first empty dispatch going up the chain requesting resource
-    dispatch(requestSchedule()) //this calls da API :)
-    return fetchScheduler()
+    dispatch(requestSchedule()) //first dispatch
+    return fetchScheduler() // calling API here
       .then((oneSchedule) => {
-        dispatch(receiveSchedule(oneSchedule)) // second dispatch back from the chain with resources requested from query
+        console.log('8: Thunk - fetched quote: ', oneSchedule)
+
+        // Thunk allows us to delay dispatching receiveQuote action
+        dispatch(receiveSchedule(oneSchedule)) // second dispatch
       })
-      .catch((err: Error) => {
+      .catch((err) => {
         return err.message
       })
   }

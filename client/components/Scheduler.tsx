@@ -1,11 +1,14 @@
-function Scheduler() {
-  return (
-    <div>
-      <h1>The Schedule for the day of {}</h1>
+import { fetchSchedule } from '../actions/Schedule'
+import { useAppDispatch } from '../hooks/redux'
 
-      <p>Schedule for the day of </p>
+function SchedulerButton() {
+  const dispatch = useAppDispatch()
+  return (
+    <div className="center">
+      {/* dispatch is calling the action fetchQuote */}
+      <button onClick={() => dispatch(fetchSchedule())}>Fetch Schedule</button>
     </div>
   )
 }
 
-export default Scheduler
+export default SchedulerButton

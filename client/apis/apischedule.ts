@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-export function fetchSchedule() {
+function fetchScheduler() {
   console.log('Internal API Call')
 
   return request
@@ -12,3 +12,5 @@ export function fetchSchedule() {
       return err.message
     })
 }
+
+export default fetchScheduler
