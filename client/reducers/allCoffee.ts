@@ -1,4 +1,4 @@
-import { Action, RECEIVE_COFFEE } from '../actions/getCoffee'
+import { Action } from '../actions/getCoffee'
 import { CoffeeData } from '../models/Coffee'
 
 const initialState = [] as CoffeeData[]
@@ -10,7 +10,7 @@ export function coffeeReducer(
   const { type, payload } = action
 
   switch (type) {
-    case RECEIVE_COFFEE:
+    case 'RECEIVE_COFFEE':
       return payload
     default:
       return state
