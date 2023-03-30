@@ -1,11 +1,12 @@
 import { Action, RECEIVE_COFFEE } from '../actions/getCoffee'
 import { CoffeeData } from '../models/Coffee'
 
-const initialState: CoffeeData[] = [
-  { id: 99, name: 'Thebatman', url: 'lfdhsad', selftext: './random' },
-]
+const initialState = [] as CoffeeData[]
 
-function CoffeeItem(state = initialState, action: Action): CoffeeData[] {
+export function coffeeReducer(
+  state = initialState,
+  action: Action
+): CoffeeData[] {
   const { type, payload } = action
 
   switch (type) {
@@ -15,5 +16,3 @@ function CoffeeItem(state = initialState, action: Action): CoffeeData[] {
       return state
   }
 }
-
-export default CoffeeItem

@@ -1,5 +1,5 @@
 import { SHOW_ERROR, Action } from '../actions/getCoffee'
-function errorMessage(state = '', action: Action): string {
+export function errorState(state = '', action: Action): string {
   const { type } = action
 
   switch (type) {
@@ -9,5 +9,3 @@ function errorMessage(state = '', action: Action): string {
       return state
   }
 }
-
-export default errorMessage
