@@ -31,7 +31,6 @@ export function showError(errorMessage: string): Action {
 
 export function fetchCoffee(): ThunkAction {
   return (dispatch) => {
-    dispatch(requestCoffee())
     return getAllCoffee()
       .then((coffee) => {
         dispatch(receiveCoffee(coffee))
