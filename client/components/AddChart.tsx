@@ -1,11 +1,12 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { addUser } from '../actions/zodiac'
 
 export function AddChart() {
   const [data, setData] = useState({
-    name: '',
-    sun: '',
-    moon: '',
-    rising: '',
+    newName: '',
+    newSun: '',
+    newMoon: '',
+    newRising: '',
   })
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +18,8 @@ export function AddChart() {
 
   const submitHandler = (evt: FormEvent) => {
     evt.preventDefault
-    // dispatch(addSigns())
+    data && dispatch(addUser(data))
+    setData('')
   }
 
   return (
@@ -25,38 +27,38 @@ export function AddChart() {
       <h2>Enter your big three: </h2>
       <form onSubmit={submitHandler}>
         <div className="text-item">
-          <label htmlFor="name">Name: </label>
+          <label htmlFor="name">newName: </label>
           <input
             type="text"
-            value={data.name}
-            name="name"
+            value={data.newName}
+            name="newName"
             onChange={changeHandler}
           />
         </div>
         <div className="text-item">
-          <label htmlFor="sunSign">Sun Sign: </label>
+          <label htmlFor="newSun">Sun Sign: </label>
           <input
             type="text"
-            value={data.sun}
-            name="sun"
+            value={data.newSun}
+            name="newSun"
             onChange={changeHandler}
           />
         </div>
         <div className="text-item">
-          <label htmlFor="moonSign">Moon Sign: </label>
+          <label htmlFor="newMoon">Moon Sign: </label>
           <input
             type="text"
-            value={data.moon}
-            name="moon"
+            value={data.newMoon}
+            name="newMoon"
             onChange={changeHandler}
           />
         </div>
         <div className="text-item">
-          <label htmlFor="risingSign">Rising Sign: </label>
+          <label htmlFor="newRising">Rising Sign: </label>
           <input
             type="text"
-            value={data.rising}
-            name="rising"
+            value={data.newRising}
+            name="rnewRising"
             onChange={changeHandler}
           />
         </div>
