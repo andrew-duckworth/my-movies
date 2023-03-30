@@ -17,12 +17,7 @@ export function fetchCollections() {
 //     .catch((err) => {return err.message})
 // }
 
-export function makeNewAPI(newThing: CollectionData){
-    return request
-    .post(collUrl)
-    .send(newThing)
-    .then((res) => {return res.body})
-}
+
 
 export function delCollectionAPI(id:number){
     return request
@@ -39,3 +34,11 @@ export function updateCollectionAPI(id:number, obj:UpdateData): Promise<UpdateDa
         return res.body;
       })
   }
+
+
+  export function makeNewAPI(newThing: CollectionData){
+    return request
+    .post(collUrl)
+    .send(newThing)
+    .then((res) => {return res.body})
+}

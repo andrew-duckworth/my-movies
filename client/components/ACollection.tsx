@@ -1,6 +1,7 @@
 import {CollectionData}  from '../../models/Collections'
-import { delCollectionACT } from '../actions/collectionAction'
+import { delCollections,  } from '../actions/collectionAction'
 import {useAppDispatch } from '../hooks/redux'
+import { ChangeEvent, FormEvent, useState } from 'react'
 
 interface Props {
   note: CollectionData
@@ -12,9 +13,10 @@ function ACollection({ note }: Props) {
 
   const dispatch = useAppDispatch()
 
+  // const [formData, updateCollection] = useState(note)
+
   const handleDel = (id:number) => {
-    console.log(`Deleting collection with id ${id}`);
-    dispatch(delCollectionACT(id))
+    dispatch(delCollections(id))
   }
 
 

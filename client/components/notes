@@ -13,7 +13,7 @@ function Collections() {
  console.log(collections)
 
 const [formData, setNewCollection] = useState({} as CollectionData)
-
+const [submitting, setSubmitting] = useState(false);
 
 
  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -26,18 +26,26 @@ const [formData, setNewCollection] = useState({} as CollectionData)
 }
 
 const handleSubmit = (e: FormEvent) => {
-  e.preventDefault()
-  dispatch(addNewAction(formData))
+  e.preventDefault();
+  setSubmitting(true);
+  
+  dispatch(addNewAction(formData)).then(() => {
+    setNewCollection({} as CollectionData);
+    setSubmitting(false);
+  })
+  .catch((err) => {
+    return err.message
+  })
 }
 
   useEffect(() => {
     dispatch(fetchAllCollections())
-  },[dispatch])  
+  },[dispatch, submitting])  
   
 
   return (
     <>
-      {collections.map((note, i) => (
+      {!submitting && collections.map((note, i) => (
         <ACollection key={i} note={note} />
       ))}
 

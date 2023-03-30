@@ -7,13 +7,14 @@ import { fetchCollections, makeNewAPI, delCollectionAPI, updateCollectionAPI} fr
 
 export const REQUEST_COLLECTION = 'ADD_COLLECTION'
 export const RECEIVE_COLLECTION = 'RECEIVE_COLLECTION'
-// export const ADD_NEW_COLLECTION = 'ADD_NEW_COLLECTION'
+export const ADD_NEW_COLLECTION = 'ADD_NEW_COLLECTION'
 export const DEL_COLLECTION ='DEL_COLLECTION'
 // export const UPDATE_COLLECTION = 'UPDATE_COLLECTION'
 
 export type CollectionsActions =
   |{ type: typeof REQUEST_COLLECTION, payload: null }
   |{ type: typeof RECEIVE_COLLECTION, payload: CollectionData[]}
+  |{ type: typeof ADD_NEW_COLLECTION, payload: CollectionData}
   |{type: typeof DEL_COLLECTION, payload: number}
 
 // ACTION CREATORS
@@ -24,9 +25,18 @@ export function getAllCollections(): CollectionsActions {
   }
 }
 
+// receive an array of objects
 export function receiveAllCollections(collection: CollectionData[]): CollectionsActions{
   return {
     type: RECEIVE_COLLECTION,
+    payload:collection
+  }
+}
+
+//giving one object, not an array
+export function addNewCollections(collection: CollectionData): CollectionsActions{
+  return {
+    type: ADD_NEW_COLLECTION,
     payload:collection
   }
 }
@@ -38,13 +48,14 @@ export const delCollectionACT = (id: number) => ({
 
 
 
-//////////////////////////////////////////
 
+//////////////////////////////////////////
 export function fetchAllCollections(): ThunkAction{
   return(dispatch) => {
     //this is defined on this page
-    dispatch(getAllCollections())
-     //fetch collection is api client
+    // dispatch(getAllCollections())
+
+     //fetch from is api client
     return fetchCollections()
       .then((anything) => {
         //this is defined on this page
@@ -56,35 +67,18 @@ export function fetchAllCollections(): ThunkAction{
   }
 }
 
-// export function fetchAllCollections(): ThunkAction {
-//   return async (dispatch) => {
-//     //fetch collection is api client
-//     fetchCollections()
-//       .then((things) => {
-//         console.log(things)
-//         //this is defined on this page
-//         dispatch(receiveAllCollections(things))
-//       })
-//       .catch((err) => {
-//         console.log(err.message)
-//       })
-//   }
-// }
-
-
-
-export function delCollections(id:number): ThunkAction{
-  console.log('hi there')
+export function delCollections(id: number): ThunkAction{
+  // console.log('hi there')
   return(dispatch) => {
-      //delCollection is api client
+     //fetch from is api client
     return delCollectionAPI(id)
       .then(() => {
         //function on this page
-        console.log('Item deleted successfully!');
+        // console.log('Item deleted successfully!');
         dispatch(delCollectionACT(id))
       })
       .catch((err) => {
-        console.log('Error deleting item:', err);
+        // console.log('Error deleting item:', err);
         return err.message
       })
   }
@@ -92,17 +86,28 @@ export function delCollections(id:number): ThunkAction{
 
 
 
-// export function addNewAction(item: CollectionData): ThunkAction {
-//   return async (dispatch) => {
-//     makeNewAPI(item)
-//       .then((newThing: CollectionData[]) => {
-//         console.log(newThing)
-//         dispatch(receiveAllCollections(newThing))
-//       })
-//       .catch((err) => {
-//         console.log(err.message)
-//       })
-//   }
-// }
+export function addNewAction(item: CollectionData): ThunkAction {
+  return (dispatch) => {
+    //fetch from is api client
+    return makeNewAPI(item)
+    .then((anything) => {
+      //this is defined on this page
+      // dispatch(addNewCollections(anything[0]))
+      dispatch(addNewCollections(anything))
+    })
+
+
+    .catch((err) => {
+      return err.message
+    })
+  }
+}
+
+
+
+
+
+
+
 
 

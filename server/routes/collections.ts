@@ -16,16 +16,6 @@ router.get('/', (req, res) => {
       })
 })
 
-router.post('/', (req, res) => {
-  makeNewBD(req.body)
-    .then((data) => {
-      res.json(data)
-    })
-    .catch((err) => {
-      res.status(500).send(err.message)
-    })
-})
-
 router.delete('/:id', (req,res) =>{
   delCollectionDB(+req.params.id)
   .then(() => {
@@ -52,6 +42,17 @@ router.patch('/:id', (req, res) => {
       res.json(post)
     })
     .catch((err: Error) => {
+      res.status(500).send(err.message)
+    })
+})
+
+
+router.post('/', (req, res) => {
+  makeNewBD(req.body)
+    .then((data) => {
+      res.json(data)
+    })
+    .catch((err) => {
       res.status(500).send(err.message)
     })
 })

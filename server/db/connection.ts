@@ -15,13 +15,7 @@ export function getCollectionsBD(db = connection): Promise<CollectionData[]> {
     return db('collections').select()
 }
 
-export function makeNewBD (
-    formData: CollectionData,
-    db = connection
-    ) : Promise<CollectionData> {
-    return db('collections').insert(formData)
-    .returning(['id', 'title', 'content', 'category'])
-}
+
 
 export function delCollectionDB(id: number, db = connection): Promise<number> {
     return db('collections').delete().where('id', id)
@@ -39,7 +33,13 @@ export function updateCollectionBD(
       .returning(['id', 'title', 'content', 'category'])
   }
 
-
+  export function makeNewBD (
+    formData: CollectionData,
+    db = connection
+    ) : Promise<CollectionData> {
+    return db('collections').insert(formData)
+    .returning(['id', 'title', 'content', 'category'])
+}
 
 
 export default connection

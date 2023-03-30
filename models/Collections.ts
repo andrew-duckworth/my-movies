@@ -1,5 +1,5 @@
 export interface CollectionData {
-    id: number
+    id?: number
     title: string
     content: string
     category: string
