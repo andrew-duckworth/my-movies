@@ -1,9 +1,9 @@
 import connection from './connection'
 
-import { musicFestivalDetails } from '../../common/musicFestivalsTypes'
+import { MusicFestivalDetails } from '../../common/musicFestivalsTypes'
 
 export function getAllFestivals(
   db = connection
-): Promise<musicFestivalDetails[]> {
+): Promise<MusicFestivalDetails[]> {
   return db('musicFestivals').select('*')
 }

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 
-import musicFestivalReducer from './musicFestivalsRdcr'
+import reducer from './musicFestivalsRdcr'
 // import stuff from './stuff'
 
 const allReducers = combineReducers({
-  musicFestRdcrs: musicFestivalReducer,
+  musicFestRdcrs: reducer,
 })
 
 export default allReducers
