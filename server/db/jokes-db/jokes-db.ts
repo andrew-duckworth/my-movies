@@ -14,5 +14,5 @@ export function addJoke(joke: UserJoke, db = connection): Promise<Joke[]> {
 }
 
 export function deleteJoke(id: number, db = connection): Promise<number> {
-  return db('jokes').del().where('id', id)
+  return db('jokes').del().where('id', id).returning(['id'])
 }

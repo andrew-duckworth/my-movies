@@ -45,6 +45,6 @@ router.post('/add', (req, res) => {
 router.delete('/delete/:id', (req, res) => {
   const id = Number(req.params.id)
   deleteJoke(id)
-    .then((deletedJoke) => res.json(deletedJoke))
+    .then((jokeId) => res.json(jokeId))
     .catch((err) => console.log(err.message))
 })

@@ -1,5 +1,7 @@
 import { Joke as JokeType } from '../../common/models'
 import { useState } from 'react'
+import { useAppDispatch } from '../hooks/redux'
+import { removeOldJoke } from '../actions'
 
 interface Props {
   joke: JokeType
@@ -7,8 +9,11 @@ interface Props {
 
 function Joke({ joke }: Props) {
   const [punchlineVisible, setPunchlineVisible] = useState(false)
+  const dispatch = useAppDispatch()
 
   const togglePunchline = () => setPunchlineVisible(!punchlineVisible)
+
+  const deleteOnClick = () => dispatch(removeOldJoke(joke.id)) //write thunk!
 
   return (
     <div>
@@ -29,7 +34,7 @@ function Joke({ joke }: Props) {
           </button>
         </>
       )}
-      <button className="button button__joke__delete">
+      <button className="button button__joke__delete" onClick={deleteOnClick}>
         I&apos;ve had enough, delete this knee-slapper!
       </button>
     </div>

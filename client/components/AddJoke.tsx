@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { UserJoke } from '../../common/models'
 import { useAppDispatch } from '../hooks/redux'
 import { addNewJoke } from '../actions'
 import { useNavigate } from 'react-router-dom'
@@ -13,7 +12,7 @@ function AddJoke() {
     setUserJoke({ ...userJoke, [evt.target.id]: evt.target.value })
   }
 
-  const handleJokeSubmit = (evt: FormEvent) => {
+  const handleJokeSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
     console.log(userJoke)
     dispatch(addNewJoke(userJoke))

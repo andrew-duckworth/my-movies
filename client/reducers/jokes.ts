@@ -14,6 +14,9 @@ export function jokeReducer(
     case 'ADD_JOKE': {
       return [...state, payload]
     }
+    case 'DEL_JOKE': {
+      return state.filter((joke) => joke.id !== payload)
+    }
     default:
       return state
   }

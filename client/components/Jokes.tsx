@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Joke from './Joke'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { getJokes } from '../actions'
