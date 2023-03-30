@@ -1,8 +1,8 @@
 import type { ThunkAction } from '../store'
 import { Hamsters } from '../../models/hamster'
 
-import fetchHamsters from '../apis/hammies'
-import updateHammies from '../apis/hammies'
+import { fetchHamsters, updateHammies } from '../apis/hammies'
+// import updateHammies from '../apis/updHammies'
 
 export const RECEIVE_HAMSTERS = 'RECEIEVE_HAMSTERS'
 export const SHOW_ERROR = 'SHOW_ERROR'
@@ -36,26 +36,31 @@ export function requestHamsters(): Action {
   }
 }
 
+export function updateHamsters(data): Action {
+  return {
+    type: 'UPDATE_HAMSTERS',
+    payload: data,
+  }
+}
+// export function runUpdateHamsters(id: number, newName: string) {
+//   console.log('action:', id, newName)
+//   updateHammies(id, newName)
+// }
+
 export function runUpdateHamsters(
   oldName: string,
-  newName: string
+  newName: string,
+  hammyId: number
 ): ThunkAction {
   return (dispatch) => {
-    dispatch(requestHamsters())
-    return updateHamsters(oldName, newName)
+    return updateHammies(hammyId, newName)
       .then((data) => {
-        dispatch(updateHammies(data))
+        // console.log(data)
+        // dispatch(updateHamsters(data))
       })
       .catch((err) => {
         dispatch(showError(err.message))
       })
-  }
-}
-
-export function updateHamsters(oldName: string, newName: string): Action {
-  return {
-    type: 'UPDATE_HAMSTERS',
-    payload: { old: oldName, new: newName },
   }
 }
 

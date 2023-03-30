@@ -1,6 +1,7 @@
 import { useAppDispatch } from '../hooks/redux'
-import { useState, ChangeEvent, FormEvent } from 'react'
-import { updateHamsters } from '../actions/hamsters'
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
+import { updateHamsters, runUpdateHamsters } from '../actions/hamsters'
+import updateHammies from '../apis/updHammies'
 
 interface Props {
   name: string
@@ -20,8 +21,10 @@ function UpdateHamster(props: Props) {
 
   const handleSubmit = (evt: FormEvent) => {
     evt.preventDefault()
-    console.log(oldHammy, data, hammyId)
-    dispatch(updateHamsters(oldHammy, data))
+    console.log('old:', oldHammy, 'new:', data, 'id:', hammyId)
+    // dispatch(updateHamsters(oldHammy, data))
+    // updateHammies(hammyId, data)
+    dispatch(runUpdateHamsters(oldHammy, data, hammyId))
   }
 
   return (

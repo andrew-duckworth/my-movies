@@ -12,14 +12,9 @@ export function getAllHamsters(db = connection): Promise<Hamsters[]> {
   return db('hamsters').select()
 }
 
-export function updHamsters(
-  oldHammy: string,
-  newHammy: string,
-  db = connection
-) {
-  return db('hamsters')
-    .update({ ...updatedName }, ['id', 'name'])
-    .where('name', oldHammy)
+export function updHamsters(id: string, name: string, db = connection) {
+  console.log('connection:', id, name)
+  return db('hamsters').select().where('id', id).update({ name: name })
 }
 
 export default connection

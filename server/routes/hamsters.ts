@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import request from 'superagent'
+// import request from 'superagent'
 
 const router = Router()
 
@@ -15,9 +15,13 @@ router.get('/', (req, res) => {
     })
 })
 
-router.patch('/:name', (req, res) => {
-  updHamsters(req.params.name, req.body)
-    .then(() => {
+router.patch('/:id', (req, res) => {
+  const { id } = req.params
+  const { name } = req.body
+  console.log('route:', id, name)
+  updHamsters(id, name)
+    .then((data) => {
+      res.send(data)
       res.sendStatus(200)
     })
     .catch((err: Error) => {

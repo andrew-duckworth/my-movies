@@ -3,7 +3,7 @@ import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
 import { fetchAllHamsters } from '../actions/hamsters'
 import UpdateHamster from './UpdateHamster'
 
-function HamsterList(props: Props) {
+function HamsterList() {
   const dispatch = useAppDispatch()
   const hamsters = useAppSelector((state) => state.hamsters)
 
