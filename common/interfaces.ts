@@ -4,8 +4,11 @@ export interface Bookdata {
   author_name: string
   cover_image?: string
 }
-
 export interface Book extends Bookdata {
+  id: number
+}
+
+export interface Delrequest {
   id: number
 }
 
@@ -122,4 +125,14 @@ export enum EbookAccess {
 
 export enum Type {
   Work = 'work',
+}
+
+export interface Gamedata {
+  name: string
+  released: string
+  image: string
+}
+
+export interface Game extends Gamedata {
+  id: number
 }

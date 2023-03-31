@@ -20,6 +20,9 @@ function reducer(state = initialState, action: BookAction): Book[] {
       return payload
     case 'ADD_BOOK':
       return [...state, payload]
+    case 'DEL_BOOK':
+      console.log(state.filter((e) => e.id !== payload))
+      return state.filter((e) => e.id !== payload)
     default:
       return state
   }

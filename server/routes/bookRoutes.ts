@@ -19,7 +19,9 @@ router.post('/', (req, res) => {
 
 router.delete('/', (req, res) => {
   const id = Number(req.body.id)
-  return deleteBook(id).then(() => res.status(200))
+  return deleteBook(id).then((response) => {
+    return res.json(response)
+  })
 })
 
 export default router

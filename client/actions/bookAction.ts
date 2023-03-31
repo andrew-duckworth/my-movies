@@ -19,8 +19,7 @@ export function loadingBooks(): BookAction {
   }
 }
 
-export function loadingNewBooks() {
-  console.log('LOAD NEW BOOK')
+export function loadingNewBooks(): BookAction {
   return {
     type: 'LOADING_NEW_BOOK',
     payload: null,
@@ -34,10 +33,11 @@ export function addBookToGlobal(book: Book): BookAction {
   }
 }
 
-export function removeBookFromGlobal(book: any): BookAction {
+export function removeBookFromGlobal(id: number): BookAction {
+  console.log('delfromglobal')
   return {
     type: 'DEL_BOOK',
-    payload: book,
+    payload: id,
   }
 }
 
@@ -49,6 +49,7 @@ export function receiveBooks(books: Book[]): BookAction {
 }
 
 export function deletingBook(): BookAction {
+  console.log('del')
   return {
     type: 'DELETING_BOOK',
     payload: null,
@@ -70,7 +71,13 @@ export function deleteBook(id: number): ThunkAction {
   return (dispatch) => {
     dispatch(deletingBook())
     return removeBook(id)
-      .then((res) => console.log(res))
+      .then((status) => {
+        if (status === 200) {
+          dispatch(removeBookFromGlobal(id))
+        } else {
+          console.log('book may not have been deleted')
+        }
+      })
       .catch((err) => console.log(err.message))
   }
 }

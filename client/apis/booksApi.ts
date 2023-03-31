@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Book } from '../../common/interfaces'
+import { Book, Delrequest } from '../../common/interfaces'
 
 export function fetchAllBooks(): Promise<Book[]> {
   return request.get('/api/v1/books').then((bookres) => bookres.body)
@@ -29,9 +29,12 @@ export function postBook(searchStr: string): Promise<Book[]> {
     .catch((err) => console.log(err.message))
 }
 
-export function removeBook(id: number): Promise<any> {
+export function removeBook(id: number): Promise<number | void> {
   return request
     .delete('/api/v1/books')
     .send({ id })
-    .then((res) => res.body)
+    .then((res) => res.status)
+    .catch((err) => {
+      console.log(err.message)
+    })
 }
