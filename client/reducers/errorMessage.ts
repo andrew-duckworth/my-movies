@@ -1,5 +1,5 @@
-import { Action } from '../actions/getCoffee'
-export function errorState(state = '', action: Action): string {
+import { CoffeeAction } from '../actions/getCoffee'
+export function errorState(state = '', action: CoffeeAction): string {
   const { type } = action
 
   switch (type) {

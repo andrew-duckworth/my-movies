@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
-import { fetchCoffee } from '../actions/getCoffee'
+import { fetchSetCoffee } from '../actions/getCoffee'
 import SingleCoffee from './CoffeeSingle'
 
 export default function AllCoffee() {
@@ -8,7 +8,7 @@ export default function AllCoffee() {
   const coffees = useAppSelector((state) => state.coffeeReducer)
 
   useEffect(() => {
-    dispatch(fetchCoffee())
+    dispatch(fetchSetCoffee())
   })
 
   return (
