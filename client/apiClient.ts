@@ -5,7 +5,7 @@ export function getAllCoffee(): Promise<CoffeeData[]> {
   return request.get('/api/v1/coffee').then((res) => res.body)
 }
 
-export function addCoffee(newCoffee: CoffeeData): Promise<CoffeeData> {
+export function addCoffeeApi(newCoffee: CoffeeData): Promise<CoffeeData> {
   return request
     .post('/api/v1/coffee')
     .send(newCoffee)
@@ -14,7 +14,7 @@ export function addCoffee(newCoffee: CoffeeData): Promise<CoffeeData> {
     })
 }
 
-export function updateCoffee(coffee: CoffeeData) {
+export function updateCoffeeApi(coffee: CoffeeData) {
   return request
     .patch(`/api/v1/coffee/${coffee.id}`)
     .send(coffee)
@@ -23,6 +23,6 @@ export function updateCoffee(coffee: CoffeeData) {
     })
 }
 
-export function deleteCoffee(coffeeId: number): Promise<number> {
+export function deleteCoffeeApi(coffeeId: number): Promise<number> {
   return request.del(`/api/v1/coffee/${coffeeId}`).then((res) => res.body)
 }

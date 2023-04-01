@@ -1,10 +1,11 @@
 import AllCoffee from './Coffees'
-import Topbar from './Header'
+import FooterBar from './Footer'
 
 function App() {
   return (
     <>
       <AllCoffee />
+      <FooterBar />
     </>
   )
 }

@@ -3,9 +3,9 @@ import { CoffeeData } from '../models/Coffee'
 
 import {
   getAllCoffee,
-  addCoffee,
-  updateCoffee,
-  deleteCoffee,
+  addCoffeeApi,
+  updateCoffeeApi,
+  deleteCoffeeApi,
 } from '../apiClient'
 
 export type CoffeeAction =
@@ -57,6 +57,42 @@ export function fetchSetCoffee(): ThunkAction {
     return getAllCoffee()
       .then((coffee) => {
         dispatch(receiveCoffee(coffee))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function fetchAddCoffee(newMethod: CoffeeData): ThunkAction {
+  return (dispatch) => {
+    return addCoffeeApi(newMethod)
+      .then((method) => {
+        dispatch(requestCoffee(method))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function fetchDelCoffee(method_id: number): ThunkAction {
+  return (dispatch) => {
+    return deleteCoffeeApi(method_id)
+      .then(() => {
+        dispatch(deleteCoffeeItem(method_id))
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function fetchUpdateCoffee(update_method: CoffeeData): ThunkAction {
+  return (dispatch) => {
+    return updateCoffeeApi(update_method)
+      .then((method) => {
+        dispatch(updateCoffeeItem(method))
       })
       .catch((err) => {
         dispatch(showError(err.message))
