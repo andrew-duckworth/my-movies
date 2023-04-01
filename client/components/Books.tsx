@@ -28,29 +28,33 @@ function Books() {
   return (
     <>
       <h2>Books</h2>
-      <div className="books-cont">
+      <div className="books-cont grid-cols-2 place-content-center gap-8">
         {books ? (
           books.map((book: Book) => (
-            <div key={book.id} className="book-cont">
-              <h3>{book.title}</h3>
-              <p className="book-subtitle, book-authorname">
+            <div key={book.id} className="book-cont max-w-sm rounded overflow-hidden shadow-lg">
+                <div className="px-6 py-4">
+              <h3 className='font-bold text-xl mb-2 book-topline book-title'>{book.title}</h3>
+              <button
+                className="book-delbtn book-topline w-8 h-8 rounded-full 
+                bg-red-500 hover:bg-red-600 text-white"
+                onClick={() => delHandler(book.id)}
+                >X
+                </button>
+              <p className="text-gray-700 text-base book-subtitle, book-authorname">
                 {book.author_name}
               </p>
-              <p className="book-subtitle, book-publishdate">
-                {book.publish_date}
-              </p>
+              </div>
               <img
-                className="book-subtitle, book-coverimage"
+                className="w-full book-subtitle, book-coverimage"
                 src={book.cover_image}
                 onLoad={usePlaceholder}
                 alt="Book cover"
               ></img>
-              <button
-                className="book-delbtn"
-                onClick={() => delHandler(book.id)}
-              >
-                X
-              </button>
+              <p className="text-gray-900 leading-5 book-subtitle, book-publishdate text-sm">
+                {book.publish_date}
+              </p>
+
+              
             </div>
           ))
         ) : (

@@ -2,3 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body {
+    background-color:  #FAF9F6;
+    margin: auto;
+    position: static
+
+}
+#book-search, #game-search {
+    width: 40vw;
+}
+
+.label-input-search {
+    display: inline-block;
+}
+
+.search-btn {
+    margin-left: 1.5vw;
+}
+
+a {
+    text-decoration: underline;
+}
+
+.books-cont {
+    display:grid;
+    align-items: center;
+    justify-items: center;
+
+}
+
+.book-cont {
+    position: relative;
+
+}
+
+.book-topline {
+    display: inline-block;
+}
+
+.book-delbtn {
+    float: right;
+    margin-top: 3px;
+    margin-right: 3px;
+
+}
+
+.book-title {
+    width: 30vw;
+}
+
+.book-publishdate {
+    position: absolute;
+    bottom: 0px;
+}
+
+img {
+    max-height: 50vh;
+    object-fit: contain;
+    margin-bottom: 20px;
+}

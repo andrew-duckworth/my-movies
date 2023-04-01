@@ -30,16 +30,19 @@ function Games() {
                 Release date: {game.released}
               </p>
               <img
-                className="game-subtitle, game-image"
+                className="game-subtitle, game-image h-auto max-w-xl rounded-lg shadow-xl dark:shadow-gray-800"
                 src={game.image}
                 alt="Game cover"
               ></img>
+              <div className="p-10">
               <button
-                className="book-delbtn"
+                className="w-8 h-8 rounded-full 
+                bg-red-500 hover:bg-red-600 text-white"
                 onClick={() => delHandler(game.id)}
               >
                 X
               </button>
+              </div>
             </div>
           ))
         ) : (
