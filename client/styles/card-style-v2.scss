@@ -1,14 +1,14 @@
 .card-front{
   width: 380px;
-  height: 400px;
-  margin: 8px;
+  height: 440px;
+  margin: 5px;
   position: relative;
   display: block;
   overflow: hidden;
 
   background-color: black;
   border-radius: 20px;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.10 );
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05 );
   
   
     .img_size{
@@ -23,8 +23,7 @@
       top: 0;
       left: 0;
       position: absolute;
-      background: linear-gradient(-45deg, transparent, rgba(12, 12, 12, 0.98));
-      // border-radius: 20px;
+      background: linear-gradient(to bottom, rgba(54,54,54,0), rgba(12, 12, 12, 0.98));
       color: white;
       transition: 1.5s;
 
@@ -35,25 +34,20 @@
 
     }
 
-    .title-card{
-      padding : 0px 75px 0px 35px;
-
-      h2{
-        font-size:40px ;
-        font-weight: 700;
-        word-spacing: 0.01em;
-      }
-    }
-
     .card-text-bottom{
       word-spacing: 0.02em;
+      padding : 0px 40px 0px 30px;
       position: absolute;
-      padding : 0px 40px 30px 30px;
-      opacity: 0;
-      bottom: 15px;
-    
-    
-      transition: 1.5s;
+      top: 280px;
+
+     
+      opacity: 1;
+      transition: 1.0s;
+
+    }
+
+    .card-body:hover .card-text-bottom{
+      transform: translateY(-220px);
     }
 
     p {
@@ -62,9 +56,14 @@
       line-height: 1.3em;
     }
 
-    .card-body:hover .card-text-bottom{
-      opacity: 1;
+    h2{
+      font-size:40px ;
+      font-weight: 700;
+      word-spacing: 0.01em;
+      padding-right: 65px ;
+    
     }
+
 
     .button-card {
       display: inline-block;
@@ -84,6 +83,4 @@
         color: white;
       }
     }
-
-
-}
+  }

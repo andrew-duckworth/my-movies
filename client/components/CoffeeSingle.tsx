@@ -18,6 +18,7 @@ export default function SingleCoffee(props: Props) {
           <h2>{name}</h2>
         </div>
         <div className="card-text-bottom">
+          {/* <h2>{name}</h2> */}
           <p>{selftext}</p>
           <button className="button-card">Tips</button>
         </div>
