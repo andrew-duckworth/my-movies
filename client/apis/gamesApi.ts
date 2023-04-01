@@ -13,8 +13,7 @@ const gameData = {
   released: '',
   image: '',
 }
-return request
-.get(`https://rawg.io/api/games/?search=${searchStr}${key}`)
+return fetch(`https://rawg.io/api/games/?search=${searchStr}${key}`)
 .then((rawData) => {
   gameData.name = rawData.body.results[0].name
   gameData.released = rawData.body.results[0].released
@@ -24,6 +23,8 @@ return request
 }).then((res) => res.body)
 .catch((err) => console.log(err.message))
 
+
+// https://copyprogramming.com/howto/can-t-use-fetch-to-get-json-but-i-can-visit-same-url-with-browser
 
 }
 

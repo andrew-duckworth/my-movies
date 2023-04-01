@@ -36,6 +36,13 @@ export function addBookToGlobal(book: Book): Action {
   }
 }
 
+export function addGameToGlobal(game: Game): Action {
+  return {
+    type: 'ADD_GAME',
+    payload: game
+  }
+}
+
 export function removeBookFromGlobal(id: number): Action {
   return {
     type: 'DEL_BOOK',

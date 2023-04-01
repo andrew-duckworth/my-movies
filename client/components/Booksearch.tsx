@@ -2,7 +2,6 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { addBookToGlobal, loadingNewBooks } from '../actions/Actions'
 import { postBook } from '../apis/booksApi'
 import { useAppDispatch } from '../hooks/redux'
-import { Book } from '../../common/interfaces'
 
 function Booksearch() {
   const [addBook, setAddBook] = useState('')
@@ -17,7 +16,6 @@ function Booksearch() {
     const newBook = addBook
     dispatch(loadingNewBooks())
     return postBook(newBook).then(([addedBook]) => {
-      console.log(addedBook)
       dispatch(addBookToGlobal(addedBook))
     })
   }

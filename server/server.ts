@@ -8,6 +8,9 @@ const server = express()
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
+const cors = require('cors');
+server.use(cors())
+
 server.use('/api/v1/books', bookRoutes)
 server.use('/api/v1/games', gameRoutes)
 export default server

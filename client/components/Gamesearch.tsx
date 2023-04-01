@@ -1,50 +1,32 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { addGameToGlobal } from '../actions/Actions'
+import { postGame } from '../apis/gamesApi'
+import { useAppDispatch } from '../hooks/redux'
 
 function Gamesearch() {
-  return (
-    <>
-  <p>
-  Game data from <a href="https://rawg.io/">rawg.io</a>
-</p>
-</>
-)
-}
-
-export default Gamesearch
-/*
-
-import { ChangeEvent, FormEvent, useState } from 'react'
-import { addBookToGlobal, loadingNewBooks } from '../actions/Action'
-import { postBook } from '../apis/booksApi'
-import { useAppDispatch } from '../hooks/redux'
-import { Book } from '../../common/interfaces'
-
-function Booksearch() {
-  const [addBook, setAddBook] = useState('')
+  const [addGame, setAddGame] = useState('')
   const dispatch = useAppDispatch()
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setAddBook(e.target.value)
+    setAddGame(e.target.value)
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const newBook = addBook
-    dispatch(loadingNewBooks())
-    return postBook(newBook).then(([addedBook]) => {
-      console.log(addedBook)
-      dispatch(addBookToGlobal(addedBook))
+    const newGame = addGame
+    return postGame(newGame).then(([addedGame]) => {
+      dispatch(addGameToGlobal(addedGame))
     })
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3>Add a Book</h3>
-      <label htmlFor="book-search">Open Library Search</label>
+      <h3>Add a Game</h3>
+      <label htmlFor="game-search">Game data from <a href="https://rawg.io/">rawg.io</a></label>
       <input
-        id="book-search"
+        id="game-search"
         name="search"
-        value={addBook}
+        value={addGame}
         onChange={handleChange}
       ></input>
       <button type="submit">Go</button>
@@ -52,5 +34,5 @@ function Booksearch() {
   )
 }
 
-export default Booksearch
-*/
+
+export default Gamesearch
