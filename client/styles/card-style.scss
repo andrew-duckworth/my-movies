@@ -66,23 +66,53 @@
       opacity: 1;
     }
 
-    .button-card {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 16px;
-      text-align: center;
-      text-decoration: none;
-      border: 2px solid #fdfdfd;
-      border-radius: 20px;
-      background-color: #fdfdfd;
-      color: #333;
-      transition: 0.5s;
-      cursor: pointer;
+    .button-group {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 0.8rem ;
+        
 
-      &:hover {
-        background-color: transparent;
-        color: white;
-      }
+
+        .button-card {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 16px;
+          text-align: center;
+          text-decoration: none;
+          border: 2px solid rgb(253, 253, 253);
+          border-radius: 20px;
+          background-color: #fdfdfd;
+          color: #333;
+          transition: 0.5s;
+          cursor: pointer;
+
+          &:hover {
+            background-color: transparent;
+            color: white;
+          }
+        }
+
+        .button-card-delete {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 16px;
+          text-align: center;
+          text-decoration: none;
+          border: 2px solid #cdcdcda8;
+          border-radius: 20px;
+          background-color: transparent;
+          color: #cdcdcda8;
+          transition: 0.5s;
+          cursor: pointer;
+
+          &:hover {
+            color: #949494a8;
+            border: 2px solid #949494a8;
+        
+          }
+        }
     }
 
 

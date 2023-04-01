@@ -20,7 +20,10 @@ export default function SingleCoffee(props: Props) {
         <div className="card-text-bottom">
           {/* <h2>{name}</h2> */}
           <p>{selftext}</p>
-          <button className="button-card">Tips</button>
+          <div className="button-group">
+            <button className="button-card">Update</button>
+            <button className="button-card-delete">Delete</button>
+          </div>
         </div>
       </div>
     </div>
