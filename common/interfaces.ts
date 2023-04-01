@@ -12,6 +12,10 @@ export interface Delrequest {
   id: number
 }
 
+export interface Searchrequest {
+  searchStr: string
+}
+
 export interface RawBookData {
   numFound: number
   start: number

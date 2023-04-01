@@ -14,8 +14,6 @@ function Games() {
     // if it is 1, replace with placeholder image
   }, [dispatch])
 
- 
-
   function delHandler(id: number) {
     dispatch(deleteGame(id))
   }
@@ -29,7 +27,7 @@ function Games() {
             <div key={game.id} className="game-cont">
               <h3>{game.name}</h3>
               <p className="game-subtitle, game-released">
-                {game.released}
+                Release date: {game.released}
               </p>
               <img
                 className="game-subtitle, game-image"
@@ -42,7 +40,6 @@ function Games() {
               >
                 X
               </button>
-
             </div>
           ))
         ) : (
@@ -54,4 +51,3 @@ function Games() {
 }
 
 export default Games
-
