@@ -12,7 +12,7 @@ export default function AllCoffee() {
   })
 
   return (
-    <section className="manual-brew">
+    <section className="container">
       <div className="card-list">
         {coffees.map((coffees) => (
           <SingleCoffee coffeeProp={coffees} key={coffees.id} />

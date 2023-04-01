@@ -4,7 +4,6 @@ import Topbar from './Header'
 function App() {
   return (
     <>
-      <Topbar />
       <AllCoffee />
     </>
   )

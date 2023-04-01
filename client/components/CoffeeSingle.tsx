@@ -14,9 +14,12 @@ export default function SingleCoffee(props: Props) {
     <div className="card-front">
       <img className="img_size" src={url} alt={name} />
       <div className="card-body">
-        <div className="card-text-bottom">
+        <div className="title-card">
           <h2>{name}</h2>
+        </div>
+        <div className="card-text-bottom">
           <p>{selftext}</p>
+          <button className="button-card">Tutorial</button>
         </div>
       </div>
     </div>
