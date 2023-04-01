@@ -19,3 +19,4 @@ https://api.rawg.io/docs/ - API key f5d35997743c4c2ca13f7f8936a30ef8
 - CSS and generally better use of loading animations
 - Error handling
 - Manual additions to the database
+- Tab-based nav
