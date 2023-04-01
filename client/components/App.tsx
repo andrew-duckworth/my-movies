@@ -4,12 +4,15 @@ import Loading from './Loading'
 import Booksearch from './Booksearch'
 import LoadingNewBook from './LoadingNewBook'
 import Gamesearch from './Gamesearch'
+import './App.css'
 
 function App() {
   return (
     <>
       <header className="header">
-        <h1>Things I want but can&apos;t afford</h1>
+        <h1 className="text-primary text-4xl font-bold">
+          Things I want but can&apos;t afford
+        </h1>
       </header>
       <section className="main">
         <Loading />
