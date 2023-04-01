@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
-import { Game } from '../../common/interfaces'
-import { displayGames, deleteGame } from '../actions/Actions'
+import { SyntheticEvent, useEffect } from 'react'
+import { Book } from '../../common/interfaces'
+import { displayBooks, deleteBook } from '../actions/Actions'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
 function Books() {
@@ -14,7 +14,12 @@ function Books() {
     // if it is 1, replace with placeholder image
   }, [dispatch])
 
- 
+  function usePlaceholder(el: SyntheticEvent<HTMLImageElement>) {
+    if (el.currentTarget.naturalWidth < 2) {
+      el.currentTarget.src =
+        'https://savanisbookshop.com/uploads/image/savanisbookshop.jpeg'
+    }
+  }
 
   function delHandler(id: number) {
     dispatch(deleteBook(id))
@@ -37,6 +42,7 @@ function Books() {
               <img
                 className="book-subtitle, book-coverimage"
                 src={book.cover_image}
+                onLoad={usePlaceholder}
                 alt="Book cover"
               ></img>
               <button

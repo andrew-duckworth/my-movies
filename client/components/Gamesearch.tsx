@@ -1,7 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 
 function Gamesearch() {
-  return <p>Gamesearch</p>
+  return (
+    <>
+  <p>
+  Game data from <a href="https://rawg.io/">rawg.io</a>
+</p>
+</>
+)
 }
 
 export default Gamesearch
