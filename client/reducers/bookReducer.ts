@@ -1,4 +1,4 @@
-import { BookAction } from '../actions/bookAction'
+import { Action } from '../actions/Actions'
 import { Book } from '../../common/interfaces'
 
 const initialState: Book[] = [
@@ -12,7 +12,7 @@ const initialState: Book[] = [
   },
 ]
 
-function reducer(state = initialState, action: BookAction): Book[] {
+function reducer(state = initialState, action: Action): Book[] {
   const { type, payload } = action
 
   switch (type) {

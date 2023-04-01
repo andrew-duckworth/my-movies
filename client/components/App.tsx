@@ -43,4 +43,6 @@ Will need to turn multiple authors into comma separated list
 
 CSS & accessibility
 Store api key as env
+Loading animations for games
+Error handling
 */

@@ -1,6 +1,6 @@
-import { BookAction } from '../actions/bookAction'
+import { Action } from '../actions/Actions'
 
-function loadingNewBook(state = false, action: BookAction) {
+function loadingNewBook(state = false, action: Action) {
   const { type } = action
 
   switch (type) {
