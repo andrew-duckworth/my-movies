@@ -59,16 +59,19 @@ body {
 
       &:hover{
         backdrop-filter: blur(8px);
-        background-color: rgba(12, 12, 12, 0.33);
+        background-color: #0c0c0c54;
       }
 
     }
 
     .title-card{
       padding : 0px 30px 0px 30px;
+      position: absolute;
+      top: 0;
+      opacity: 1;
 
       h2{
-        font-size:50px ;
+        font-size:40px ;
         font-weight: 700;
         word-spacing: 0.01em;
       }
@@ -81,7 +84,7 @@ body {
       opacity: 0;
       bottom: 0;
     
-      transition: 1.5s;
+      transition: 1s;
     }
 
     p {
@@ -94,6 +97,7 @@ body {
       opacity: 1;
     }
 
+
     .button-card {
       display: inline-block;
       padding: 10px 20px;
@@ -102,14 +106,14 @@ body {
       text-decoration: none;
       border: 2px solid #fdfdfd;
       border-radius: 20px;
-      background-color: #fdfdfd;
-      color: #333;
+      background-color: transparent;
+      color: #fdfdfd;
       transition: 0.5s;
       cursor: pointer;
 
       &:hover {
-        background-color: transparent;
-        color: white;
+        background-color: #fdfdfd;
+        color: rgba(54,54,54,0.9);
       }
     }
 
