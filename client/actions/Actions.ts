@@ -37,7 +37,6 @@ export function addBookToGlobal(book: Book): Action {
 }
 
 export function removeBookFromGlobal(id: number): Action {
-  console.log('delfromglobal')
   return {
     type: 'DEL_BOOK',
     payload: id,
@@ -113,7 +112,7 @@ export function deleteGame(id: number): ThunkAction {
     return removeGame(id)
       .then((status) => {
         if (status === 200) {
-          dispatch(removeBookFromGlobal(id))
+          dispatch(removeGameFromGlobal(id))
         } else {
           console.log('game may not have been deleted')
         }
