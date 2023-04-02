@@ -76,7 +76,7 @@ export default function AddTeam() {
           value={formData.city}
         />
 
-        <button>Add Team</button>
+        <button className="addteam-button">Add Team</button>
       </form>
     </div>
   )
