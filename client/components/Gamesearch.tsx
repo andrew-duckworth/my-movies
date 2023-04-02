@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { addGameToGlobal } from '../actions/Actions'
 import { postGame } from '../apis/gamesApi'
-import { useAppDispatch } from '../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
 function Gamesearch() {
   const [addGame, setAddGame] = useState('')
@@ -14,6 +14,7 @@ function Gamesearch() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const newGame = addGame
+    setAddGame('')
     return postGame(newGame).then(([addedGame]) => {
       dispatch(addGameToGlobal(addedGame))
     })

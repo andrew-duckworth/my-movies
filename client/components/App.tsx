@@ -2,7 +2,6 @@ import Books from './Books'
 import Games from './Games'
 import Loading from './Loading'
 import Booksearch from './Booksearch'
-import LoadingNewBook from './LoadingNewBook'
 import Gamesearch from './Gamesearch'
 import './App.css'
 
@@ -24,7 +23,6 @@ function App() {
         <Books />
         <div className="book_add">
           <Booksearch />
-          <LoadingNewBook />
         </div>
         <Games />
         <div className="game_add">
