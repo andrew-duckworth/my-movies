@@ -7,6 +7,7 @@ function AddMethodForm() {
   const dispatch = useAppDispatch()
 
   const [coffeeMethod, setMethods] = useState({} as CoffeeData)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMethods({ ...coffeeMethod, [e.target.id]: e.target.value })
@@ -14,7 +15,12 @@ function AddMethodForm() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    dispatch(fetchAddCoffee(coffeeMethod))
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+      dispatch(fetchAddCoffee(coffeeMethod))
+      window.location.reload()
+    }, 1500)
   }
 
   return (
