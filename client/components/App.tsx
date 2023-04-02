@@ -4,7 +4,7 @@ import { deleteTeamsApi, getTeamsApi } from '../apis/clientApi'
 
 import { TeamsData } from '../../models/Teams'
 
-import { fetchTeams, deleteTeams, deleteTeamsThunk } from '../actions/teams'
+import { fetchTeams, deleteTeam, deleteTeamsThunk } from '../actions/teams'
 
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
@@ -24,7 +24,7 @@ function App() {
   const deleteHandler = (team: TeamsData) => {
     console.log(team)
     deleteTeamsApi(team)
-      .then(() => dispatch(fetchTeams()))
+      .then(() => dispatch(deleteTeam(team)))
       .catch((err) => console.log(err.message))
   }
 
