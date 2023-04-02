@@ -14,21 +14,13 @@ import { store } from '../store'
 // import Teams from './Teams'
 import Header from './Header'
 import AddTeam from './AddTeam'
+import Teams from './Teams'
 
 function App() {
   const dispatch = useAppDispatch()
   // const [teams, setTeams] = useState([] as TeamsData[])
 
   const teams = useAppSelector((state) => state.teams)
-
-  const showIndicator = useAppSelector((state) => state.waiting)
-
-  const deleteHandler = (team: TeamsData) => {
-    console.log(team)
-    deleteTeamsApi(team)
-      .then(() => dispatch(deleteTeam(team)))
-      .catch((err) => console.log(err.message))
-  }
 
   useEffect(() => {
     dispatch(fetchTeams())
@@ -68,21 +60,8 @@ function App() {
     <>
       <Header />
       <AddTeam />
-      <button onClick={() => dispatch(fetchTeams())}>button</button>
-      {showIndicator && (
-        <img src="https://i.gifer.com/ZZ5H.gif" alt="loading" />
-      )}
-      {teams &&
-        teams.map((team) => (
-          <div key={team.name}>
-            <h2>{team.name}</h2>
-            <img src={team.logo} alt={team.name} />
-            <p>Manager: {team.manager}</p>
-            <p>City: {team.city}</p>
-            <button onClick={() => deleteHandler(team)}>x</button>
-            <br />
-          </div>
-        ))}
+      {/* <button onClick={() => dispatch(fetchTeams())}>button</button> */}
+      <Teams />
     </>
   )
 }

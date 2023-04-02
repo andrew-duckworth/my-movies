@@ -1,5 +1,5 @@
 import express from 'express'
-import { addTeam, delTeam, getTeams } from '../db/db'
+import { addTeam, delTeam, getTeams, updateTeam } from '../db/db'
 
 const router = express.Router()
 
@@ -36,6 +36,22 @@ router.post('/', (req, res) => {
     .then((addedTeam) => {
       res.json(addedTeam)
     })
+    .catch((err) => console.log(err.message))
+})
+
+router.patch('/:id', (req, res) => {
+  const { id } = req.params
+
+  const numId = Number(id)
+
+  const updatedTeam = {
+    name: req.body.name,
+    manager: req.body.manager,
+    city: req.body.city,
+    logo: req.body.logo,
+  }
+  updateTeam(updatedTeam, numId)
+    .then((updatedTeam) => res.json(updatedTeam))
     .catch((err) => console.log(err.message))
 })
 

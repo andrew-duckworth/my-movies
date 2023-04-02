@@ -21,3 +21,16 @@ export function addTeam(newTeam: TeamsData, db = connection) {
     .returning('*')
     .then((result) => result[0])
 }
+
+export function updateTeam(
+  updatedTeam: TeamsData,
+  id: number,
+  db = connection
+) {
+  return db('teams').where('id', id).update({
+    name: updatedTeam.name,
+    manager: updatedTeam.manager,
+    city: updatedTeam.city,
+    logo: updatedTeam.logo,
+  })
+}

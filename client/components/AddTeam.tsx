@@ -39,7 +39,7 @@ export default function AddTeam() {
 
   return (
     <div className="form-wrapper">
-      <form onSubmit={clickHandler}>
+      <form onSubmit={clickHandler} className="addteam-form">
         <label htmlFor="name">Team Name: </label>
         <input
           type="text"
