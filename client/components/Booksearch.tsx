@@ -22,8 +22,8 @@ function Booksearch() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3 className="py-4 text-2xl font-bold">Add a Book</h3>
-      <div className="label-input-search">
+      <h3 className="px-4 pt-6 text-2xl font-bold">Add a Book</h3>
+      <div className="p-4 label-input-search">
         <label
           className="text-base font-semibold leading-7 text-gray-900"
           htmlFor="book-search"

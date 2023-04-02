@@ -21,8 +21,8 @@ function Gamesearch() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h3 className="py-4 text-2xl font-bold">Add a Game</h3>
-      <div className="label-input-search">
+      <h3 className="px-4 pt-6 text-2xl font-bold">Add a Game</h3>
+      <div className="p-4 pb-10 label-input-search">
         <label
           className='className="text-base font-semibold leading-7 text-gray-900"'
           htmlFor="game-search"
