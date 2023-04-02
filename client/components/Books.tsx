@@ -41,8 +41,7 @@ function Books() {
                     {book.title}
                   </h3>
                   <button
-                    className="book-topline book-delbtn w-8 h-8 rounded-full 
-                bg-red-500 hover:bg-red-600 text-white"
+                    className="book-topline book-delbtn w-8 h-8 rounded-full hover:bg-red-800 text-white"
                     onClick={() => delHandler(book.id)}
                   >
                     X
@@ -56,7 +55,7 @@ function Books() {
                 className="w-full book-subtitle, book-coverimage"
                 src={book.cover_image}
                 onLoad={usePlaceholder}
-                alt="Book cover"
+                alt={`${book.title} cover`}
               ></img>
               <p className="px-6 text-gray-900 leading-5 book-subtitle, book-publishdate text-sm">
                 Published: {book.publish_date}

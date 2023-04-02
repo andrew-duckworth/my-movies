@@ -49,11 +49,47 @@ a {
   position: absolute;
   left: 37vw;
   top: 1vh;
+  background-color: #E61414;
   
+}
+
+.search-btn {
+  background-color: #156BF4;
 }
 
 .book-delbtn {
   left:30vw;
+}
+
+
+.book-title {
+  width: 30vw;
+}
+
+.book-publishdate {
+  position: absolute;
+  bottom: 0px;
+}
+
+img {
+  max-height: 66vh;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+
+.game-cont {
+  position: relative;
+  overflow: hidden;
+  width: 40vw;
+  
+}
+.games-loading, .books-loading{
+  height: 50%;
+}
+
+h2 {
+  padding: 6vh 2vw;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -65,32 +101,8 @@ a {
 }
 }
 
-.book-title {
-  width: 30vw;
+@media only screen and (max-width: 768px) {
+  .books-cont, .games-cont {
+    grid-template-columns: 1fr;
 }
-
-.book-publishdate {
-    position: absolute;
-    bottom: 0px;
-  }
-  
-  img {
-    max-height: 66vh;
-    object-fit: contain;
-    margin-bottom: 20px;
-}
-
-
-.game-cont {
-  position: relative;
-  overflow: hidden;
-  width: 40vw;
-  
-}
-.game-image {
-
-}
-
-h2 {
-  padding: 6vh 2vw;
 }

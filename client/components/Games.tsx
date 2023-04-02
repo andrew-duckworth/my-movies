@@ -30,16 +30,15 @@ function Games() {
             >
               <div className="game-topline-cont">
                 <button
-                  className="game-delbtn game-topline w-8 h-8 rounded-full 
-                bg-red-500 hover:bg-red-600 text-white"
+                  className="game-delbtn game-topline w-8 h-8 rounded-full hover:bg-red-800 text-white"
                   onClick={() => delHandler(game.id)}
                 >
                   X
                 </button>
                 <img
-                  className="game-topline game-subtitle, game-image h-auto  rounded-lg shadow-xl dark:shadow-gray-800"
+                  className="game-topline game-subtitle, game-image h-auto  rounded-lg shadow-xl"
                   src={game.image}
-                  alt="Game cover"
+                  alt={`${game.name} cover`}
                 ></img>
               </div>
               <div className="game-bottomline px-6 py-4">

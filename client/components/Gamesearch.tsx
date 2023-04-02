@@ -38,7 +38,7 @@ function Gamesearch() {
         ></input>
       </div>
       <button
-        className="search-btn py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+        className="search-btn py-2 px-4 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-800 focus:ring-opacity-75"
         type="submit"
       >
         Go
