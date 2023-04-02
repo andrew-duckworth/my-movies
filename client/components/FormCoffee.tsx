@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
 import { fetchAddCoffee } from '../actions/getCoffee'
 import { CoffeeData } from '../models/Coffee'
+import LoadingScreen from './LoadingScreen'
 
 function AddMethodForm() {
   const dispatch = useAppDispatch()
@@ -58,6 +59,12 @@ function AddMethodForm() {
 
         <button type="submit">Submit</button>
       </form>
+      {/* Adding animation for loading */}
+      {isLoading && (
+        <div className="loading-screen">
+          <LoadingScreen />
+        </div>
+      )}
     </div>
   )
 }
