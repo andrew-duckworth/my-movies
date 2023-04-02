@@ -25,40 +25,72 @@ a {
     text-decoration: underline;
 }
 
-.books-cont {
+.books-cont, .games-cont {
     display:grid;
     align-items: center;
     justify-items: center;
 
 }
 
-.book-cont {
+.book-cont, .game-cont {
     position: relative;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    width: 33vw;
+
 
 }
 
-.book-topline {
-    display: inline-block;
+.book-topline, .game-topline {
+    display: inline;
+}
+
+.book-delbtn, .game-delbtn {
+  float: right;
+  position: absolute;
+  left: 37vw;
+  top: 1vh;
+  
 }
 
 .book-delbtn {
-    float: right;
-    margin-top: 3px;
-    margin-right: 3px;
+  left:30vw;
+}
 
+@media only screen and (max-width: 1200px) {
+.book-delbtn {
+  left: 28vw;
+}
+.game-delbtn {
+  left: 33vw;
+}
 }
 
 .book-title {
-    width: 30vw;
+  width: 30vw;
 }
 
 .book-publishdate {
     position: absolute;
     bottom: 0px;
-}
-
-img {
-    max-height: 50vh;
+  }
+  
+  img {
+    max-height: 66vh;
     object-fit: contain;
     margin-bottom: 20px;
+}
+
+
+.game-cont {
+  position: relative;
+  overflow: hidden;
+  width: 40vw;
+  
+}
+.game-image {
+
+}
+
+h2 {
+  padding: 6vh 2vw;
 }

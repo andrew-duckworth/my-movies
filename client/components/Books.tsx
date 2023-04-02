@@ -27,22 +27,30 @@ function Books() {
 
   return (
     <>
-      <h2>Books</h2>
-      <div className="books-cont grid-cols-2 place-content-center gap-8">
+      <h2 className="text-4xl font-bold">Books</h2>
+      <div className="books-cont grid-cols-2 place-content-center gap-8 border-b-4 pb-5">
         {books ? (
           books.map((book: Book) => (
-            <div key={book.id} className="book-cont max-w-sm rounded overflow-hidden shadow-lg">
-                <div className="px-6 py-4">
-              <h3 className='font-bold text-xl mb-2 book-topline book-title'>{book.title}</h3>
-              <button
-                className="book-delbtn book-topline w-8 h-8 rounded-full 
+            <div
+              key={book.id}
+              className="book-cont grid-cols-2 place-content-center max-w-m rounded overflow-hidden shadow-lg"
+            >
+              <div className="px-6 py-4">
+                <div className="book-topline">
+                  <h3 className="font-bold book-topline text-xl mb-2 book-title">
+                    {book.title}
+                  </h3>
+                  <button
+                    className="book-topline book-delbtn w-8 h-8 rounded-full 
                 bg-red-500 hover:bg-red-600 text-white"
-                onClick={() => delHandler(book.id)}
-                >X
-                </button>
-              <p className="text-gray-700 text-base book-subtitle, book-authorname">
-                {book.author_name}
-              </p>
+                    onClick={() => delHandler(book.id)}
+                  >
+                    X
+                  </button>
+                </div>
+                <p className="text-gray-700 text-base book-subtitle, book-authorname">
+                  {book.author_name}
+                </p>
               </div>
               <img
                 className="w-full book-subtitle, book-coverimage"
@@ -50,11 +58,9 @@ function Books() {
                 onLoad={usePlaceholder}
                 alt="Book cover"
               ></img>
-              <p className="text-gray-900 leading-5 book-subtitle, book-publishdate text-sm">
-                {book.publish_date}
+              <p className="px-6 text-gray-900 leading-5 book-subtitle, book-publishdate text-sm">
+                Published: {book.publish_date}
               </p>
-
-              
             </div>
           ))
         ) : (
