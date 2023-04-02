@@ -1,8 +1,11 @@
 {
-  "name": "my-fullstack-collection-scss",
-  "version": "0.1.0",
-  "description": "Build a fullstack collection app, with SCSS",
+  "name": "ryans-wishlist",
+  "version": "1.0.0",
+  "description": "It's a silly little wishlist app making unnecessary use of APIs",
   "repository": "https://github.com/dev-academy-challenges/my-fullstack-collection-scss",
+  "engines": {
+    "node": "18.x"
+  },
   "main": "server/index.ts",
   "scripts": {
     "build": "run p build:client build:server",
