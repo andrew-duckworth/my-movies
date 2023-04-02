@@ -4,11 +4,10 @@ import { Book } from '../../common/interfaces'
 const initialState: Book[] = [
   {
     id: 1,
-    title: 'Ready Player One',
-    publish_date: '01 June 1993',
-    author_name: 'Ernest Cline',
-    cover_image:
-      'https://m.media-amazon.com/images/I/61vSHg6eUSL._SX300_SY300_QL70_FMwebp_.jpg',
+    title: 'The Point of View of the Universe',
+    publish_date: 'Jun 01, 2016',
+    author_name: 'Katarzyna de Lazari-Radek, Peter Singer',
+    cover_image: 'https://covers.openlibrary.org/b/isbn/0198776721-L.jpg',
   },
 ]
 
