@@ -22,6 +22,6 @@ export function initialiseStore() {
   )
 }
 
-const store = initialiseStore()
+export const store = initialiseStore()
 
 export default store

@@ -8,6 +8,8 @@ import { fetchTeams, deleteTeam, deleteTeamsThunk } from '../actions/teams'
 
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
+import { store } from '../store'
+
 // import Team from './Team'
 // import Teams from './Teams'
 import Header from './Header'
@@ -27,6 +29,16 @@ function App() {
       .then(() => dispatch(deleteTeam(team)))
       .catch((err) => console.log(err.message))
   }
+
+  useEffect(() => {
+    dispatch(fetchTeams())
+  }, [dispatch])
+
+  // subscribe to the store changes
+  useEffect(() => {
+    // your code to update the list of teams on the front-end
+    // console.log('teams updated:', teams)
+  }, [teams])
 
   // console.log(teams)
 

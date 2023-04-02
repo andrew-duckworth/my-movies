@@ -15,6 +15,9 @@ export function delTeam(teamId: number, db = connection) {
   return db('teams').del().where({ id: teamId }).returning('*')
 }
 
-export function addteam(newTeam: TeamsData, db = connection) {
-  return db('teams').insert(newTeam).returning('*')
+export function addTeam(newTeam: TeamsData, db = connection) {
+  return db('teams')
+    .insert(newTeam)
+    .returning('*')
+    .then((result) => result[0])
 }

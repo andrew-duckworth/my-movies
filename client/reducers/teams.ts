@@ -15,9 +15,7 @@ export default function reducer(
     case DELETE_TEAM:
       return state.filter((team) => team !== payload)
     case ADD_TEAM:
-      return {
-        ...state,
-      }
+      return [...state, payload]
     default:
       return state
   }

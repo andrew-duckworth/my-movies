@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { TeamsData } from '../../models/Teams'
-import { fetchTeams } from '../actions/teams'
+import { addTeam, fetchTeams } from '../actions/teams'
 import { addTeamsApi } from '../apis/clientApi'
 
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
@@ -20,8 +20,16 @@ export default function AddTeam() {
   const clickHandler = (e: FormEvent) => {
     e.preventDefault()
     addTeamsApi(formData)
-      .then(() => dispatch(fetchTeams()))
-      .catch((err) => console.log(err.message))
+      .then((team) => {
+        dispatch(addTeam(team))
+        setFormData({
+          name: '',
+          manager: '',
+          city: '',
+          logo: '',
+        })
+      })
+      .catch((err) => console.log(err))
   }
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,10 +41,22 @@ export default function AddTeam() {
     <div className="form-wrapper">
       <form onSubmit={clickHandler}>
         <label htmlFor="name">Team Name: </label>
-        <input type="text" id="name" name="name" onChange={changeHandler} />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          onChange={changeHandler}
+          value={formData.name}
+        />
         <br />
         <label htmlFor="logo">Logo Url: </label>
-        <input type="text" id="logo" name="logo" onChange={changeHandler} />
+        <input
+          type="text"
+          id="logo"
+          name="logo"
+          onChange={changeHandler}
+          value={formData.logo}
+        />
         <br />
         <label htmlFor="name">Manager: </label>
         <input
@@ -44,10 +64,17 @@ export default function AddTeam() {
           id="manager"
           name="manager"
           onChange={changeHandler}
+          value={formData.manager}
         />
         <br />
         <label htmlFor="city">City: </label>
-        <input type="text" id="city" name="city" onChange={changeHandler} />
+        <input
+          type="text"
+          id="city"
+          name="city"
+          onChange={changeHandler}
+          value={formData.city}
+        />
 
         <button>Add Team</button>
       </form>

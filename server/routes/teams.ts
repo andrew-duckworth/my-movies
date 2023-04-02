@@ -1,5 +1,5 @@
 import express from 'express'
-import { addteam, delTeam, getTeams } from '../db/db'
+import { addTeam, delTeam, getTeams } from '../db/db'
 
 const router = express.Router()
 
@@ -32,8 +32,10 @@ router.post('/', (req, res) => {
     city: req.body.city,
     logo: req.body.logo,
   }
-  addteam(newTeam)
-    .then(res.json)
+  addTeam(newTeam)
+    .then((addedTeam) => {
+      res.json(addedTeam)
+    })
     .catch((err) => console.log(err.message))
 })
 
