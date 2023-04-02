@@ -1,11 +1,14 @@
 import { CoffeeData } from '../models/Coffee'
+import { fetchDelCoffee } from '../actions/getCoffee'
+import { useAppDispatch } from '../hooks/redux'
 
 interface Props {
   coffeeProp: CoffeeData
 }
 
 export default function SingleCoffee(props: Props) {
-  const { name, url, selftext } = props.coffeeProp
+  const { id, name, url, selftext } = props.coffeeProp
+  const dispatch = useAppDispatch()
   //cut the words and joining the words => limiting words displaying on screen
   // const words = selftext.split(' ')
   // const limitedText = words.slice(0, 18).join(' ') + '...' //optinal
@@ -22,7 +25,12 @@ export default function SingleCoffee(props: Props) {
           <p>{selftext}</p>
           <div className="button-group">
             <button className="button-card">Update</button>
-            <button className="button-card-delete">Delete</button>
+            <button
+              onClick={() => dispatch(fetchDelCoffee(id))}
+              className="button-card-delete"
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
