@@ -58,7 +58,7 @@ export default function AddTeam() {
           value={formData.logo}
         />
         <br />
-        <label htmlFor="name">Manager: </label>
+        <label htmlFor="manager">Manager: </label>
         <input
           type="text"
           id="manager"

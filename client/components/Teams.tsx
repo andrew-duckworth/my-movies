@@ -26,6 +26,7 @@ export default function Teams() {
 
   return (
     <>
+      <h1>😬 List of Teams: 😬</h1>
       <div className="teams-container">
         {showIndicator && (
           <img src="https://i.gifer.com/ZZ5H.gif" alt="loading" />
