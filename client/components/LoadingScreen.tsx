@@ -1,7 +1,7 @@
 function LoadingScreen() {
   return (
     <div className="loading-screen">
-      <div className="loading">On The Way</div>
+      <div className="loading">Brewing...</div>
     </div>
   )
 }

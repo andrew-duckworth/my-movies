@@ -1,5 +1,6 @@
 @use 'card-style';
 @use 'form-style';
+@use 'span-animation';
 
 body {
   margin: 0;
@@ -20,12 +21,6 @@ body {
 
   font-size: 2rem;
 
-  span{
-    background:linear-gradient(90deg,#fd530f,#ffa958,#fbaf35,#da4206);
-    -webkit-background-clip: text;
-    color: transparent;
-
-  }
 }
 
 .container{

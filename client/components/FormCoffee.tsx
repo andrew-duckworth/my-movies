@@ -21,7 +21,7 @@ function AddMethodForm() {
       setIsLoading(false)
       dispatch(fetchAddCoffee(coffeeMethod))
       window.location.reload()
-    }, 1500)
+    }, 3000)
   }
 
   return (
