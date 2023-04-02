@@ -46,11 +46,10 @@ function AddMethodForm() {
           placeholder="ex:'https://images....'"
           required
         />
-        <label htmlFor="label">Short Description </label>
-        <input
+        <label htmlFor="selftext">Short Description </label>
+        <textarea
           name="selftext"
           id="selftext"
-          type="text"
           className="text-input"
           onChange={handleChange}
           placeholder="Max 20 words"
