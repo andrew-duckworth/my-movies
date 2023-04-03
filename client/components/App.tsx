@@ -2,27 +2,25 @@ import { useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../hooks/redux"
 import { getMoviesThunk } from "../actions/movies"
 import { Movie } from "../../common/types"
+import SingleMovie from "./SingleMovie"
 
 function App() {
   const dispatch = useAppDispatch()
   const movieList = useAppSelector(state => state.movie as Movie[])
-  console.log(movieList);
-  
 
   useEffect(() => {
     dispatch(getMoviesThunk())
-  }, [dispatch]) // why?
+  }, [dispatch]) // why? -> when the page renders, dispatch isnt a thing then it is defined, and this useEffect is triggered
 
   return (
     <>
-      <div>
-        {movieList.map(movie => (
-          <div key={movie.id}>
-            <h1>{movie.title}</h1>
-          </div>
-        ))}
-      </div>
-      <section className="main">{/* add your code here */}</section>
+      <section className="main">
+        <div className="movie-container">
+          {movieList.map(movie => (
+            <SingleMovie key={movie.id} movie={movie} />
+          ))}
+        </div>
+      </section>
     </>
   )
 }
