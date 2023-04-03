@@ -10,7 +10,9 @@ function AddMethodForm() {
   const [coffeeMethod, setMethods] = useState({} as CoffeeData)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setMethods({ ...coffeeMethod, [e.target.id]: e.target.value })
   }
 
