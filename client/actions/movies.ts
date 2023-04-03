@@ -16,7 +16,7 @@ export function getMoviesAction(movies: Movie[]) {
 // Thuncctions
 
 export function getMoviesThunk(): ThunkAction {
-  return (dispatch) => { // <- why?
+  return (dispatch) => { // <- why? - pretty much just calling a function
     return fetchMovies() // get data from the API
       .then(movies => { // take the data from the API/our databse
         dispatch(getMoviesAction(movies)) // dispatch the simple action
@@ -25,3 +25,19 @@ export function getMoviesThunk(): ThunkAction {
       // .catch(err => console.log(err.message))
   }
 }
+
+
+/*
+export function getMoviesThunk() {
+  return thunccyBoi()
+}
+
+function thunccyBoi() {
+  return fetchMovies() // get data from the API
+      .then(movies => { // take the data from the API/our databse
+        getMoviesAction(movies) // dispatch the simple action
+        // with the movie array as the payload
+      })
+      // .catch(err => console.log(err.message))
+}
+*/
