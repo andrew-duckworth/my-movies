@@ -35,7 +35,7 @@ export default function AddAMember() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <h4>Add a new family member....</h4>
+        <h3>Add a new family member....</h3>
         <label htmlFor="addName">Name: </label>
         <br></br>
         <input

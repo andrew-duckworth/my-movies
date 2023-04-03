@@ -17,7 +17,7 @@ export function delFamMemberDB(id: number, db = connection): Promise<number> {
 }
 
 
-export function addFamMemberDB(formData: FamilyDetails, db = connection): Promise<Family> {
-  return db('family').insert(formData).returning(['name', 'nicknames', 'position', ])
+export function addFamMemberDB(formData: Family, db = connection): Promise<Family> {
+  return db('family').insert(formData).returning(['id', 'name', 'nicknames', 'position', ])
 }
 

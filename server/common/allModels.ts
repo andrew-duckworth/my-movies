@@ -1,7 +1,7 @@
-export interface Family {
+export interface Family extends FamilyDetails {
   id: number
 }
-export interface FamilyDetails extends Family{
+export interface FamilyDetails {
   name: string
   nicknames: string
   position: string
