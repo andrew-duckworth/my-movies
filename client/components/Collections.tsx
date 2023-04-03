@@ -13,6 +13,7 @@ function Collections() {
 
 
   const [formData, setNewCollection] = useState({} as CollectionData)
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewCollection({
       ...formData,
@@ -21,6 +22,15 @@ function Collections() {
     })
     console.log(formData)
   }
+
+  const handleTextareaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setNewCollection({
+      ...formData,
+      [e.target.id]: e.target.value,
+    })
+  }
+
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     dispatch(addNewAction(formData))
@@ -38,11 +48,11 @@ function Collections() {
           <ACollection key={i} note={note} />
         ))}
       </div>
-      <div className="form-wrapper">
+
+      <div className="form-wrapper gallery">
         <div>
           <h1>My Collection</h1>
           <h2>Add a new note</h2>
-
           <form onSubmit={handleSubmit}>                
                 <label htmlFor="title">Title</label>
                 <input
@@ -54,10 +64,11 @@ function Collections() {
                 />
 
                 <label htmlFor="content">Content</label>
-                <input
+                <textarea
+                  rows={5}
                   id="content"
                   value={formData.content}
-                  onChange={handleInputChange}
+                  onChange={handleTextareaChange}
                   required
                 />
 

@@ -34,10 +34,12 @@ body {
 
 form{
   font-family: $body-font;
+  textarea,
   input{
     padding: 10px;
     margin-bottom: 10px;
     border:none;
+    font-family: $body-font;
   }
   label{
     margin-bottom: 10px;
@@ -58,6 +60,7 @@ button{
     color: $light;
     @include transition();
   }
+
 }
 
 
@@ -76,8 +79,15 @@ button{
 .note-wrapper{
   width: 100%;
   div{
-    background-color:darken($main-light, 3%);;
-    padding:$xs;
+    background-color:darken($main-light, 3%);
+    padding:20px;
+    form{
+      margin-top:100px;
+      display: flex;
+      flex-direction: column;
+      background-color:darken($main-light, 6%);
+      padding: 6%;
+    }
     button{
       padding:7px 20px;
       font-size: 1em;
@@ -85,6 +95,13 @@ button{
       color: $light;
       &:hover{
         background-color: darken($variant, 36%);
+      }
+      &.del_button{
+        background-color: #000;
+        &:hover{
+          background-color: $variant;
+          color: #000;
+        }
       }
     }
   }
@@ -94,8 +111,8 @@ button{
     flex-wrap: wrap;
     div{
       display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+      flex-direction: column;
+      justify-content: space-between;
       margin: 10px;
       width: calc(50% - 20px);
     }
@@ -122,6 +139,7 @@ button{
     display: flex;
     flex-direction: column;
   }
+
   @media (min-width:1024px){
     width: 40%;
     div{

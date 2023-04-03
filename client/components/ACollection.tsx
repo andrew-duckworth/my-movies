@@ -32,10 +32,18 @@ function ACollection({ note }: Props) {
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewCollection({
       ...formData,
-      [e.target.id]: e.target.value,
-    
+      [e.target.id]: e.target.value,    
     })
   }
+
+  const handleTextareaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setNewCollection({
+      ...formData,
+      [e.target.id]: e.target.value,
+    })
+  }
+
+
 
   const handleSubmit = (e: FormEvent) => {
     console.log('handleSubmit is called');
@@ -47,9 +55,11 @@ function ACollection({ note }: Props) {
 
   return (
     <div>
+
       <h3>{note.title}</h3>
       <p>{note.content}</p>
       <p>Category: {note.category}</p>
+      
       <form onSubmit={handleSubmit}>                
                 <label htmlFor="title">Title</label>
                 <input
@@ -61,10 +71,11 @@ function ACollection({ note }: Props) {
                 />
 
                 <label htmlFor="content">Content</label>
-                <input
+                <textarea
+                  rows={5}
                   id="content"
                   value={formData.content}
-                  onChange={handleInputChange}
+                  onChange={handleTextareaChange}
                   required
                 />
 
@@ -76,8 +87,9 @@ function ACollection({ note }: Props) {
                 onChange={handleInputChange}
                 required
               />
-              <button>Submit</button>
+              <button>Submit Changes</button>
           </form>
+
       <button className="del_button" onClick={() => handleDel(note.id)}>Delete</button>
     </div>
   )
