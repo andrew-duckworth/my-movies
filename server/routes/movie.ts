@@ -1,5 +1,5 @@
 // import express from 'express'
-import { getMovies } from '../db/connection'
+import { getMovies } from '../db/movieDb'
 import { Router } from 'express'
 
 const router = Router()
