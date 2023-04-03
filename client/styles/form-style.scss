@@ -8,10 +8,10 @@
   align-content: center;
   align-items: center;
 
-
   background-color: rgb(244, 244, 244);
   border-radius: 20px;
   border: 2px solid rgba(0, 0, 0, 0.05);
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 0px 16px;
 
 
 
@@ -26,7 +26,7 @@
   }
 
   form {
-    width: 400px;
+    width: 25vw; // default: 400px
     display:flex;
     justify-content: center;
     flex-direction: column;

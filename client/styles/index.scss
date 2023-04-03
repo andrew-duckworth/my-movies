@@ -1,6 +1,7 @@
 @use 'card-style';
 @use 'form-style';
 @use 'span-animation';
+@use 'coffeestyle';
 
 body {
   margin: 0;
@@ -23,22 +24,22 @@ body {
 
 }
 
-.container{
-  margin: 20px;
-}
+
+// .container{
+//   margin: 20px;
+// }
 
 
-.card-list{
-  display: flex;
-  position: relative;
-  background-color: #f2f2f2;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
+// .card-list{
+//   display: flex;
+//   position: relative;
+//   background-color: #f2f2f2;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 3rem;
+// }
 
-  
-}
 
 
 

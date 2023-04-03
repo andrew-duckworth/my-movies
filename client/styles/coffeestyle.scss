@@ -1,0 +1,26 @@
+.container{
+  margin: 2em;
+  
+
+.form-wrapper{
+  position: fixed;
+  width: 32vw;
+  top: 35%;
+  padding-left: 2rem;
+  margin-right: 1rem;
+  transform: translateY(-35%);
+  
+
+}
+
+.card-list {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 38vw; /* add some margin to create space between the form-wrapper and the card-list */
+}
+
+}
