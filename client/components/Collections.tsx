@@ -4,6 +4,14 @@ import { useEffect, useState, ChangeEvent, FormEvent } from 'react'
 import ACollection from './ACollection'
 import {CollectionData} from '../../models/Collections'
 
+const initialFormData: CollectionData = {
+  id: 0,
+  title: '',
+  content: '',
+  category: ''
+}
+
+
 function Collections() {
 
   const dispatch = useAppDispatch()
@@ -11,8 +19,11 @@ function Collections() {
   //look in reducers index.ts
   const collections = useAppSelector((state) => state.something) 
 
+  // const [formData, setNewCollection] = useState({} as CollectionData)
+  const [formData, setNewCollection] = useState(initialFormData);
 
-  const [formData, setNewCollection] = useState({} as CollectionData)
+
+
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewCollection({
@@ -20,7 +31,7 @@ function Collections() {
       [e.target.id]: e.target.value,
     
     })
-    console.log(formData)
+    // console.log(formData)
   }
 
   const handleTextareaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -30,10 +41,11 @@ function Collections() {
     })
   }
 
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     dispatch(addNewAction(formData))
+    setNewCollection(initialFormData)
+    
   }
 
   useEffect(() => {

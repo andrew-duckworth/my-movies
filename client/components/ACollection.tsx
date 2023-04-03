@@ -59,7 +59,6 @@ function ACollection({ note }: Props) {
       <h3>{note.title}</h3>
       <p>{note.content}</p>
       <p>Category: {note.category}</p>
-      
       <form onSubmit={handleSubmit}>                
                 <label htmlFor="title">Title</label>
                 <input
