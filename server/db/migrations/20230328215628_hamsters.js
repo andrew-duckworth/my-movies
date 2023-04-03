@@ -6,7 +6,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('hamsters', (table) => {
     table.increments('id').primary()
     table.string('name')
-    table.blob('image')
+    table.string('image')
   })
 }
 
