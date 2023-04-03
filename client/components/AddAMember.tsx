@@ -1,18 +1,21 @@
 import { useState } from 'react'
 import { FormEvent, ChangeEvent } from 'react'
-import * as Models from '../../server/common/allModels'
+// import { Family } from '../../server/common/allModels'
+import { addOneMember } from '../actions/familyActions'
 import { useAppDispatch } from '../hooks/redux'
 
 export default function AddAMember() {
-  // const [member, newMember] = useState([] as Models[])
+ 
+// const [formData, setFormData] = useState({} as Family) 
+//THIS WOULD ALSO WORK....
   const [formData, setFormData] = useState({
     name: '',
-    nickname: '',
+    nicknames: '',
     position: '',
     image: '',
   })
 
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
   const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value
@@ -26,17 +29,8 @@ export default function AddAMember() {
 
   const handleSubmit = (evt: FormEvent) => {
     evt.preventDefault()
-    // dispatch(setFormData())
+    dispatch(addOneMember(formData))
   }
-
-  //////////////////////
-  // TO ADD IN A LOADING STATE (NEED COMPONENT)
-  // interface Props {
-  //   variant?: 'edit' | 'new'
-  //   loading?: boolean
-  // }
-
-  // if (props.loading) return <p>Loading...</p>
 
   return (
     <>
@@ -49,17 +43,18 @@ export default function AddAMember() {
           name="name"
           type="text"
           value={formData.name}
+          // value={formData.name || ''} 
           onChange={onChange}
         />
         <br></br>
         <br></br>
-        <label htmlFor="addNickname">Nickname: </label>
+        <label htmlFor="addNickname">Nicknames: </label>
         <br></br>
         <input
           id="addNickname"
-          name="nickname"
+          name="nicknames"
           type="text"
-          value={formData.nickname}
+          value={formData.nicknames}
           onChange={onChange}
         />
         <br></br>
@@ -86,8 +81,17 @@ export default function AddAMember() {
         />
         <br></br>
         <br></br>
-        <button>Submit Member</button>
+        <button>Submit new member</button>
       </form>
     </>
   )
 }
+
+    //////////////////////
+    // TO ADD IN A LOADING STATE (NEED COMPONENT)
+    // interface Props {
+    //   variant?: 'edit' | 'new'
+    //   loading?: boolean
+    // }
+  
+    // if (props.loading) return <p>Loading...</p>

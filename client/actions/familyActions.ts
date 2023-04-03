@@ -1,5 +1,5 @@
 import type { ThunkAction } from '../store'
-import { Family } from '../../server/common/allModels'
+import { Family, FamilyDetails } from '../../server/common/allModels'
 import {
   fetchTheFamily,
   // getMemberById,
@@ -88,7 +88,7 @@ export function deleteOneMember(id: number): ThunkAction {
   }
 }
 
-export function addOneMember(newData: Family): ThunkAction {
+export function addOneMember(newData: FamilyDetails): ThunkAction {
   return (dispatch) => {
     return addFamilyMember(newData)
       .then((newData) => {
