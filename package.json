@@ -96,7 +96,6 @@
     "pg": "^8.10.0",
     "ts-node": "^10.9.1",
     "superagent": "7.1.1"
-
   },
   "prettier": {
     "semi": false,
