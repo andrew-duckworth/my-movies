@@ -20,9 +20,10 @@ export function getMemberById(): Promise<Family> {
     .catch(errorHandler('GET', '/v1/family/:id'))
 }
 
+// posible need new post address
 export function addFamilyMember(member: Family): Promise<Family> {
   return request
-    .post('/v1/family')
+    .post('/api/v1/family/')
     .send(member)
     .then((res) => {
       return res.body
@@ -30,7 +31,6 @@ export function addFamilyMember(member: Family): Promise<Family> {
     .catch(errorHandler('ADD', '/v1/family'))
 }
 
-///I THINK THIS IS THE PROBLEM.....
 export function delFamilyMember(memberId: number): Promise<Family> {
   return request
     .del(`/api/v1/family/${memberId}`)

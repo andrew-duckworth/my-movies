@@ -3,7 +3,7 @@ import { Family } from '../../server/common/allModels'
 import {
   fetchTheFamily,
   // getMemberById,
-  // addFamilyMember,
+  addFamilyMember,
   delFamilyMember,
 } from '../apis/apiClient'
 
@@ -17,6 +17,7 @@ export type FamilyActions =
   | { type: 'REQUEST_FAMILY'; payload: null }
   | { type: 'RECEIVE_FAMILY'; payload: Family[] }
   | { type: 'LOAD_MEMBER'; payload: number }
+  | { type: 'ADD_MEMBER'; payload: Family }
   | { type: 'DEL_MEMBER'; payload: number }
 
 // ACTION CREATORS
@@ -35,6 +36,15 @@ export function receiveFamily(allData: Family[]): FamilyActions {
   return {
     type: 'RECEIVE_FAMILY',
     payload: allData,
+  }
+}
+
+export function addMember(newData: Family): FamilyActions {
+  console.log('Action - adding member : ', newData)
+
+  return {
+    type: 'ADD_MEMBER',
+    payload: newData,
   }
 }
 
@@ -71,6 +81,18 @@ export function deleteOneMember(id: number): ThunkAction {
       .then(() => {
         //note delMember is the function on this page
         dispatch(delMember(id))
+      })
+      .catch((err) => {
+        return err.message
+      })
+  }
+}
+
+export function addOneMember(newData: Family): ThunkAction {
+  return (dispatch) => {
+    return addFamilyMember(newData)
+      .then((newData) => {
+        dispatch(addMember(newData))
       })
       .catch((err) => {
         return err.message

@@ -11,6 +11,8 @@ function mainReducer(state = initialState, action: FamilyActions): Family[] {
       return payload
     case 'DEL_MEMBER':
       return state.filter((str) => str.id !== payload)
+    case 'ADD_MEMBER':
+      return [...state, payload]
     default:
       return state
   }
