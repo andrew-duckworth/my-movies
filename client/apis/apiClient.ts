@@ -30,6 +30,7 @@ export function addFamilyMember(member: Family): Promise<Family> {
     .catch(errorHandler('ADD', '/v1/family'))
 }
 
+///I THINK THIS IS THE PROBLEM.....
 export function delFamilyMember(memberId: number): Promise<Family> {
   return request
     .del(`/v1/family/${memberId}`)

@@ -18,6 +18,8 @@ function showAllFamily() {
     dispatch(deleteOneMember(id))
   }
 
+  const handleView = (id: number) => {}
+
   return (
     <>
       <div>
@@ -32,6 +34,7 @@ function showAllFamily() {
             <br></br>
             Images: {member.image}
             <br></br>
+            <button onClick={() => handleView(member.id)}>View</button>
             <button onClick={() => handleDel(member.id)}>Delete</button>
           </p>
         ))}
