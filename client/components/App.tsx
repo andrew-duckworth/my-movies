@@ -1,12 +1,13 @@
-import { useEffect } from "react"
-import { useAppSelector, useAppDispatch } from "../hooks/redux"
-import { getMoviesThunk } from "../actions/movies"
-import { Movie } from "../../common/types"
-import SingleMovie from "./SingleMovie"
+import { useEffect } from 'react'
+import { useAppSelector, useAppDispatch } from '../hooks/redux'
+import { getMoviesThunk } from '../actions/movies'
+import { Movie } from '../../common/types'
+import SingleMovie from './SingleMovie'
+import AddMovie from './AddMovie'
 
 function App() {
   const dispatch = useAppDispatch()
-  const movieList = useAppSelector(state => state.movie as Movie[])
+  const movieList = useAppSelector((state) => state.movie as Movie[])
 
   useEffect(() => {
     dispatch(getMoviesThunk())
@@ -16,10 +17,11 @@ function App() {
     <>
       <section className="main">
         <div className="movie-container">
-          {movieList.map(movie => (
+          {movieList.map((movie) => (
             <SingleMovie key={movie.id} movie={movie} />
           ))}
         </div>
+        <AddMovie />
       </section>
     </>
   )
