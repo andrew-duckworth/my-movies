@@ -1,4 +1,4 @@
-import type { ThunkAction } from 'redux-thunk'
+import type { ThunkAction } from '../store'
 import { Family } from '../../server/common/allModels'
 import {
   fetchTheFamily,

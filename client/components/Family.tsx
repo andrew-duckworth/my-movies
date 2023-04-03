@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 //IMPORTING ADD MEMBER COMPONENT INSTEAD OF TO APP
 import AddAMember from './AddAMember'
 
-function showAllFamily() {
+function ShowAllFamily() {
   // note: family (globalState.family) comes from the index.ts main reducer file.
   const knudsen = useAppSelector((globalState) => globalState.family)
   const dispatch = useAppDispatch()
@@ -18,7 +18,7 @@ function showAllFamily() {
     dispatch(deleteOneMember(id))
   }
 
-  const handleView = (id: number) => {}
+  // const handleView = (id: number) => {}
 
   return (
     <>
@@ -34,7 +34,7 @@ function showAllFamily() {
             <br></br>
             Images: {member.image}
             <br></br>
-            <button onClick={() => handleView(member.id)}>View</button>
+            {/* <button onClick={() => handleView(member.id)}>View</button> */}
             <button onClick={() => handleDel(member.id)}>Delete</button>
           </p>
         ))}
@@ -44,7 +44,7 @@ function showAllFamily() {
   )
 }
 
-export default showAllFamily
+export default ShowAllFamily
 
 // FOR WHEN USING REDUCER....
 // const allFamily = useAppSelector((state) => state.something)

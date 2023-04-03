@@ -33,7 +33,7 @@ export function addFamilyMember(member: Family): Promise<Family> {
 ///I THINK THIS IS THE PROBLEM.....
 export function delFamilyMember(memberId: number): Promise<Family> {
   return request
-    .del(`/v1/family/${memberId}`)
+    .del(`/api/v1/family/${memberId}`)
     .then((res) => {
       return res.body
     })

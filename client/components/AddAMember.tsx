@@ -3,7 +3,7 @@ import { FormEvent, ChangeEvent } from 'react'
 import * as Models from '../../server/common/allModels'
 import { useAppDispatch } from '../hooks/redux'
 
-export default function addAMember() {
+export default function AddAMember() {
   // const [member, newMember] = useState([] as Models[])
   const [formData, setFormData] = useState({
     name: '',
