@@ -36,7 +36,7 @@ function AddMethodForm() {
           id="name"
           type="text"
           onChange={handleChange}
-          placeholder="Your favorite brew method"
+          placeholder="Your badass brew method"
           required
         />
         <label htmlFor="url">Image Url </label>
