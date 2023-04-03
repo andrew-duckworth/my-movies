@@ -11,7 +11,7 @@ export const RECEIVE_FESTS = 'RECEIVE_FEST'
 // Action types
 export type FestAction =
   | { type: typeof REQUEST_FESTS; payload: null }
-  | { type: typeof RECEIVE_FESTS; payload: MusicFestivalDetails }
+  | { type: typeof RECEIVE_FESTS; payload: MusicFestivalDetails[] }
 
 // Action creators
 export function requestMusicFests(): FestAction {
@@ -23,7 +23,7 @@ export function requestMusicFests(): FestAction {
   }
 }
 
-export function receiveMusicFests(fests: MusicFestivalData): FestAction {
+export function receiveMusicFests(fests: MusicFestivalData[]): FestAction {
   console.log('9: Action - receive quote: ', fests)
 
   return {
