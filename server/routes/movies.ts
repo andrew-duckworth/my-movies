@@ -13,4 +13,13 @@ router.get('/', (req, res) => {
     .catch((err) => console.log(err.message))
 })
 
+router.post('/', (req, res) => {
+  const movie = req.body
+  db.addMovie(movie)
+    .then((movieArr) => {
+      return res.json(movieArr[0])
+    })
+    .catch((err) => console.log(err.message))
+})
+
 export default router

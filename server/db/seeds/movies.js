@@ -8,14 +8,18 @@ exports.seed = async function (knex) {
   await knex('movies').insert([
     {
       id: 1,
-      title: 'Inception',
-      image: 'https://i.imgur.com/kfOMBcu.gifv',
+      imdbId: 'tt0312528',
+      title: 'Cat in the Hat',
+      image:
+        'https://m.media-amazon.com/images/M/MV5BMTI5MDU3MTYyMF5BMl5BanBnXkFtZTYwODgyODc3._V1_Ratio0.6757_AL_.jpg',
       rating: 8,
     },
     {
       id: 2,
-      title: 'The Dark Knight',
-      image: 'https://i.imgur.com/kfOMBcu.gifv',
+      imdbId: 'tt1482459',
+      title: 'The Lorax',
+      image:
+        'https://m.media-amazon.com/images/M/MV5BMTU1MTAwMjk1NF5BMl5BanBnXkFtZTcwMDI5NDc4Ng@@._V1_Ratio0.6757_AL_.jpg',
       rating: 10,
     },
   ])
