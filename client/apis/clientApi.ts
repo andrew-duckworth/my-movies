@@ -17,3 +17,10 @@ export function addTeamsApi(newTeam: TeamsData) {
     .send(newTeam)
     .then((res) => res.body)
 }
+
+export function editTeamsApi(oldTeam: TeamsData, newTeam: TeamsData) {
+  return request
+    .patch(`${teamsUrl}/${oldTeam.id}`)
+    .send({ ...oldTeam, ...newTeam })
+    .then((res) => res.body)
+}

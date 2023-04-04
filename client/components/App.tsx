@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <Header />
-      <AddTeam selectedTeam={selectedTeam} />
+      <AddTeam selectedTeam={selectedTeam} setSelectedTeam={setSelectedTeam} />
       {/* <button onClick={() => dispatch(fetchTeams())}>button</button> */}
       <Teams setSelectedTeam={setSelectedTeam} />
     </>
