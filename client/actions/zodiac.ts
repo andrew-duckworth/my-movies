@@ -1,5 +1,5 @@
 import * as Models from '../../common/Starsign'
-import { grabSigns, grabUsers, addUser } from '../apis/starsigns'
+import { grabSigns, grabUsers } from '../apis/starsigns'
 import type { ThunkAction } from '../store'
 
 export const REQUEST_SIGNS = 'REQUEST_SIGNS'
@@ -7,7 +7,6 @@ export const RECEIVE_SIGNS = 'RECEIVE_SIGNS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const REQUEST_USERS = 'REQUEST_USERS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
-export const ADD_USER = 'ADD_USER'
 
 export type Action =
   | { type: typeof REQUEST_SIGNS; payload: null }
@@ -15,7 +14,6 @@ export type Action =
   | { type: typeof SHOW_ERROR; payload: string }
   | { type: typeof REQUEST_USERS; payload: null }
   | { type: typeof RECEIVE_USERS; payload: Models.BigThree[] }
-  | { type: typeof ADD_USER; payload: Models.BigThree }
 
 export function requestSigns(): Action {
   return {
@@ -71,18 +69,6 @@ export function fetchUsers(): ThunkAction {
     return grabUsers()
       .then((users) => {
         dispatch(receiveUsers(users))
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
-  }
-}
-
-export function addUser(user: Models.BigThree): ThunkAction {
-  return async (dispatch) => {
-    dispatch(addUser(user))
-      .then((user) => {
-        dispatch(receiveUsers(user))
       })
       .catch((err) => {
         dispatch(showError(err.message))

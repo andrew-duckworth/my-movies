@@ -45,7 +45,7 @@ function ChartList() {
             </div>
           ))}
           <div className="nav-button">
-            <Link to="/add">Add Yours</Link>
+            {/* <Link to="/add">Add Yours</Link> */}
           </div>
         </div>
       </div>

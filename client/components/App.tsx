@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SignsList />} />
           <Route path="/chart" element={<ChartList />} />
-          <Route path="/add" element={<AddChart />} />
+          {/* <Route path="/add" element={<AddChart />} /> */}
         </Routes>
       </section>
     </>
