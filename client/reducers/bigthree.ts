@@ -1,5 +1,5 @@
 export type UserAction = { type: string; payload: BigThree }
-import { RECEIVE_USERS, ADD_ONE_USER } from '../actions/zodiac'
+import { RECEIVE_USERS } from '../actions/zodiac'
 import { BigThree } from '../../common/Starsign'
 
 const initialState = [] as BigThree[]
@@ -10,8 +10,8 @@ export function bigthree(state = initialState, action: UserAction) {
   switch (type) {
     case RECEIVE_USERS:
       return payload
-    case ADD_ONE_USER:
-      return [...state, payload]
+    // case ADD_ONE_USER:
+    //   return [...state, payload]
     default:
       return state
   }
