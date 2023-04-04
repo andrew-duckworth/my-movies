@@ -22,24 +22,21 @@ function ShowAllFamily() {
 
   return (
     <>
-      <div>
-        <h2>The Knudsen Family</h2>
+      <h2>The Knudsen Family</h2>
+      <div className='boardWrapper'>
         {knudsen.map((member) => (
-          <p key={member.id}>
-            Name: {member.name}
-            <br></br>
-            Nicknames: {member.nicknames}
-            <br></br>
-            Position in the family: {member.position}
-            <br></br>
-            Images: {member.image}
-            <br></br>
+          <div className='familyWrapper' key={member.id}>
+            <p><strong>Name: </strong>{member.name}</p>
+            <p><strong>Nicknames: </strong> {member.nicknames}</p>
+            <p><strong>Position in the family: </strong> {member.position}</p>
+            {/* <img src='empty_bag_4x.jpg' alt=""></img> */}
+             <br></br>
             {/* <button onClick={() => handleView(member.id)}>View</button> */}
             <button onClick={() => handleDel(member.id)}>Delete</button>
-          </p>
+          </div>
         ))}
-        {<AddAMember />}
       </div>
+        {<AddAMember />}
     </>
   )
 }

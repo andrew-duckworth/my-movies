@@ -11,7 +11,7 @@ exports.seed = async function (knex) {
       name: 'Mariette',
       nicknames: 'Longah',
       position: 'Matriarch',
-      image: 'placeholder',
+      note: 'tbc',
     },
 
     {
@@ -19,7 +19,7 @@ exports.seed = async function (knex) {
       name: 'Quentin',
       nicknames: 'Diddles',
       position: 'Patriarch',
-      image: 'placeholder',
+      note: 'tbc',
     },
 
     {
@@ -27,7 +27,7 @@ exports.seed = async function (knex) {
       name: 'Rowena',
       nicknames: 'Tiglet',
       position: 'Eldest sister',
-      image: 'placeholder',
+      note: 'tbc',
     },
 
     {
@@ -35,7 +35,7 @@ exports.seed = async function (knex) {
       name: 'Jacques',
       nicknames: 'Buster',
       position: 'Second daughter',
-      image: 'placeholder',
+      note: 'tbc',
     },
 
     {
@@ -43,7 +43,7 @@ exports.seed = async function (knex) {
       name: 'Lou',
       nicknames: 'Chickie',
       position: 'First born son',
-      image: 'placeholder',
+      note: 'tbc',
     },
   ])
 }

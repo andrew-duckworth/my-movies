@@ -1,7 +1,7 @@
 // this is the functions page dealing directly with the database
 
 import connection from '../connection'
-import { Family, FamilyDetails } from '../../common/allModels'
+import { Family } from '../../common/allModels'
 
 export function getAllFamilyDB(db = connection): Promise<Family[]> {
   return db('family').select()
