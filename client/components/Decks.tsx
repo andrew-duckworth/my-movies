@@ -1,16 +1,17 @@
-import * as T from '../../models/deck'
+import { useAppSelector } from '../hooks/redux'
 import Deck from './Deck'
+import { Link } from 'react-router-dom'
 
-interface Props {
-  decks: T.Deck[]
-}
-
-export default function Decks({ decks }: Props) {
+export default function Decks() {
+  const decks = useAppSelector((state) => state.decks)
   return (
-    <div className="deck__grid">
-      {decks.map((deck) => (
-        <Deck key={deck.id} {...deck} />
-      ))}
-    </div>
+    <>
+      <div className="deck__grid">
+        {decks.map((deck) => (
+          <Deck key={deck.id} {...deck} />
+        ))}
+      </div>
+      <Link to="/add">Add Deck</Link>
+    </>
   )
 }

@@ -8,4 +8,5 @@ export interface DeckInfo {
   state: 'theoretical' | 'building' | 'built' | 'retired'
   image: string
   img_attribution: string
+  digital: boolean
 }

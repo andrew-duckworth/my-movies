@@ -1,11 +1,18 @@
+import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { useAppSelector } from '../hooks/redux'
-import DeckForm from './DeckForm'
+import { getDecks } from '../actions/decks'
+import { useAppDispatch } from '../hooks/redux'
+import EditForm from './EditDeck'
+import AddForm from './AddDeck'
 import Decks from './Decks'
 import ErrorMessage from './ErrorMessage'
 
 function App() {
-  const decks = useAppSelector((state) => state.decks)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getDecks())
+  })
   return (
     <>
       <header className="header">
@@ -14,9 +21,9 @@ function App() {
       <ErrorMessage />
       <section className="main">
         <Routes>
-          <Route path="/" element={<Decks decks={decks} />} />
-          <Route path="/add" element={<DeckForm />} />
-          <Route path="/:id" element={<DeckForm />} />
+          <Route path="/" element={<Decks />} />
+          <Route path="/add" element={<AddForm />} />
+          <Route path="/:id" element={<EditForm />} />
         </Routes>
       </section>
     </>
