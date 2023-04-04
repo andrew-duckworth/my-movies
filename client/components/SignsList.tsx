@@ -1,22 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Starsign } from '../../common/Starsign'
-import { grabSigns } from '../apis/starsigns'
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { getSignsThunk } from '../actions/zodiac'
 
 function SignsList() {
-  const [signs, setSigns] = useState([] as Starsign[])
+  const dispatch = useAppDispatch()
+  const signList = useAppSelector((state) => state.starsigns as Starsign[])
 
   useEffect(() => {
-    grabSigns()
-      .then((thing) => {
-        setSigns(thing)
-      })
-      .catch((err) => alert(err.message))
-  })
+    dispatch(getSignsThunk())
+  }, [dispatch])
 
   return (
     <section className="signs">
       <br />
-      {signs.map((sign) => (
+      {signList.map((sign) => (
         <div className="signs__each" key={sign.id}>
           <h2>{sign.sign}</h2>
           <p>Date of Birth: {sign.dates}</p>

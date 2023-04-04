@@ -1,18 +1,16 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+// import { Link } from 'react-router-dom'
 import { BigThree } from '../../common/Starsign'
-import { grabUsers } from '../apis/starsigns'
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { getUsersThunk } from '../actions/zodiac'
 
 function ChartList() {
-  const [user, setUser] = useState([] as BigThree[])
+  const dispatch = useAppDispatch()
+  const chartList = useAppSelector((state) => state.starsigns as BigThree[])
 
   useEffect(() => {
-    grabUsers()
-      .then((thing) => {
-        setUser(thing)
-      })
-      .catch((err) => alert(err.message))
-  })
+    dispatch(getUsersThunk())
+  }, [dispatch])
 
   return (
     <section>
@@ -27,7 +25,7 @@ function ChartList() {
       </div>
       <div>
         <div className="users">
-          {user.map((user) => (
+          {chartList.map((user) => (
             <div className="users__each" key={user.id}>
               <h2>{user.name}</h2>
               <div className="text-item">
