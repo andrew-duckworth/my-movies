@@ -36,6 +36,17 @@ function AddMovie() {
         />
         <input type="submit" />
       </form>
+
+      <div className="movie-container">
+        {imdbResults.map((movie) => (
+          <>
+            <div key={movie.id} className="movie">
+              <h2 className="title">{movie.title}</h2>
+              <img src={movie.image} alt={`poster for ${movie.title}`}></img>
+            </div>
+          </>
+        ))}
+      </div>
     </>
   )
 }

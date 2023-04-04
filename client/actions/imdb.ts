@@ -1,6 +1,7 @@
 import { ThunkAction } from '../store'
 import type { ImdbMovie } from '../../common/types'
 import { searchForMovie } from '../apis/imdb'
+import { postOneMovie } from '../apis/movies'
 
 export const IMDB_DATA = 'IMDB_DATA'
 
@@ -13,6 +14,13 @@ export function setMovies(imdbMovies: ImdbMovie[]) {
   }
 }
 
+export function saveOneMovie(imdbMovie: ImdbMovie[]) {
+  return {
+    type: IMDB_DATA,
+    payload: imdbMovie,
+  }
+}
+
 // Get Thunkked
 
 export function searchMoviesThunk(movie: string): ThunkAction {
@@ -22,5 +30,13 @@ export function searchMoviesThunk(movie: string): ThunkAction {
         dispatch(setMovies(result))
       })
       .catch((err) => console.log(err.message))
+  }
+}
+
+export function addMovieThunk(movie: ImdbMovie): ThunkAction {
+  return (dispatch) => {
+    return postOneMovie(movie).then((id) => {
+      dispatch(saveOneMovie(id))
+    })
   }
 }
