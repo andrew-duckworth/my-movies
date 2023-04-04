@@ -10,8 +10,8 @@ export function bigthree(state = initialState, action: UserAction) {
   switch (type) {
     case RECEIVE_USERS:
       return payload
-    // case ADD_ONE_USER:
-    //   return [...state, payload]
+    case ADD_ONE_USER:
+      return [...state, payload]
     default:
       return state
   }
