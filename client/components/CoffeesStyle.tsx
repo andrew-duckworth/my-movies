@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { fetchSetCoffee } from '../actions/getCoffee'
 import SingleCoffee from './CoffeeSingle'
 import AddMethodForm from './FormCoffee'
+import BlockImage from './BlockImage'
 import LoadingScreen from './LoadingScreen'
 
 export default function AllCoffee() {
@@ -11,7 +12,7 @@ export default function AllCoffee() {
 
   useEffect(() => {
     dispatch(fetchSetCoffee())
-  })
+  }, [])
 
   return (
     <section className="container">
@@ -22,8 +23,8 @@ export default function AllCoffee() {
         {coffees
           .slice()
           .reverse()
-          .map((coffees) => (
-            <SingleCoffee coffeeProp={coffees} key={coffees.id} />
+          .map((coffee) => (
+            <SingleCoffee coffeeProp={coffee} key={coffee.id} />
           ))}
       </div>
       <LoadingScreen />

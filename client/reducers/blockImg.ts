@@ -1,6 +1,6 @@
 import { CoffeeAction } from '../actions/getCoffee'
 
-function loading(state = false, action: CoffeeAction): boolean {
+function blockImage(state = false, action: CoffeeAction): boolean {
   const { type } = action
 
   switch (type) {
@@ -13,4 +13,4 @@ function loading(state = false, action: CoffeeAction): boolean {
   }
 }
 
-export default loading
+export default blockImage

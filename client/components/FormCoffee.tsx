@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
-import { fetchAddCoffee } from '../actions/getCoffee'
+import { fetchAddCoffee, fetchSetCoffee } from '../actions/getCoffee'
 import { CoffeeData } from '../models/Coffee'
 
 function AddMethodForm() {
@@ -17,6 +17,13 @@ function AddMethodForm() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     dispatch(fetchAddCoffee(coffeeMethod))
+      .then(() => {
+        setTimeout(() => {
+          dispatch(fetchSetCoffee())
+        }, 1000)
+      })
+      .catch((err) => err.message)
+    setMethods({ name: '', url: '', selftext: '' } as CoffeeData)
   }
 
   return (
@@ -28,6 +35,7 @@ function AddMethodForm() {
           name="name"
           id="name"
           type="text"
+          value={coffeeMethod.name}
           onChange={handleChange}
           placeholder="Your badass brew method"
           required
@@ -37,6 +45,7 @@ function AddMethodForm() {
           name="url"
           id="url"
           type="text"
+          value={coffeeMethod.url}
           onChange={handleChange}
           placeholder="ex:'https://images....'"
           required
@@ -45,6 +54,7 @@ function AddMethodForm() {
         <textarea
           name="selftext"
           id="selftext"
+          value={coffeeMethod.selftext}
           className="text-input"
           onChange={handleChange}
           placeholder="Max 20 words"
