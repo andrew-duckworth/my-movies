@@ -1,25 +1,31 @@
+import { Route, Routes, Link } from 'react-router-dom'
+
 import { useEffect } from "react"
-import { useAppSelector, useAppDispatch } from "../hooks/redux"
+import { useAppDispatch } from "../hooks/redux"
 import { getMoviesThunk } from "../actions/movies"
-import { Movie } from "../../common/types"
-import SingleMovie from "./SingleMovie"
+import AddMovie from "./AddMovie"
+import MovieList from './MovieList'
 
 function App() {
   const dispatch = useAppDispatch()
-  const movieList = useAppSelector(state => state.movie as Movie[])
 
   useEffect(() => {
     dispatch(getMoviesThunk())
-  }, [dispatch]) // why? -> when the page renders, dispatch isnt a thing then it is defined, and this useEffect is triggered
+  }, [dispatch])
 
   return (
     <>
       <section className="main">
-        <div className="movie-container">
-          {movieList.map(movie => (
-            <SingleMovie key={movie.id} movie={movie} />
-          ))}
-        </div>
+        <h1>Joshs Movies</h1>
+        <ul>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/add'>Add Movie</Link></li>
+        </ul>
+        
+        <Routes> 
+          <Route path='/' element={<MovieList />} />
+          <Route path='/add' element={<AddMovie />} />
+        </Routes>
       </section>
     </>
   )
