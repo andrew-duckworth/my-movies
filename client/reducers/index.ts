@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 
-// import stuff from './stuff'
+import { moobies } from './movie'
 
-export default combineReducers({})
+export default combineReducers({ moobies })
+// import stuff from './stuff'

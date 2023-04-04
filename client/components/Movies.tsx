@@ -1,11 +1,13 @@
 import { getMovies, delMovie } from '../apis/apiClient'
 import { useEffect, useState } from 'react'
+import { runDeleteMovie } from '../actions/movies'
 import * as Types from '../models/movies'
-
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
 export function Movies() {
   // function gotMovies() {
   const [movies, setMovies] = useState([] as Types.Movie[])
-
+  const dispatch = useAppDispatch()
+  const movieList = useAppSelector((state) => state.moobies)
   // const [formdata, setFormData] = useState([] as Models.Widget[])
 
   useEffect(() => {
@@ -17,15 +19,15 @@ export function Movies() {
   const handleContextMenu = (id, event) => {
     // dont know why these are angry but it works :)
     event.preventDefault()
-    delMovie(id)
-    // const id = event.target.getAttribute('movieId')
+    dispatch(runDeleteMovie(id)) // const id = event.target.getAttribute('movieId')
     console.log('You have right-clicked! on!', id)
+    console.log(movieList)
   }
 
   return (
     <>
       <div>
-        <h1>Moooovies</h1>
+        <h1>Moooovies use right click to delete then refresh </h1>
         {/* <button onClick={refreshAll}>Get All Widgets</button> */}
         {/* <button onClick={handleAdd}>add Widget</button> */}
         <div className="poster-img">
