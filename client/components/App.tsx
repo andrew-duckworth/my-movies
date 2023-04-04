@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes } from 'react-router-dom'
 import { getDecks } from '../actions/decks'
 import { useAppDispatch } from '../hooks/redux'
 import EditForm from './EditDeck'
@@ -16,7 +16,9 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <NavLink to="/">
+          <h1>My Collection</h1>
+        </NavLink>
       </header>
       <ErrorMessage />
       <section className="main">

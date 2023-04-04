@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { DeckInfo } from '../../models/deck'
 import { addDeck } from '../actions/decks'
 import { useAppDispatch } from '../hooks/redux'
+import { getCompletions, getCardArt } from '../apis/scryfall'
+import { setError } from '../actions/error'
+import { throttle } from 'lodash'
 
 export default function AddDeck() {
   const dispatch = useAppDispatch()
@@ -16,10 +19,32 @@ export default function AddDeck() {
     digital: false,
   } as DeckInfo)
 
+  const [completions, setCompletions] = useState([] as string[])
+  const [name, setName] = useState('')
+
   function handleChange(
     evt: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
     setDeck({ ...deck, [evt.target.name]: evt.target.value })
+  }
+
+  function handleSearch(evt: ChangeEvent<HTMLInputElement>) {
+    const val = evt.target.value
+    if (completions.includes(val)) {
+      getCardArt(val)
+        .then((data) => setDeck({ ...deck, ...data }))
+        .catch((err) => dispatch(setError(err.message)))
+    }
+    setName(val)
+    getCompletions(val)
+      .then((completions) => setCompletions(completions.map((e) => '‍' + e)))
+      .catch((err) => dispatch(setError(err.message)))
+  }
+
+  function doSearch() {
+    getCardArt(name)
+      .then((data) => setDeck({ ...deck, ...data }))
+      .catch((err) => dispatch(setError(err.message)))
   }
 
   function handleRadio() {
@@ -89,6 +114,25 @@ export default function AddDeck() {
             value={deck.img_attribution}
             onChange={handleChange}
           />
+        </div>
+        <div>
+          <label htmlFor="search">Or search for card art: </label>
+          <input
+            type="text"
+            name="q"
+            id="search"
+            value={name}
+            onChange={throttle(handleSearch, 100)}
+            list="completions"
+          />
+          <datalist id="completions">
+            {completions.map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </datalist>
+          <button type="button" onClick={throttle(doSearch, 100)}>
+            Get card art
+          </button>
         </div>
       </fieldset>
       <fieldset>
