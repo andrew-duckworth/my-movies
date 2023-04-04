@@ -21,7 +21,7 @@ function App() {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/add'>Add Movie</Link></li>
         </ul>
-        
+
         <Routes> 
           <Route path='/' element={<MovieList />} />
           <Route path='/add' element={<AddMovie />} />

@@ -1,12 +1,5 @@
 import { Movie } from '../../common/types'
 
-// interface Props {
-//   movie: Movie
-// }
-
-// function SingleMovie(movie: Props) {
-//   const oneMovie = movie.movie
-//   console.log(oneMovie);
 function SingleMovie({movie}: {movie: Movie}) {
   
   

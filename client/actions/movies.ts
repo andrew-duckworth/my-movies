@@ -14,34 +14,12 @@ export function getMoviesAction(movies: Movie[]) {
 }
 
 // Thuncctions
-// get movies from db
 export function getMoviesThunk(): ThunkAction {
-  return (dispatch) => { // <- why? - pretty much just calling a function
-    return fetchMovies() // get data from the API
-      .then(movies => { // take the data from the API/our databse
-        dispatch(getMoviesAction(movies)) // dispatch the simple action
-        // with the movie array as the payload
+  return (dispatch) => {
+    return fetchMovies()
+      .then(movies => {
+        dispatch(getMoviesAction(movies))
       })
-      // .catch(err => console.log(err.message))
+      .catch(err => console.log(err.message))
   }
 }
-
-
-
-
-/*
-
-NOT NEEDED ->
-export function getMoviesThunk() {
-  return thunccyBoi()
-}
-
-function thunccyBoi() {
-  return fetchMovies() // get data from the API
-      .then(movies => { // take the data from the API/our databse
-        getMoviesAction(movies) // dispatch the simple action
-        // with the movie array as the payload
-      })
-      // .catch(err => console.log(err.message))
-}
-*/

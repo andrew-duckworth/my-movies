@@ -1,11 +1,16 @@
-export interface Movie {
-  id: number
+export interface MovieData {
+  imdb_id: string
   title: string
   image: string
-  rating: number
+  rating?: number
+}
+
+export interface Movie extends MovieData {
+  id: number
 }
 
 export interface ImdbMovie {
+  
   id: string
   resultType: string
   image: string
