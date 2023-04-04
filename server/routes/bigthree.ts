@@ -16,8 +16,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const user = req.body
   db.addUser(user)
-    .then((userArr) => {
-      return res.json(userArr[0])
+    .then((newUser) => {
+      return res.json(newUser)
     })
     .catch((err) => console.log(err.essage))
 })
