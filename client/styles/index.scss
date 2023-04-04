@@ -5,8 +5,11 @@ body {
   margin: 0;
   padding: 20px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: rgb(14,52,60);
 }
 
+// background: rgb(14,52,60);
+// background: linear-gradient(266deg, rgba(14,52,60,1) 0%, rgba(65,68,69,1) 47%);
 
 
 .poster {
@@ -31,6 +34,7 @@ body {
 
 .poster-img{
   display: grid;
+  margin:3em;
   grid-template-columns: repeat(5, 1fr); /* Three columns */
   grid-gap: 20px; /* Spacing between posters */
 }

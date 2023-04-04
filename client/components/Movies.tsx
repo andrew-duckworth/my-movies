@@ -1,5 +1,4 @@
-import { getMovies } from '../apis/apiClient'
-
+import { getMovies, delMovie } from '../apis/apiClient'
 import { useEffect, useState } from 'react'
 import * as Types from '../models/movies'
 
@@ -15,6 +14,14 @@ export function Movies() {
       .catch((err) => alert(err.message))
   }, [])
 
+  const handleContextMenu = (id, event) => {
+    // dont know why these are angry but it works :)
+    event.preventDefault()
+    delMovie(id)
+    // const id = event.target.getAttribute('movieId')
+    console.log('You have right-clicked! on!', id)
+  }
+
   return (
     <>
       <div>
@@ -28,6 +35,7 @@ export function Movies() {
                 className="poster"
                 src={`${movie.cover}`}
                 alt={movie.title}
+                onContextMenu={(event) => handleContextMenu(movie.id, event)}
               />
 
               {/* <p className="title" key={movie.id}>
