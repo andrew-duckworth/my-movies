@@ -14,7 +14,7 @@ export function getMoviesAction(movies: Movie[]) {
 }
 
 // Thuncctions
-
+// get movies from db
 export function getMoviesThunk(): ThunkAction {
   return (dispatch) => { // <- why? - pretty much just calling a function
     return fetchMovies() // get data from the API
@@ -27,7 +27,11 @@ export function getMoviesThunk(): ThunkAction {
 }
 
 
+
+
 /*
+
+NOT NEEDED ->
 export function getMoviesThunk() {
   return thunccyBoi()
 }
