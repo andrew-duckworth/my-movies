@@ -6,7 +6,7 @@ import { getUsersThunk } from '../actions/zodiac'
 
 function ChartList() {
   const dispatch = useAppDispatch()
-  const chartList = useAppSelector((state) => state.starsigns as BigThree[])
+  const chartList = useAppSelector((state) => state.bigthree as BigThree[])
 
   useEffect(() => {
     dispatch(getUsersThunk())

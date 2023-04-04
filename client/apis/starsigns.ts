@@ -1,11 +1,11 @@
 import request from 'superagent'
-import { BigThree } from '../../common/Starsign'
+import { BigThree, Starsign } from '../../common/Starsign'
 
-export function grabSigns() {
+export function grabSigns(): Promise<Starsign[]> {
   return request.get('/api/v1/starsigns').then((res) => res.body)
 }
 
-export function grabUsers() {
+export function grabUsers(): Promise<BigThree[]> {
   return request.get('/api/v1/bigthree').then((res) => res.body)
 }
 
