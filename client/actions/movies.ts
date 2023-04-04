@@ -9,23 +9,24 @@ export const SHOW_MOVIES = 'SHOW_MOVIES'
 export function getMoviesAction(movies: Movie[]) {
   return {
     type: SHOW_MOVIES,
-    payload: movies
+    payload: movies,
   }
 }
 
 // Thuncctions
 
 export function getMoviesThunk(): ThunkAction {
-  return (dispatch) => { // <- why? - pretty much just calling a function
+  return (dispatch) => {
+    // <- why? - pretty much just calling a function
     return fetchMovies() // get data from the API
-      .then(movies => { // take the data from the API/our databse
+      .then((movies) => {
+        // take the data from the API/our databse
         dispatch(getMoviesAction(movies)) // dispatch the simple action
         // with the movie array as the payload
       })
-      // .catch(err => console.log(err.message))
+    // .catch(err => console.log(err.message))
   }
 }
-
 
 /*
 export function getMoviesThunk() {
