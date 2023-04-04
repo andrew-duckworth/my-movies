@@ -13,3 +13,9 @@ export function getStarsigns(db = connection): Promise<Starsign[]> {
 export function getUsers(db = connection): Promise<BigThree[]> {
   return db('bigthree').select()
 }
+
+export function addUser(user: BigThree, db = connection): Promise<BigThree[]> {
+  return db('bigthree')
+    .insert(user)
+    .returning(['name', 'sun', 'moon', 'rising'])
+}
