@@ -7,6 +7,7 @@ const initialState = [] as Movie[]
 export default function moviesReducer(state = initialState, action: MovieAction) {
   const {type, payload} = action
   switch(type) {
+    
     case SHOW_MOVIES:
       return payload
 
@@ -15,5 +16,3 @@ export default function moviesReducer(state = initialState, action: MovieAction)
     
   }
 }
-
-// export default moviesReducer
