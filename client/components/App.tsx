@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react'
-
 import { deleteTeamsApi, getTeamsApi } from '../apis/clientApi'
-
 import { TeamsData } from '../../models/Teams'
-
 import { fetchTeams, deleteTeam, deleteTeamsThunk } from '../actions/teams'
-
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
 import { store } from '../store'
@@ -27,41 +23,16 @@ function App() {
   }, [dispatch])
 
   // subscribe to the store changes
-  useEffect(() => {
-    // your code to update the list of teams on the front-end
-    // console.log('teams updated:', teams)
-  }, [teams])
+  useEffect(() => {}, [teams])
 
-  // console.log(teams)
-
-  // useEffect(() => {
-  //   getTeamsApi()
-  //     .then((data) => {
-  //       // console.log(data)
-  //       setTeams(data)
-  //       // console.log(teams)
-  //     })
-  //     .catch((err) => console.log(err.message))
-  // }, [])
-
-  // const clickHandler = () => {
-  //   getTeamsApi()
-  //     .then((data) => {
-  //       // console.log(data)
-  //       setTeams(data)
-  //       // console.log(teams)
-  //     })
-  //     .catch((err) => console.log(err.message))
-  // }
-
-  // https://i.gifer.com/ZZ5H.gif
+  const [selectedTeam, setSelectedTeam] = useState<TeamsData | null>(null)
 
   return (
     <>
       <Header />
-      <AddTeam />
+      <AddTeam selectedTeam={selectedTeam} />
       {/* <button onClick={() => dispatch(fetchTeams())}>button</button> */}
-      <Teams />
+      <Teams setSelectedTeam={setSelectedTeam} />
     </>
   )
 }

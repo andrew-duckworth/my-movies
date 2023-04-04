@@ -26,4 +26,20 @@ body {
   height: 100vh;
 }
 
+.add-form-wrapper {
+  width: 200px;
+  margin: auto;
+}
 
+.edit-form-wrapper {
+  width: 200px;
+  margin: auto;
+}
+
+.forms-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  width: 500px;
+  margin: auto;
+  align-items: stretch;
+}

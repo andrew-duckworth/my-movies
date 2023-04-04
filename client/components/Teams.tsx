@@ -7,6 +7,10 @@ import { deleteTeam } from '../actions/teams'
 import { TeamsData } from '../../models/Teams'
 
 export default function Teams() {
+  interface TeamsProps {
+    setSelectedTeam: ({ setSelectedTeam }: TeamsProps) => void
+  }
+
   const dispatch = useAppDispatch()
 
   const teams = useAppSelector((state) => state.teams)
@@ -21,7 +25,7 @@ export default function Teams() {
   }
 
   const updateHandler = (team: TeamsData) => {
-    console.log(team)
+    setSelectedTeam
   }
 
   return (

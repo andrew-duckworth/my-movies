@@ -10,7 +10,9 @@ export default function AddTeam() {
 
   const dispatch = useAppDispatch()
 
-  const [formData, setFormData] = useState({
+  const [editForm, setEditForm] = useState(false)
+
+  const [addFormData, setAddFormData] = useState({
     name: '',
     manager: '',
     city: '',
@@ -19,10 +21,10 @@ export default function AddTeam() {
 
   const clickHandler = (e: FormEvent) => {
     e.preventDefault()
-    addTeamsApi(formData)
+    addTeamsApi(addFormData)
       .then((team) => {
         dispatch(addTeam(team))
-        setFormData({
+        setAddFormData({
           name: '',
           manager: '',
           city: '',
@@ -33,55 +35,108 @@ export default function AddTeam() {
   }
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    // formData.e.data.id = e.data.value
-    setFormData({ ...formData, [e.target.id]: e.target.value })
+    // addFormData.e.data.id = e.data.value
+    setAddFormData({ ...addFormData, [e.target.id]: e.target.value })
   }
 
   return (
-    <div className="form-wrapper">
-      <form onSubmit={clickHandler} className="addteam-form">
-        <label htmlFor="name">Team Name: </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          onChange={changeHandler}
-          value={formData.name}
-          required
-        />
-        <br />
-        <label htmlFor="logo">Logo Url: </label>
-        <input
-          type="text"
-          id="logo"
-          name="logo"
-          onChange={changeHandler}
-          value={formData.logo}
-          required
-        />
-        <br />
-        <label htmlFor="manager">Manager: </label>
-        <input
-          type="text"
-          id="manager"
-          name="manager"
-          onChange={changeHandler}
-          value={formData.manager}
-          required
-        />
-        <br />
-        <label htmlFor="city">City: </label>
-        <input
-          type="text"
-          id="city"
-          name="city"
-          onChange={changeHandler}
-          value={formData.city}
-          required
-        />
+    <>
+      <div className="forms-wrapper">
+        <div className="add-form-wrapper">
+          <h2>Add: </h2>
+          <form onSubmit={clickHandler} className="addteam-form">
+            <label htmlFor="name">Team Name: </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              onChange={changeHandler}
+              value={addFormData.name}
+              required
+            />
+            <br />
+            <label htmlFor="logo">Logo Url: </label>
+            <input
+              type="text"
+              id="logo"
+              name="logo"
+              onChange={changeHandler}
+              value={addFormData.logo}
+              required
+            />
+            <br />
+            <label htmlFor="manager">Manager: </label>
+            <input
+              type="text"
+              id="manager"
+              name="manager"
+              onChange={changeHandler}
+              value={addFormData.manager}
+              required
+            />
+            <br />
+            <label htmlFor="city">City: </label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              onChange={changeHandler}
+              value={addFormData.city}
+              required
+            />
 
-        <button className="addteam-button">Add Team</button>
-      </form>
-    </div>
+            <button className="addteam-button">Add Team</button>
+          </form>
+        </div>
+        {editForm && (
+          <div className="edit-form-wrapper">
+            <h2>Edit: </h2>
+            <form onSubmit={clickHandler} className="addteam-form">
+              <label htmlFor="name">Team Name: </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                onChange={changeHandler}
+                value={formData.name}
+                required
+              />
+              <br />
+              <label htmlFor="logo">Logo Url: </label>
+              <input
+                type="text"
+                id="logo"
+                name="logo"
+                onChange={changeHandler}
+                value={formData.logo}
+                required
+              />
+              <br />
+              <label htmlFor="manager">Manager: </label>
+              <input
+                type="text"
+                id="manager"
+                name="manager"
+                onChange={changeHandler}
+                value={formData.manager}
+                required
+              />
+              <br />
+              <label htmlFor="city">City: </label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                onChange={changeHandler}
+                value={formData.city}
+                required
+              />
+
+              <button className="addteam-button">Edit Team</button>
+            </form>
+          </div>
+        )}
+      </div>
+    </>
   )
 }
