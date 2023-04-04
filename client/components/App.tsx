@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import ChartList from './ChartList'
-import { AddChart } from './AddChart'
+// import { AddChart } from './AddChart'
 
 import Nav from './Nav'
 import SignsList from './SignsList'
