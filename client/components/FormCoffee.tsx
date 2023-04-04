@@ -2,13 +2,11 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
 import { fetchAddCoffee } from '../actions/getCoffee'
 import { CoffeeData } from '../models/Coffee'
-import LoadingScreen from './LoadingScreen'
 
 function AddMethodForm() {
   const dispatch = useAppDispatch()
 
   const [coffeeMethod, setMethods] = useState({} as CoffeeData)
-  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -18,12 +16,7 @@ function AddMethodForm() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-      dispatch(fetchAddCoffee(coffeeMethod))
-      window.location.reload()
-    }, 3000)
+    dispatch(fetchAddCoffee(coffeeMethod))
   }
 
   return (
@@ -57,15 +50,8 @@ function AddMethodForm() {
           placeholder="Max 20 words"
           required
         />
-
         <button type="submit">Submit</button>
       </form>
-      {/* Adding animation for loading */}
-      {isLoading && (
-        <div className="loading-screen">
-          <LoadingScreen />
-        </div>
-      )}
     </div>
   )
 }
