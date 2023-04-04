@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable('musicFestivals', (table) => {
-    table.increments('id')
+    table.increments('id').primary()
     table.string('name')
     table.string('country')
     table.string('date')
