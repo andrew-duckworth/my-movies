@@ -47,6 +47,7 @@ export default function AddTeam() {
           name="name"
           onChange={changeHandler}
           value={formData.name}
+          required
         />
         <br />
         <label htmlFor="logo">Logo Url: </label>
@@ -56,6 +57,7 @@ export default function AddTeam() {
           name="logo"
           onChange={changeHandler}
           value={formData.logo}
+          required
         />
         <br />
         <label htmlFor="manager">Manager: </label>
@@ -65,6 +67,7 @@ export default function AddTeam() {
           name="manager"
           onChange={changeHandler}
           value={formData.manager}
+          required
         />
         <br />
         <label htmlFor="city">City: </label>
@@ -74,6 +77,7 @@ export default function AddTeam() {
           name="city"
           onChange={changeHandler}
           value={formData.city}
+          required
         />
 
         <button className="addteam-button">Add Team</button>

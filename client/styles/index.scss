@@ -1,11 +1,26 @@
 body {
-  position: absolute;
-  top: 0;
-  left: 0;
   margin: 0;
   padding: 20px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+
 }
 
+.teams-container {
+  background-color: grey;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.team-container {
+  background-color: green;
+  border: 1px solid black;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 5px;
+  border-radius: 5px;
+  max-width: 20vw;
+}
 
 
