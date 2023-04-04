@@ -2,9 +2,9 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux'
 
 import { FormEvent, ChangeEvent } from 'react'
 
-import { deleteTeamsApi } from '../apis/clientApi'
+import { deleteTeamsApi, editTeamsApi } from '../apis/clientApi'
 
-import { deleteTeam, editTeam } from '../actions/teams'
+import { deleteTeam, editTeam, editTeamThunk } from '../actions/teams'
 
 import { TeamsData } from '../../models/Teams'
 import { useState } from 'react'
@@ -16,6 +16,7 @@ interface TeamsProps {
 
 export default function Teams({ setSelectedTeam }: TeamsProps) {
   const [editForm, setEditForm] = useState(false)
+  const [editingTeam, setEditingTeam] = useState<TeamsData | null>(null)
 
   const dispatch = useAppDispatch()
 
@@ -24,21 +25,29 @@ export default function Teams({ setSelectedTeam }: TeamsProps) {
   const showIndicator = useAppSelector((state) => state.waiting)
 
   const deleteHandler = (team: TeamsData) => {
+    setEditForm(false)
     console.log(team)
     deleteTeamsApi(team)
       .then(() => dispatch(deleteTeam(team)))
       .catch((err) => console.log(err.message))
   }
 
-  const updateHandler = (team: TeamsData) => {
+  const updateButtonHandler = (team: TeamsData) => {
     console.log('updated handler clicked', team)
+    setEditingTeam(team)
     setEditForm(!editForm)
     setEditFormData(team)
   }
 
   const editHandler = (e: FormEvent, team: TeamsData) => {
     e.preventDefault()
-    editTeam(team.id, editFormData)
+    console.log('edit handler clicked', team)
+    console.log('formdata is', editFormData)
+    // dispatch(editTeamThunk(editFormData))
+    editTeamsApi(editFormData)
+      .then((team) => dispatch(editTeam(team)))
+      .catch((err) => console.log(err.message))
+    setEditingTeam(null)
     setEditForm(!editForm)
   }
 
@@ -117,7 +126,7 @@ export default function Teams({ setSelectedTeam }: TeamsProps) {
               <p>Manager: {team.manager}</p>
               <p>City: {team.city}</p>
               <button onClick={() => deleteHandler(team)}>x</button>
-              <button onClick={() => updateHandler(team)}>update</button>
+              <button onClick={() => updateButtonHandler(team)}>update</button>
               <br />
             </div>
           ))}

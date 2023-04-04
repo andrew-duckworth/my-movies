@@ -49,24 +49,15 @@ export function addTeam(team: TeamsData) {
   }
 }
 
-// export function editTeam(id: number, team: TeamsData) {
-//   return {
-//     type: EDIT_TEAM,
-//     payload: {
-//       id,
-//       team,
-//     },
-//   }
-// }
+export interface EditTeamAction {
+  type: typeof EDIT_TEAM
+  payload: TeamsData
+}
 
-export function editTeam(id: number, updatedTeam: TeamsData): ThunkAction {
-  return (dispatch) => {
-    return editTeamsApi(id, updatedTeam).then((data) => {
-      dispatch({
-        type: EDIT_TEAM,
-        payload: data,
-      })
-    })
+export function editTeam(team: TeamsData): EditTeamAction {
+  return {
+    type: EDIT_TEAM,
+    payload: team,
   }
 }
 
@@ -77,5 +68,15 @@ export function fetchTeams(): ThunkAction {
       dispatch(receiveTeams(data))
       console.log(data)
     })
+  }
+}
+
+export function editTeamThunk(team: TeamsData): ThunkAction {
+  return (dispatch) => {
+    return editTeamsApi(team)
+      .then((data) => {
+        dispatch(editTeam(data))
+      })
+      .catch((err) => console.log(err.message))
   }
 }

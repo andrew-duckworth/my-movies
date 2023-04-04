@@ -18,9 +18,9 @@ export function addTeamsApi(newTeam: TeamsData) {
     .then((res) => res.body)
 }
 
-export function editTeamsApi(oldTeam: TeamsData, newTeam: TeamsData) {
+export function editTeamsApi(newTeam: TeamsData) {
   return request
-    .patch(`${teamsUrl}/${oldTeam.id}`)
-    .send({ ...oldTeam, ...newTeam })
-    .then((res) => res.body)
+    .patch(`${teamsUrl}/${newTeam.id}`)
+    .send(newTeam)
+    .then((res) => res.body[0])
 }

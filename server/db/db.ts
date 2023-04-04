@@ -1,6 +1,5 @@
 import config from './knexfile'
 import knex from 'knex'
-import { connect } from 'superagent'
 import { TeamsData } from '../../models/Teams'
 
 type Environment = 'production' | 'test' | 'development'
@@ -27,10 +26,13 @@ export function updateTeam(
   id: number,
   db = connection
 ) {
-  return db('teams').where('id', id).update({
-    name: updatedTeam.name,
-    manager: updatedTeam.manager,
-    city: updatedTeam.city,
-    logo: updatedTeam.logo,
-  })
+  return db('teams')
+    .where('id', id)
+    .update({
+      name: updatedTeam.name,
+      manager: updatedTeam.manager,
+      city: updatedTeam.city,
+      logo: updatedTeam.logo,
+    })
+    .returning('*')
 }
