@@ -4,6 +4,7 @@ import { fetchSetCoffee } from '../actions/getCoffee'
 import SingleCoffee from './CoffeeSingle'
 import AddMethodForm from './FormCoffee'
 import LoadingScreen from './LoadingScreen'
+import FooterBar from './Footer'
 
 export default function AllCoffee() {
   const dispatch = useAppDispatch()
@@ -25,6 +26,7 @@ export default function AllCoffee() {
           .map((coffee) => (
             <SingleCoffee coffeeProp={coffee} key={coffee.id} />
           ))}
+        <FooterBar />
       </div>
       <LoadingScreen />
     </section>

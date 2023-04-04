@@ -22,16 +22,28 @@
         word-spacing: -0.08em;
         margin-top: 0;
         margin-bottom: 20px;
+
+        @media (max-width:400px){
+          font-size: 2rem;
+         }
       
     }
 
     form {
-      width: 25vw; // default: 400px
+      width: 400px; // default: 400px
       display:flex;
       justify-content: center;
       flex-direction: column;
-      margin:30px;
+      margin:2rem;
       gap: 12px;
+
+      @media (max-width:700px){
+        width: 400px;
+       }
+
+      @media (max-width:400px){
+        width: 200px;
+       }
 
 
       label{
@@ -39,7 +51,8 @@
         font-weight: 700 ;
         font-size: 15px;
         margin: 0.08rem;
-        color: rgba(0, 0, 0, 0.6);;
+        color: rgba(0, 0, 0, 0.6);
+
         
       }
       input,textarea{
@@ -53,15 +66,10 @@
         font: 1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
         transition: 0.5s;
 
-            &:hover{
+            &:hover, &:focus{
               outline: none;
               box-shadow: 0 0 10px rgba(203, 203, 203, 0.4), 0 0 10px rgba(204, 204, 204, 0.4), 0 0 10px hsla(0, 0%, 80%, 0.4);
               border-color: transparent;
-            }
-
-            &:focus{
-              box-shadow: none;
-              border-color: rgba(0, 0, 0, 0.2);
             }
 
             &:focus::placeholder{
