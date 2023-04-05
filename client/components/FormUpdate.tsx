@@ -5,9 +5,10 @@ import { CoffeeData } from '../models/Coffee'
 
 interface Props {
   coffee: CoffeeData
+  onSuccess: () => void
 }
 
-export default function UpdateForm({ coffee }: Props) {
+export default function UpdateForm({ coffee, onSuccess }: Props) {
   const dispatch = useAppDispatch()
   const id = coffee.id
   const [updatedCoffee, setUpdatedCoffee] = useState({} as CoffeeData)
@@ -24,6 +25,8 @@ export default function UpdateForm({ coffee }: Props) {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     dispatch(fetchUpdateCoffee(id, updatedCoffee))
+      .then(() => onSuccess())
+      .catch((err) => err.message)
   }
 
   return (
@@ -37,7 +40,7 @@ export default function UpdateForm({ coffee }: Props) {
           type="text"
           value={updatedCoffee.name}
           onChange={handleChange}
-          placeholder="Your badass brew method"
+          placeholder="Update the name"
           required
         />
         <label htmlFor="url">Image Url </label>
@@ -60,7 +63,7 @@ export default function UpdateForm({ coffee }: Props) {
           placeholder="Max 20 words"
           required
         />
-        <button type="submit">Update</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   )
