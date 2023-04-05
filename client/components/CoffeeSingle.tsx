@@ -18,7 +18,11 @@ export default function SingleCoffee(props: Props) {
   // -------
 
   const handleUpdateSuccess = () => {
-    setToggle(false) // reload the page to show updated data
+    setToggle(false)
+  }
+
+  const handleClose = () => {
+    setToggle(false)
   }
   return (
     <div className="card-front">
@@ -35,6 +39,7 @@ export default function SingleCoffee(props: Props) {
               <UpdateForm
                 coffee={props.coffeeProp}
                 onSuccess={handleUpdateSuccess}
+                onClose={handleClose}
               />
             ) : (
               <button

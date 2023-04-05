@@ -6,9 +6,10 @@ import { CoffeeData } from '../models/Coffee'
 interface Props {
   coffee: CoffeeData
   onSuccess: () => void
+  onClose: () => void
 }
 
-export default function UpdateForm({ coffee, onSuccess }: Props) {
+export default function UpdateForm({ coffee, onSuccess, onClose }: Props) {
   const dispatch = useAppDispatch()
   const id = coffee.id
   const [updatedCoffee, setUpdatedCoffee] = useState({} as CoffeeData)
@@ -30,7 +31,7 @@ export default function UpdateForm({ coffee, onSuccess }: Props) {
   }
 
   return (
-    <div className="form-add">
+    <div className="form-update">
       <form onSubmit={handleSubmit}>
         <h1>{updatedCoffee.name}</h1>
         <label htmlFor="name">Method Name</label>
@@ -63,7 +64,14 @@ export default function UpdateForm({ coffee, onSuccess }: Props) {
           placeholder="Max 20 words"
           required
         />
-        <button type="submit">Submit</button>
+        <div className="button-group-update">
+          <button className="button-update" type="submit">
+            Submit
+          </button>
+          <button className="button-update" type="button" onClick={onClose}>
+            Close
+          </button>
+        </div>
       </form>
     </div>
   )

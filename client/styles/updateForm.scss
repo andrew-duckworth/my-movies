@@ -1,6 +1,5 @@
-@use 'loading';
 
-.form-add{
+.form-update{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,28 +81,33 @@
         height: 70px;
       }
 
-      button{
-        width: 100px;
-        display: inline-block;
-        margin-top: 1rem;
-        padding: 10px 20px;
-        font-size: 16px;
-        text-align: center;
-        text-decoration: none;
-        border: 2px solid #27272791;
-        border-radius: 20px;
-        background-color: transparent;
-        color: #27272791;
-        transition: 0.3s;
-        cursor: pointer;
 
-        &:hover {
-          background-color: rgb(26, 26, 26);
-          border-color: transparent;
-          color: white;
+      .button-group-update{
+        display: flex;
+        gap: 1.2rem;
+        padding-top: 0.8rem ;
+      
+          .button-update{
+            width: 100px;
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border: 2px solid #27272791;
+            border-radius: 20px;
+            background-color: transparent;
+            color: #27272791;
+            transition: 0.3s;
+            cursor: pointer;
+
+            &:hover {
+              background-color: rgb(26, 26, 26);
+              border-color: transparent;
+              color: white;
+            }
+          }
         }
-      }
     }
 }
-
-
