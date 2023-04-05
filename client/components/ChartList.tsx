@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { BigThree } from '../../common/Starsign'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { getUsersThunk } from '../actions/zodiac'
@@ -43,7 +43,7 @@ function ChartList() {
             </div>
           ))}
           <div className="nav-button">
-            {/* <Link to="/add">Add Yours</Link> */}
+            <Link to="/add">Add Yours</Link>
           </div>
         </div>
       </div>

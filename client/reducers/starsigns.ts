@@ -4,7 +4,7 @@ import { Starsign } from '../../common/Starsign'
 
 const initialState = [] as Starsign[]
 
-export function starsigns(state = initialState, action: UserAction) {
+export default function starsigns(state = initialState, action: UserAction) {
   const { type, payload } = action
 
   switch (type) {

@@ -1,18 +1,18 @@
-export interface Starsign {
-  id?: number
+export interface StarsignData {
   sign: string
   dates: string
   image: string
 }
-
-export type RawStarSignArr = { data: Starsign }[]
-
-export interface BigThree {
-  id?: number
+export interface Starsign extends StarsignData {
+  id: number
+}
+export interface BigThreeData {
   name: string
   sun: string
   moon: string
   rising: string
 }
 
-export type RawBigThreeArr = { data: BigThree }[]
+export interface BigThree extends BigThreeData {
+  id: number
+}

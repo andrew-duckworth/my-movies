@@ -1,4 +1,4 @@
-import { Starsign, BigThree } from '../../common/Starsign'
+import { Starsign, BigThree, BigThreeData } from '../../common/Starsign'
 import { addAUser, grabSigns, grabUsers } from '../apis/starsigns'
 import type { ThunkAction } from '../store'
 
@@ -55,7 +55,7 @@ export function getUsersThunk(): ThunkAction {
   }
 }
 
-export function addOneUserThunk(newUser: BigThree): ThunkAction {
+export function addOneUserThunk(newUser: BigThreeData): ThunkAction {
   return (dispatch) => {
     return addAUser(newUser)
       .then((user) => {

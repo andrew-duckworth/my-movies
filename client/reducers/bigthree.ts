@@ -4,7 +4,7 @@ import { BigThree } from '../../common/Starsign'
 
 const initialState = [] as BigThree[]
 
-export function bigthree(state = initialState, action: UserAction) {
+export default function bigthree(state = initialState, action: UserAction) {
   const { type, payload } = action
 
   switch (type) {
