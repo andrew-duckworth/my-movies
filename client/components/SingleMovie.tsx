@@ -1,5 +1,7 @@
 import { Movie } from '../../common/types'
-
+import { useAppDispatch } from '../hooks/redux'
+import { deleteMovieThunk } from '../actions/imdb'
+import { useNavigate } from 'react-router-dom'
 // interface Props {
 //   movie: Movie
 // }
@@ -7,15 +9,23 @@ import { Movie } from '../../common/types'
 // function SingleMovie(movie: Props) {
 //   const oneMovie = movie.movie
 //   console.log(oneMovie);
-function SingleMovie({movie}: {movie: Movie}) {
-  
-  
-  return (
-    <div className='movie'>
-      <h2 className='title'>{movie.title}</h2>
-      <img src={movie.image} alt={`poster for ${movie.title}`}></img>
-    </div>
-    )
+
+function SingleMovie({ movie }: { movie: Movie }) {
+  const navigate = useNavigate()
+
+  const dispatch = useAppDispatch()
+  const handleDelete = (id: number) => {
+    dispatch(deleteMovieThunk(id))
+    navigate('/')
   }
 
-  export default SingleMovie
+  return (
+    <div className="movie">
+      <h2 className="title">{movie.title}</h2>
+      <img src={movie.image} alt={`poster for ${movie.title}`}></img>
+      <button onClick={() => handleDelete(movie.id)}>Delete movie</button>
+    </div>
+  )
+}
+
+export default SingleMovie
