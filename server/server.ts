@@ -1,13 +1,14 @@
 import express from 'express'
 import path from 'path'
 import { join } from 'node:path'
-// import cors, { CorsOptions } from 'cors'
-// import request from 'superagent'
+
+import recipes from './routes/recipes'
 
 const server = express()
 
 server.use(express.json())
 server.use(express.static(join(__dirname, './public')))
+server.use('/api/v1/recipes', recipes)
 
 // EXAMPLE INTERNAL API -------------------------------------------------------------------------------
 

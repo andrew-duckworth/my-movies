@@ -3,12 +3,12 @@ interface List {
   ingredient: string
 }
 
-export interface Ingredients {
+export interface Ingredient {
   id: number
   list: List
 }
 
-export interface Recipes {
+export interface Recipe {
   id: number
   title: string
   method: string
