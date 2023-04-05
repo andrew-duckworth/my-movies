@@ -16,13 +16,20 @@ export function addRecipe(recipe: Recipe, db = connection): Promise<Recipe[]> {
 
 // Ingredient DBFuncs
 
-export function getAllIngredients(db = connection): Promise<Ingredient[]> {
-  return db('ingredients').select()
-}
-
 export function getIngredients(ingredient: Ingredient, db = connection) {
   return db('ingredients')
     .select()
     .where('ingredients.id', ingredient.id)
     .join('recipes', 'ingredients_id', 'ingredients.id')
+}
+
+export function getAllIngredients(db = connection): Promise<Ingredient[]> {
+  return db('ingredients').select()
+}
+
+export function addIngredients(
+  ingredients: Ingredient,
+  db = connection
+): Promise<Ingredient[]> {
+  return db('ingredients').insert(ingredients).returning(['id', 'list'])
 }
