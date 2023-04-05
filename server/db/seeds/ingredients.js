@@ -55,3 +55,10 @@ exports.seed = (knex) =>
         },
       ])
     )
+
+// Does this need to be async??
+
+// exports.seed = async function (knex) {
+//   await knex('ingredients').del()
+//   await knex('ingredients').insert([])
+// }

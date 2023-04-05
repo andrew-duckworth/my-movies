@@ -23,3 +23,10 @@ exports.seed = (knex) =>
         },
       ])
     )
+
+// Does this need to be async??
+
+// exports.seed = async function (knex) {
+//   await knex('recipes').del()
+//   await knex('recipes').insert([])
+// }
