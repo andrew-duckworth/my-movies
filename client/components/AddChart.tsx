@@ -1,8 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { BigThree, BigThreeData } from '../../common/Starsign'
-import { useAppDispatch, useAppSelector } from '../hooks/redux'
-import { addAUser, grabUsers } from '../apis/starsigns'
-import { addOneUser, addOneUserThunk } from '../actions/zodiac'
+import { BigThreeData } from '../../common/Starsign'
+import { useAppDispatch } from '../hooks/redux'
+import { addOneUserThunk } from '../actions/zodiac'
 import { useNavigate } from 'react-router-dom'
 
 function AddChart() {
