@@ -8,7 +8,6 @@ interface Props {
 }
 
 export default function UpdateForm({ coffee }: Props) {
-  //-----------//
   const dispatch = useAppDispatch()
   const id = coffee.id
   const [updatedCoffee, setUpdatedCoffee] = useState({} as CoffeeData)
@@ -24,19 +23,19 @@ export default function UpdateForm({ coffee }: Props) {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    dispatch(fetchUpdateCoffee(id,updatedCoffee))
+    dispatch(fetchUpdateCoffee(id, updatedCoffee))
   }
 
   return (
     <div className="form-add">
       <form onSubmit={handleSubmit}>
-        <h1>{currentName}</h1>
+        <h1>{updatedCoffee.name}</h1>
         <label htmlFor="name">Method Name</label>
         <input
           name="name"
           id="name"
           type="text"
-          value={editingName}
+          value={updatedCoffee.name}
           onChange={handleChange}
           placeholder="Your badass brew method"
           required
@@ -46,7 +45,7 @@ export default function UpdateForm({ coffee }: Props) {
           name="url"
           id="url"
           type="text"
-          value={editingUrl}
+          value={updatedCoffee.url}
           onChange={handleChange}
           placeholder="ex:'https://images....'"
           required
@@ -55,7 +54,7 @@ export default function UpdateForm({ coffee }: Props) {
         <textarea
           name="selftext"
           id="selftext"
-          value={editingText}
+          value={updatedCoffee.selftext}
           className="text-input"
           onChange={handleChange}
           placeholder="Max 20 words"

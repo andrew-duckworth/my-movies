@@ -14,10 +14,13 @@ export function addCoffeeApi(newCoffee: CoffeeData): Promise<CoffeeData> {
     })
 }
 
-export function updateCoffeeApi(coffee: CoffeeData): Promise<CoffeeData> {
+export function updateCoffeeApi(
+  id: number,
+  newcoffee: CoffeeData
+): Promise<CoffeeData> {
   return request
-    .patch(`/api/v1/coffee/${coffee.id}`)
-    .send(coffee)
+    .patch(`/api/v1/coffee/${id}`)
+    .send(newcoffee)
     .then((res) => {
       return res.body
     })
