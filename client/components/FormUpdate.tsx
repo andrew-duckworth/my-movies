@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
-import { fetchUpdateCoffee } from '../actions/getCoffee'
+import { fetchSetCoffee, fetchUpdateCoffee } from '../actions/getCoffee'
 import { CoffeeData } from '../models/Coffee'
 
 interface Props {
@@ -26,7 +26,10 @@ export default function UpdateForm({ coffee, onSuccess, onClose }: Props) {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     dispatch(fetchUpdateCoffee(id, updatedCoffee))
-      .then(() => onSuccess())
+      .then(() => {
+        dispatch(fetchSetCoffee())
+        onSuccess()
+      })
       .catch((err) => err.message)
   }
 
