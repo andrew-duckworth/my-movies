@@ -6,7 +6,11 @@ import { CoffeeData } from '../models/Coffee'
 function AddMethodForm() {
   const dispatch = useAppDispatch()
 
-  const [coffeeMethod, setMethods] = useState({} as CoffeeData)
+  const [coffeeMethod, setMethods] = useState({
+    name: '',
+    url: '',
+    selftext: '',
+  } as CoffeeData)
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

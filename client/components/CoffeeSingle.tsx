@@ -17,10 +17,6 @@ export default function SingleCoffee(props: Props) {
   // const limitedText = words.slice(0, 18).join(' ') + '...' //optinal
   // -------
 
-  const handleUpdateSuccess = () => {
-    setToggle(false)
-  }
-
   const handleClose = () => {
     setToggle(false)
   }
@@ -35,11 +31,7 @@ export default function SingleCoffee(props: Props) {
           <p>{selftext}</p>
           <div className="button-group">
             {toggle ? (
-              <UpdateForm
-                coffee={props.coffeeProp}
-                onSuccess={handleUpdateSuccess}
-                onClose={handleClose}
-              />
+              <UpdateForm coffee={props.coffeeProp} onClose={handleClose} />
             ) : (
               <button
                 onClick={() => {
