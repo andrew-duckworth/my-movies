@@ -79,7 +79,7 @@ export default function UpdateForm({ coffee, onClose }: Props) {
                   Submit
                 </button>
                 <button
-                  className="button-update"
+                  className="button-close"
                   type="button"
                   onClick={onClose}
                 >
