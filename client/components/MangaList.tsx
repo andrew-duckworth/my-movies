@@ -1,14 +1,14 @@
 import { useAppSelector, useAppDispatch } from '../hooks/redux'
 import mangaReducer from '../reducers/manga'
+import { fetchAllManga } from '../actions/manga'
 import { useEffect, useState, FormEvent, ChangeEvent } from 'react'
 
 import Manga from './Manga'
-import { getAllManga } from '../apis/manga'
 
 function MangaList() {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(getAllManga())
+    dispatch(fetchAllManga())
   }, [])
 
   const allMangas = useAppSelector((state) => state.mangaReducer)
