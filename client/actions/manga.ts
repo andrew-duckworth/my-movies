@@ -1,5 +1,5 @@
 import type { ThunkAction } from '../store'
-import { Manga, RawMangaArr } from '../../common/manga'
+import { Manga } from '../../common/manga'
 
 import { getAllManga } from '../apis/manga'
 
@@ -19,10 +19,11 @@ export function requestManga(): MangaAction {
   }
 }
 
-export function receiveManga(manga: RawMangaArr): MangaAction {
+export function receiveManga(manga: Manga[]): MangaAction {
   return {
     type: RECEIVE_ALL_MANGA,
-    payload: manga.map((eachManga) => eachManga.data),
+    // payload: manga.map((eachManga) => eachManga.data),
+    payload: manga,
   }
 }
 
