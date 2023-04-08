@@ -1,5 +1,5 @@
 export type UserAction = { type: string; payload: BigThree }
-import { ADD_ONE_USER, RECEIVE_USERS } from '../actions/zodiac'
+import { ADD_ONE_USER, RECEIVE_USERS, DEL_ONE_USER } from '../actions/zodiac'
 import { BigThree } from '../../common/Starsign'
 
 const initialState = [] as BigThree[]

@@ -1,10 +1,11 @@
 import { Starsign, BigThree, BigThreeData } from '../../common/Starsign'
-import { addAUser, grabSigns, grabUsers } from '../apis/starsigns'
+import { addAUser, deleteAUser, grabSigns, grabUsers } from '../apis/starsigns'
 import type { ThunkAction } from '../store'
 
 export const RECEIVE_SIGNS = 'RECEIVE_SIGNS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const ADD_ONE_USER = 'ADD_ONE_USER'
+export const DEL_ONE_USER = 'DEL_ONE_USER'
 
 // Simple Actions
 
@@ -26,6 +27,13 @@ export function addOneUser(user: BigThree) {
   return {
     type: ADD_ONE_USER,
     payload: user,
+  }
+}
+
+export function delOneUser(id: number) {
+  return {
+    type: DEL_ONE_USER,
+    payload: id,
   }
 }
 
@@ -60,6 +68,16 @@ export function addOneUserThunk(newUser: BigThreeData): ThunkAction {
     return addAUser(newUser)
       .then((user) => {
         dispatch(addOneUser(user))
+      })
+      .catch((err) => console.log(err.message))
+  }
+}
+
+export function delOneUserThunk(id: number): ThunkAction {
+  return (dispatch) => {
+    return deleteAUser(id)
+      .then(() => {
+        dispatch(delOneUser(id))
       })
       .catch((err) => console.log(err.message))
   }
