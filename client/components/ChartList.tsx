@@ -14,6 +14,8 @@ function ChartList() {
     dispatch(delOneUserThunk(id))
   }
 
+  const updateHandler = () => {}
+
   useEffect(() => {
     dispatch(getUsersThunk())
   }, [dispatch])
@@ -48,6 +50,7 @@ function ChartList() {
               </div>
               <p>What does this mean?</p>
               <button onClick={() => deleteHandler(user.id)}>Delete</button>
+              <button onClick={() => updateHandler}></button>
             </div>
           ))}
           <div className="nav-button">
