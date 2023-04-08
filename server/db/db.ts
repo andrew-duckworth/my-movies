@@ -23,3 +23,7 @@ export function addUser(user: BigThree, db = connection): Promise<BigThree[]> {
 export function deleteUser(id: number, db = connection): Promise<number> {
   return db('bigthree').del().where('id', id)
 }
+
+export function updateUser(user: BigThree, db = connection): Promise<number> {
+  return db('bigthree').update(user).where('id', user.id)
+}
