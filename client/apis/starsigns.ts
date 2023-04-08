@@ -22,3 +22,10 @@ export function deleteAUser(id: number) {
     .delete(`/api/v1/bigthree/delete/${id}`)
     .then((dltdUser) => dltdUser.body)
 }
+
+export function updateAUser(user: BigThree) {
+  return request
+    .patch(`/api/v1/bigthree/${user.id}`)
+    .send(user)
+    .then((res) => res.body)
+}
