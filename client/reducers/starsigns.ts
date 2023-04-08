@@ -1,14 +1,14 @@
-export type UserAction = { type: string; payload: Starsign }
-import { RECEIVE_SIGNS } from '../actions/zodiac'
-import { Starsign } from '../../common/Starsign'
+import { UserAction } from '../actions/zodiac'
+import * as Models from '../../common/Starsign'
 
-const initialState = [] as Starsign[]
+const initialState = [] as Models.Starsign[]
 
-export default function starsigns(state = initialState, action: UserAction) {
-  const { type, payload } = action
-
+export default function starsigns(
+  state = initialState,
+  { type, payload }: UserAction
+): Models.Starsign[] {
   switch (type) {
-    case RECEIVE_SIGNS:
+    case 'RECEIVE_SIGNS':
       return payload
     default:
       return state

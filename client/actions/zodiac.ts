@@ -1,4 +1,4 @@
-import { Starsign, BigThree, BigThreeData } from '../../common/Starsign'
+import * as Models from '../../common/Starsign'
 import { addAUser, deleteAUser, grabSigns, grabUsers } from '../apis/starsigns'
 import type { ThunkAction } from '../store'
 
@@ -7,30 +7,36 @@ export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const ADD_ONE_USER = 'ADD_ONE_USER'
 export const DEL_ONE_USER = 'DEL_ONE_USER'
 
+export type UserAction =
+  | { type: typeof RECEIVE_SIGNS; payload: Models.Starsign[] }
+  | { type: typeof RECEIVE_USERS; payload: Models.BigThree[] }
+  | { type: typeof ADD_ONE_USER; payload: Models.BigThree }
+  | { type: typeof DEL_ONE_USER; payload: number }
+
 // Simple Actions
 
-export function getSignsAction(signs: Starsign[]) {
+export function getSignsAction(signs: Models.Starsign[]): UserAction {
   return {
     type: RECEIVE_SIGNS,
     payload: signs,
   }
 }
 
-export function getUsersAction(users: BigThree[]) {
+export function getUsersAction(users: Models.BigThree[]): UserAction {
   return {
     type: RECEIVE_USERS,
     payload: users,
   }
 }
 
-export function addOneUser(user: BigThree) {
+export function addOneUser(user: Models.BigThree): UserAction {
   return {
     type: ADD_ONE_USER,
     payload: user,
   }
 }
 
-export function delOneUser(id: number) {
+export function delOneUser(id: number): UserAction {
   return {
     type: DEL_ONE_USER,
     payload: id,
@@ -40,8 +46,8 @@ export function delOneUser(id: number) {
 // Thunk Actions
 
 export function getSignsThunk(): ThunkAction {
-  return (dispatch) => {
-    return grabSigns()
+  return async (dispatch) => {
+    grabSigns()
       .then((signs) => {
         dispatch(getSignsAction(signs))
       })
@@ -52,8 +58,8 @@ export function getSignsThunk(): ThunkAction {
 }
 
 export function getUsersThunk(): ThunkAction {
-  return (dispatch) => {
-    return grabUsers()
+  return async (dispatch) => {
+    grabUsers()
       .then((users) => {
         dispatch(getUsersAction(users))
       })
@@ -63,9 +69,9 @@ export function getUsersThunk(): ThunkAction {
   }
 }
 
-export function addOneUserThunk(newUser: BigThreeData): ThunkAction {
-  return (dispatch) => {
-    return addAUser(newUser)
+export function addOneUserThunk(newUser: Models.BigThreeData): ThunkAction {
+  return async (dispatch) => {
+    addAUser(newUser)
       .then((user) => {
         dispatch(addOneUser(user))
       })
@@ -74,8 +80,8 @@ export function addOneUserThunk(newUser: BigThreeData): ThunkAction {
 }
 
 export function delOneUserThunk(id: number): ThunkAction {
-  return (dispatch) => {
-    return deleteAUser(id)
+  return async (dispatch) => {
+    deleteAUser(id)
       .then(() => {
         dispatch(delOneUser(id))
       })

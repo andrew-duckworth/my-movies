@@ -1,18 +1,18 @@
-export type UserAction = { type: string; payload: BigThree }
-import { ADD_ONE_USER, RECEIVE_USERS, DEL_ONE_USER } from '../actions/zodiac'
-import { BigThree, BigThreeData } from '../../common/Starsign'
+import { UserAction } from '../actions/zodiac'
+import * as Models from '../../common/Starsign'
 
-const initialState = [] as BigThree[]
+const initialState = [] as Models.BigThree[]
 
-export default function bigthree(state = initialState, action: UserAction) {
-  const { type, payload } = action
-
+export default function bigthree(
+  state = initialState,
+  { type, payload }: UserAction
+): Models.BigThree[] {
   switch (type) {
-    case RECEIVE_USERS:
+    case 'RECEIVE_USERS':
       return payload
-    case ADD_ONE_USER:
+    case 'ADD_ONE_USER':
       return [...state, payload]
-    case DEL_ONE_USER:
+    case 'DEL_ONE_USER':
       return state.filter((user) => user.id !== payload)
     default:
       return state
