@@ -1,16 +1,16 @@
-import { FestAction, RECEIVE_FESTS } from '../actions/musicFestival'
+import { FestAction, RECEIVE_FESTS, ADD_FEST } from '../actions/musicFestival'
+import { MusicFestivalData } from '../../common/musicFestivalsTypes'
 
-const initialState = [
-  { name: 'Jimbo', country: 'Magicland', date: '01 April' },
-  { name: 'Fartrell Cluggins', country: 'New Yoooorkkk', date: '29 Feb' },
-]
+const initialState = [] as MusicFestivalData[]
 
 function reducer(state = initialState, action: FestAction): object {
   const { type, payload } = action
 
   switch (type) {
-    case 'RECEIVE_FEST':
+    case RECEIVE_FESTS:
       return payload
+    case ADD_FEST:
+      return [...state, payload]
     default:
       return state
   }
