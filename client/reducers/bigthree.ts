@@ -12,6 +12,8 @@ export default function bigthree(state = initialState, action: UserAction) {
       return payload
     case ADD_ONE_USER:
       return [...state, payload]
+    case DEL_ONE_USER:
+      return state.filter((user) => user.id !== payload)
     default:
       return state
   }
