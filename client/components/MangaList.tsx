@@ -13,7 +13,7 @@ function MangaList() {
 
   const allMangas = useAppSelector((state) => state.mangaReducer)
   return (
-    <div>
+    <div className="card-container">
       {allMangas.map((manga) => (
         <Manga
           key={manga.id}
