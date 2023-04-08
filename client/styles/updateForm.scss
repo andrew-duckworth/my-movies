@@ -12,7 +12,8 @@
   
   .form-update{
   position: relative;
-  width: 32vw;
+  width: 50%;
+  padding: 0 2em;
   margin: 10% auto;
   
   display: flex;
@@ -24,40 +25,17 @@
 
   background-color: rgb(244, 244, 244);
   border-radius: 20px;
-  border: 2px solid rgba(0, 0, 0, 0.05);
   box-shadow: rgba(17, 17, 26, 0.05) 0px 0px 16px;
 
 
 
-
-    h1  {
-        width: 100%;
-        font-size: 45px;
-        word-spacing: -0.08em;
-        margin-top: 0;
-        margin-bottom: 20px;
-
-        @media (max-width:400px){
-          font-size: 2rem;
-         }
-      
-    }
-
     form {
-      width: 400px; // default: 400px
+      width: 100%; // default: 400px
       display:flex;
       justify-content: center;
       flex-direction: column;
       margin:2rem;
       gap: 12px;
-
-      @media (max-width:700px){
-        width: 400px;
-       }
-
-      @media (max-width:400px){
-        width: 200px;
-       }
 
 
       label{

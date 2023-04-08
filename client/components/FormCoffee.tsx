@@ -15,7 +15,7 @@ function AddMethodForm() {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setMethods({ ...coffeeMethod, [e.target.id]: e.target.value })
+    setMethods({ ...coffeeMethod, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = (e: FormEvent) => {
@@ -24,7 +24,7 @@ function AddMethodForm() {
       .then(() => {
         setTimeout(() => {
           dispatch(fetchSetCoffee())
-        }, 1000)
+        }, 1500)
       })
       .catch((err) => err.message)
     setMethods({ name: '', url: '', selftext: '' } as CoffeeData)
@@ -37,7 +37,6 @@ function AddMethodForm() {
         <label htmlFor="name">Method Name</label>
         <input
           name="name"
-          id="name"
           type="text"
           value={coffeeMethod.name}
           onChange={handleChange}
@@ -47,7 +46,6 @@ function AddMethodForm() {
         <label htmlFor="url">Image Url </label>
         <input
           name="url"
-          id="url"
           type="text"
           value={coffeeMethod.url}
           onChange={handleChange}
@@ -57,7 +55,6 @@ function AddMethodForm() {
         <label htmlFor="selftext">Short Description </label>
         <textarea
           name="selftext"
-          id="selftext"
           value={coffeeMethod.selftext}
           className="text-input"
           onChange={handleChange}
