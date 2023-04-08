@@ -22,4 +22,15 @@ router.post('/', (req, res) => {
     .catch((err) => console.log(err.essage))
 })
 
+router.delete('/delete/:id/', (req, res) => {
+  const user = Number(req.params.id)
+  db.deleteUser(user)
+    .then((dltdUser) => {
+      res.json(dltdUser)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+})
+
 export default router
