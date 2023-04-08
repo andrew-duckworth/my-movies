@@ -16,3 +16,9 @@ export function addAUser(user: BigThreeData) {
     .then((res) => res.body)
     .catch((err) => console.log('api', err.message))
 }
+
+export function deleteAUser(id: number) {
+  return request
+    .delete(`/api/v1/bigthree/delete/${id}`)
+    .then((dltdUser) => dltdUser.body)
+}
