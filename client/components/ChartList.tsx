@@ -2,15 +2,23 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { BigThree } from '../../common/Starsign'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
-import { getUsersThunk } from '../actions/zodiac'
+import { delOneUserThunk, getUsersThunk } from '../actions/zodiac'
 
-function ChartList() {
+interface Props {
+  singleUser: BigThree
+}
+
+function ChartList({ singleUser }: Props) {
   const dispatch = useAppDispatch()
   const chartList = useAppSelector((state) => state.bigthree as BigThree[])
 
   useEffect(() => {
     dispatch(getUsersThunk())
   }, [dispatch])
+
+  const deleteHandler = () => {
+    dispatch(delOneUserThunk(singleUser.id))
+  }
 
   return (
     <section>
@@ -40,6 +48,8 @@ function ChartList() {
                 <h3>Rising: </h3>
                 <p>{user.rising}</p>
               </div>
+              <p>What does this mean?</p>
+              <button onClick={deleteHandler}>Delete</button>
             </div>
           ))}
           <div className="nav-button">
