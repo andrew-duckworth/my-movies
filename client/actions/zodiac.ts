@@ -1,17 +1,25 @@
 import * as Models from '../../common/Starsign'
-import { addAUser, deleteAUser, grabSigns, grabUsers } from '../apis/starsigns'
+import {
+  addAUser,
+  deleteAUser,
+  grabSigns,
+  grabUsers,
+  updateAUser,
+} from '../apis/starsigns'
 import type { ThunkAction } from '../store'
 
 export const RECEIVE_SIGNS = 'RECEIVE_SIGNS'
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const ADD_ONE_USER = 'ADD_ONE_USER'
 export const DEL_ONE_USER = 'DEL_ONE_USER'
+export const UPD_ONE_USER = 'UPD_ONE_USER'
 
 export type UserAction =
   | { type: typeof RECEIVE_SIGNS; payload: Models.Starsign[] }
   | { type: typeof RECEIVE_USERS; payload: Models.BigThree[] }
   | { type: typeof ADD_ONE_USER; payload: Models.BigThree }
   | { type: typeof DEL_ONE_USER; payload: number }
+  | { type: typeof UPD_ONE_USER; payload: Models.BigThree }
 
 // Simple Actions
 
@@ -40,6 +48,13 @@ export function delOneUser(id: number): UserAction {
   return {
     type: DEL_ONE_USER,
     payload: id,
+  }
+}
+
+export function updOneUser(user: Models.BigThree): UserAction {
+  return {
+    type: UPD_ONE_USER,
+    payload: user,
   }
 }
 
@@ -84,6 +99,16 @@ export function delOneUserThunk(id: number): ThunkAction {
     deleteAUser(id)
       .then(() => {
         dispatch(delOneUser(id))
+      })
+      .catch((err) => console.log(err.message))
+  }
+}
+
+export function updOneUserThunk(user: Models.BigThree): ThunkAction {
+  return async (dispatch) => {
+    updateAUser(user)
+      .then((user) => {
+        dispatch(updOneUser(user))
       })
       .catch((err) => console.log(err.message))
   }
