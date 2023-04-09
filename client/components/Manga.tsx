@@ -1,5 +1,4 @@
 interface Props {
-  key?: number
   title: string
   books: string
   author: string
@@ -7,19 +6,16 @@ interface Props {
   imageSrc: string
 }
 
-function Manga({ key, title, books, author, location, imageSrc }: Props) {
-  const url = key ? '/manga/' + key.toString() : '/'
+function Manga({ title, books, author, location, imageSrc }: Props) {
   return (
-    <div className="card front">
-      <a href={url}>
-        <h2>
-          {title} - {books}
-        </h2>
-        <p>Author: {author}</p>
-        <p>Collection currently located at: {location}</p>
-        <img className="img-circle" src={imageSrc} alt="" />
-      </a>
-    </div>
+    <a href="/">
+      <h2>
+        {title} - {books}
+      </h2>
+      <p>Author: {author}</p>
+      <p>Collection currently located at: {location}</p>
+      <img className="img-circle" src={imageSrc} alt="" />
+    </a>
   )
 }
 

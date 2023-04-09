@@ -17,7 +17,7 @@ function App() {
         <Route path="*" element={<FourPage />} />
         <Route path="/" element={<MangaList />} />
         <Route path="/manga/add" element={<AddManga />} />
-        {/* <Route path="/manga/:id" element={<EditManga />} /> */}
+        {/* <Route path="/manga/edit" element={<EditManga />} /> */}
       </Routes>
     </div>
   )
