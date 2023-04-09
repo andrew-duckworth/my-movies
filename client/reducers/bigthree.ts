@@ -15,7 +15,12 @@ export default function bigthree(
     case 'DEL_ONE_USER':
       return state.filter((user) => user.id !== payload)
     case 'UPD_ONE_USER':
-      return state.map((user) => (user.id === payload.id ? payload : user))
+      return state.map((user) => {
+        if (user.id === payload.id) {
+          return { ...user, ...payload }
+        }
+        return user
+      })
     default:
       return state
   }

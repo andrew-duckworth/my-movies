@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as Models from '../../common/Starsign'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import {
@@ -10,7 +10,6 @@ import {
 
 function ChartList() {
   const dispatch = useAppDispatch()
-  const navigate = useNavigate()
   const chartList = useAppSelector(
     (state) => state.bigthree as Models.BigThree[]
   )
@@ -39,15 +38,8 @@ function ChartList() {
 
   const submitHandler = (evt: FormEvent) => {
     evt.preventDefault()
-    console.log(editData)
     dispatch(updOneUserThunk(editData))
-      .then(() => {
-        dispatch(getUsersThunk())
-        navigate('/')
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
+    setEditForm(!editForm)
   }
 
   useEffect(() => {

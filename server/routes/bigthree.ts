@@ -33,7 +33,7 @@ router.delete('/delete/:id/', (req, res) => {
     })
 })
 
-router.patch('/update/:id/', (req, res) => {
+router.patch('/update/', (req, res) => {
   db.updateUser(req.body)
     .then((user) => {
       res.json(user)

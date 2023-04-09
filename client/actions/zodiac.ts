@@ -107,7 +107,7 @@ export function delOneUserThunk(id: number): ThunkAction {
 export function updOneUserThunk(user: Models.BigThree): ThunkAction {
   return async (dispatch) => {
     updateAUser(user)
-      .then((user) => {
+      .then(() => {
         dispatch(updOneUser(user))
       })
       .catch((err) => console.log(err.message))
