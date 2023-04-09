@@ -17,14 +17,14 @@ function MusicFestivals() {
 
   return (
     <>
-      <h1>Here is where the music fests be at:</h1>
+      <h1>Oh the Festivals I&apos;ll Go:</h1>
 
       {festsFromStore.map((singleFest: MusicFestivalDetails, index: number) => {
         return (
           <div key={singleFest.id ?? index}>
             <h2>{singleFest.name}</h2>
             <p>
-              {singleFest.country} - {singleFest.date} - {singleFest.id}
+              {singleFest.country} - {singleFest.date}
             </p>
           </div>
         )
