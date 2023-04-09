@@ -11,7 +11,10 @@ function Nav() {
         {pathname === '/' ? renderHomeLink() : renderHomeLink()}
       </div>
       <div className="nav-button">
-        <Link to="/chart">Chart</Link>
+        <Link to="/chart">Charts</Link>
+      </div>
+      <div className="nav-button">
+        <Link to="info">Info</Link>
       </div>
     </nav>
   )

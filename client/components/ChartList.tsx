@@ -49,13 +49,7 @@ function ChartList() {
   return (
     <section>
       <div className="description">
-        <h2>What is a big three?</h2>
-        <h3>
-          A person&apos;s big three refers to their sun, moon, and rising
-          placements in their natal chart. These are general indicators for a
-          person&apos;s personality, without tyring to understand their entire
-          chart.
-        </h3>
+        <h2>Big Three Signs</h2>
       </div>
       <div>
         {editForm ? (
@@ -105,9 +99,6 @@ function ChartList() {
                 <div className="text-item">
                   <h3>Rising: </h3>
                   <p>{user.rising}</p>
-                </div>
-                <div className="button">
-                  <Link to="/info">What does this mean?</Link>
                 </div>
                 <button onClick={() => deleteHandler(user.id)}>Delete</button>
                 <button onClick={() => updateButtonHandler(user)}>
