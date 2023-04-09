@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom'
 function Nav() {
   return (
     <>
-      <button onClick={() => (location.href = '/manga/add')}>Add Manga</button>
+      <nav>
+        <button onClick={() => (location.href = '/manga/add')}>
+          Add Manga
+        </button>
+      </nav>
+
       {/* <ul>
         <Link to="/">
           <li>Home</li>

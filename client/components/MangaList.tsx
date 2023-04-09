@@ -14,7 +14,11 @@ function MangaList() {
   const allMangas = useAppSelector((state) => state.mangaReducer)
   return (
     <>
-      <button onClick={() => (location.href = '/manga/add')}>Add Manga</button>
+      <div className="card-container">
+        <button onClick={() => (location.href = '/manga/add')}>
+          Add Manga
+        </button>
+      </div>
       <div className="card-container">
         {allMangas.map((manga) => (
           <Manga
