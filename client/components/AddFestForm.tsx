@@ -38,7 +38,7 @@ export default function AddFest() {
           type="text"
           value={fest.country}
           onChange={handleChange}
-          placeholder="ex:'https://images....'"
+          placeholder="eg Iceland"
           required
         />
         <label htmlFor="date">Date </label>
@@ -47,6 +47,7 @@ export default function AddFest() {
           type="text"
           value={fest.date}
           onChange={handleChange}
+          placeholder="DD MONTH"
           required
         />
         <button type="submit">Submit</button>

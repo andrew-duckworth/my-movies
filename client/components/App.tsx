@@ -1,4 +1,5 @@
 import { useAppSelector } from '../hooks/redux'
+import AddFest from './AddFestForm'
 import MusicFestivals from './MusicFestsComp'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <header className="header"></header>
       <section className="main"></section>
       <MusicFestivals />
+      <AddFest />
     </>
   )
 }

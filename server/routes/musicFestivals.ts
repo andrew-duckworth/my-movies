@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import express from 'express'
-import { getAllFestivals } from '../db/musicFestivalsDb'
+import { addFestivalDb, getAllFestivals } from '../db/musicFestivalsDb'
 
 const router = Router()
 
@@ -12,6 +12,14 @@ router.get('/', (req, res) => {
       return res.json(festivals)
     })
     .catch((err) => res.status(500).send(err.message))
+})
+
+router.post('/add', (req, res) => {
+  addFestivalDb(req.body)
+    .then(() => {
+      return res.end()
+    })
+    .catch((err: Error) => res.status(500).send(err.message))
 })
 
 export default router
