@@ -34,14 +34,14 @@ export function updateMangaApi(id: string, changedManga: Manga) {
     .catch(errorHandler('PATCH', '/api/v1/:id'))
 }
 
-export function deleteMangaApi(id: number): Promise<unknown> {
+export function deleteMangaApi(id: string): Promise<unknown> {
   return request
     .del(`/api/v1/${id}`)
     .then((res) => res)
     .catch(errorHandler('DELETE', '/api/v1/:id'))
 }
 
-export function getMangaByIdApi(id: number): Promise<Manga> {
+export function getMangaByIdApi(id: string): Promise<Manga> {
   return request
     .get(`/api/v1/${id}`)
     .then((res) => {

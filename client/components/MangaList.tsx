@@ -23,22 +23,25 @@ function MangaList() {
       <div className="card-container">
         {allMangas.map((manga) => (
           <div className="card front" key={manga.id}>
-            <Manga
-              // id={manga.id}
-              title={manga.title}
-              books={manga.books}
-              author={manga.author}
-              location={manga.location}
-              imageSrc={manga.imageSrc}
-            />
-            <EditManga
-              id={manga.id}
-              title={manga.title}
-              books={manga.books}
-              author={manga.author}
-              location={manga.location}
-              imageSrc={manga.imageSrc}
-            />
+            {manga.editable ? (
+              <EditManga
+                id={manga.id}
+                title={manga.title}
+                books={manga.books}
+                author={manga.author}
+                location={manga.location}
+                imageSrc={manga.imageSrc}
+              />
+            ) : (
+              <Manga
+                // id={manga.id}
+                title={manga.title}
+                books={manga.books}
+                author={manga.author}
+                location={manga.location}
+                imageSrc={manga.imageSrc}
+              />
+            )}
           </div>
         ))}
       </div>
