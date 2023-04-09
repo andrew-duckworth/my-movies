@@ -7,3 +7,5 @@ export function getAllFestivals(
 ): Promise<MusicFestivalDetails[]> {
   return db('musicFestivals').select('*')
 }
+
+// TO DO add new musicFestFunc

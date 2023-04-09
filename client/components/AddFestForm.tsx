@@ -1,47 +1,52 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useAppDispatch } from '../hooks/redux'
-import { MusicFestivalData } from '../../common/musicFestivalsTypes'
-import { ADD_FEST } from '../actions/musicFestival'
+import {
+  MusicFestivalData,
+  MusicFestivalDetails,
+} from '../../common/musicFestivalsTypes'
+import { addNewMusicFest } from '../actions/musicFestival'
 
 export default function AddFest() {
   const dispatch = useAppDispatch()
-  const [fest, setFest] = useState()
+  const [fest, setFest] = useState<MusicFestivalDetails>({})
 
-  const handleChange = (evt: ChangeEvent<HTMLImageElement>) => {
+  const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     setFest({ ...fest, [evt.target.name]: evt.target.value })
   }
 
+  const handleSubmit = () => {
+    return dispatch(addNewMusicFest(fest as MusicFestivalData))
+  }
   // const for handle submit
 
   return (
     <div className="form-add">
       <form onSubmit={handleSubmit}>
-        <h1>Share with us a new brewing technique</h1>
-        <label htmlFor="name">Method Name</label>
+        <h1>Add a new festival</h1>
+        <label htmlFor="name">Festival Name</label>
         <input
           name="name"
           type="text"
-          value={coffeeMethod.name}
+          value={fest.name}
           onChange={handleChange}
-          placeholder="Your badass brew method"
+          placeholder="Your fest here"
           required
         />
-        <label htmlFor="url">Image Url </label>
+        <label htmlFor="country">Country </label>
         <input
-          name="url"
+          name="country"
           type="text"
-          value={coffeeMethod.url}
+          value={fest.country}
           onChange={handleChange}
           placeholder="ex:'https://images....'"
           required
         />
-        <label htmlFor="selftext">Short Description </label>
-        <textarea
-          name="selftext"
-          value={coffeeMethod.selftext}
-          className="text-input"
+        <label htmlFor="date">Date </label>
+        <input
+          name="date"
+          type="text"
+          value={fest.date}
           onChange={handleChange}
-          placeholder="Max 20 words"
           required
         />
         <button type="submit">Submit</button>
@@ -49,3 +54,9 @@ export default function AddFest() {
     </div>
   )
 }
+
+// formData life cycle:
+
+// Starts in component. HTML form, useState tracking this
+
+// on submit, function called

@@ -14,3 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
     </Router>
   )
 })
+
+//Start of data flow for front end

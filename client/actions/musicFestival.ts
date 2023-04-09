@@ -3,11 +3,10 @@ import {
   MusicFestivalDetails,
   MusicFestivalData,
 } from '../../common/musicFestivalsTypes'
-import { fetchFest, addFest, deleteFest } from '../apis/musicFestivalsApi'
+import { fetchFest, addFest } from '../apis/musicFestivalsApi'
 
 export const REQUEST_FESTS = 'REQUEST_FEST'
 export const RECEIVE_FESTS = 'RECEIVE_FEST'
-export const ADD_FEST = 'ADD_FEST'
 export const DELETE_FEST = 'DELETE_FEST'
 
 // Action types
@@ -15,7 +14,6 @@ export const DELETE_FEST = 'DELETE_FEST'
 export type FestAction =
   | { type: typeof REQUEST_FESTS; payload: null }
   | { type: typeof RECEIVE_FESTS; payload: MusicFestivalDetails[] }
-  | { type: typeof ADD_FEST; payload: MusicFestivalData }
   | { type: typeof DELETE_FEST; payload: number }
 
 // Action creators
@@ -35,13 +33,6 @@ export function receiveMusicFests(fests: MusicFestivalData[]): FestAction {
   return {
     type: RECEIVE_FESTS,
     payload: fests,
-  }
-}
-
-export function addMusicFest(fest: MusicFestivalData): FestAction {
-  return {
-    type: ADD_FEST,
-    payload: fest,
   }
 }
 
@@ -71,13 +62,23 @@ export function fetchMusicFests(): ThunkAction {
   }
 }
 
-export function deleteMusicFestThunk(id: number): ThunkAction {
+export function addNewMusicFest(fest: MusicFestivalData): ThunkAction {
   return (dispatch) => {
-    dispatch(requestMusicFests())
-    return deleteFest(id)
+    return addFest(fest)
       .then(() => {
-        dispatch(deleteMusicFest(id))
+        dispatch(fetchMusicFests())
       })
       .catch((err: Error) => console.log(err.message))
   }
 }
+
+// export function deleteMusicFestThunk(id: number): ThunkAction {
+//   return (dispatch) => {
+//     dispatch(requestMusicFests())
+//     return deleteFest(id)
+//       .then(() => {
+//         dispatch(deleteMusicFest(id))
+//       })
+//       .catch((err: Error) => console.log(err.message))
+//   }
+// }
