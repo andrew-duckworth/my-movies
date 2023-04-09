@@ -72,17 +72,6 @@ export default function AddAMember() {
         />
         <br></br>
         <br></br>
-        <label htmlFor="addImage">Image link: </label>
-        <br></br>
-        <input
-          id="addImage"
-          name="image"
-          type="text"
-          value={formData.image}
-          onChange={onChange}
-        />
-        <br></br>
-        <br></br>
         <button>Submit new member</button>
         </div>
       </form>
