@@ -12,6 +12,10 @@ body {
   font-family: 'Spirax', cursive;
 }
 
+header {
+  font-size: 3em;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -37,7 +41,7 @@ body {
   background-color: white;
 }
 
-.title,.header {
+.title,.header, h2, h3 {
   text-align: center;
 }
 

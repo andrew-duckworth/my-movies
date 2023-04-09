@@ -4,6 +4,7 @@ import { addManga } from '../actions/manga'
 import { useEffect } from 'react'
 import { addMangaApi } from '../apis/manga'
 import { useAppDispatch } from '../hooks/redux'
+// import { GridForm, ColOne, ColTwoText } from './Styles'
 
 function AddManga() {
   const dispatch = useAppDispatch()

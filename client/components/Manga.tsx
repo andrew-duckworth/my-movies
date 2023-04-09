@@ -17,7 +17,7 @@ function Manga({ key, title, books, author, location, imageSrc }: Props) {
         </h2>
         <p>Author: {author}</p>
         <p>Collection currently located at: {location}</p>
-        <img src={imageSrc} alt="" />
+        <img className="img-circle" src={imageSrc} alt="" />
       </a>
     </div>
   )
