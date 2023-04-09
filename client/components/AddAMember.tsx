@@ -36,7 +36,8 @@ export default function AddAMember() {
     <>
     <div>
       <form className="formWrapper" onSubmit={handleSubmit}>
-        <h3>Add a new family member....</h3>
+        <div>
+        <h2>Add a new family member....</h2>
         <label htmlFor="addName">Name: </label>
         <br></br>
         <input
@@ -83,6 +84,7 @@ export default function AddAMember() {
         <br></br>
         <br></br>
         <button>Submit new member</button>
+        </div>
       </form>
       </div>
     </>

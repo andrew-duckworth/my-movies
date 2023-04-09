@@ -8,7 +8,6 @@ exports.up = function (knex) {
     table.string('name')
     table.string('nicknames')
     table.string('position')
-    table.string('image')
   })
 }
 
