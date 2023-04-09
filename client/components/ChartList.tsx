@@ -1,20 +1,54 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import * as Models from '../../common/Starsign'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
-import { delOneUserThunk, getUsersThunk } from '../actions/zodiac'
+import {
+  delOneUserThunk,
+  getUsersThunk,
+  updOneUserThunk,
+} from '../actions/zodiac'
 
 function ChartList() {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const chartList = useAppSelector(
     (state) => state.bigthree as Models.BigThree[]
   )
+  const [editForm, setEditForm] = useState(false)
+  const [editData, setEditData] = useState({
+    sun: '',
+    moon: '',
+    rising: '',
+  } as Models.BigThree)
 
   const deleteHandler = (id: number) => {
     dispatch(delOneUserThunk(id))
   }
 
-  const updateHandler = () => {}
+  const updateButtonHandler = (user: Models.BigThree) => {
+    setEditData(user)
+    setEditForm(!editForm)
+  }
+
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setEditData({
+      ...editData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const submitHandler = (evt: FormEvent) => {
+    evt.preventDefault()
+    console.log(editData)
+    dispatch(updOneUserThunk(editData))
+      .then(() => {
+        dispatch(getUsersThunk())
+        navigate('/')
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }
 
   useEffect(() => {
     dispatch(getUsersThunk())
@@ -33,29 +67,68 @@ function ChartList() {
       </div>
       <div>
         <div className="users">
-          {chartList.map((user) => (
-            <div className="users__each" key={user.id}>
-              <h2>{user.name}</h2>
+          {editForm ? (
+            <form onSubmit={submitHandler}>
               <div className="text-item">
-                <h3>Sun: </h3>
-                <p>{user.sun}</p>
+                <label htmlFor="newSun">Sun Sign: </label>
+                <input
+                  type="text"
+                  value={editData.sun}
+                  name="sun"
+                  onChange={changeHandler}
+                />
               </div>
               <div className="text-item">
-                <h3>Moon: </h3>
-                <p>{user.moon}</p>
+                <label htmlFor="newMoon">Moon Sign: </label>
+                <input
+                  type="text"
+                  value={editData.moon}
+                  name="moon"
+                  onChange={changeHandler}
+                />
               </div>
               <div className="text-item">
-                <h3>Rising: </h3>
-                <p>{user.rising}</p>
+                <label htmlFor="newRising">Rising Sign: </label>
+                <input
+                  type="text"
+                  value={editData.rising}
+                  name="rising"
+                  onChange={changeHandler}
+                />
               </div>
-              <p>What does this mean?</p>
-              <button onClick={() => deleteHandler(user.id)}>Delete</button>
-              <button onClick={() => updateHandler}></button>
+              <button type="submit">Submit</button>
+            </form>
+          ) : (
+            <div>
+              {chartList.map((user) => (
+                <div className="users__each" key={user.id}>
+                  <h2>{user.name}</h2>
+                  <div className="text-item">
+                    <h3>Sun: </h3>
+                    <p>{user.sun}</p>
+                  </div>
+                  <div className="text-item">
+                    <h3>Moon: </h3>
+                    <p>{user.moon}</p>
+                  </div>
+                  <div className="text-item">
+                    <h3>Rising: </h3>
+                    <p>{user.rising}</p>
+                  </div>
+                  <div className="button">
+                    <Link to="/info">What does this mean?</Link>
+                  </div>
+                  <button onClick={() => deleteHandler(user.id)}>Delete</button>
+                  <button onClick={() => updateButtonHandler(user)}>
+                    Update
+                  </button>
+                </div>
+              ))}
+              <div className="nav-button">
+                <Link to="/add">Add Yours</Link>
+              </div>
             </div>
-          ))}
-          <div className="nav-button">
-            <Link to="/add">Add Yours</Link>
-          </div>
+          )}
         </div>
       </div>
     </section>
