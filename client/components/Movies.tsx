@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react'
 import { runDeleteMovie } from '../actions/movies'
 import * as Types from '../models/movies'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
+// import { useNavigate } from 'react-router-dom'
+
 export function Movies() {
-  // function gotMovies() {
   const [movies, setMovies] = useState([] as Types.Movie[])
+  // const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const movieList = useAppSelector((state) => state.moobies)
-  // const [formdata, setFormData] = useState([] as Models.Widget[])
 
   useEffect(() => {
     getMovies()
@@ -16,38 +16,42 @@ export function Movies() {
       .catch((err) => alert(err.message))
   }, [])
 
-  const handleContextMenu = (id, event) => {
-    // dont know why these are angry but it works :)
-    event.preventDefault()
-    dispatch(runDeleteMovie(id)) // const id = event.target.getAttribute('movieId')
-    console.log('You have right-clicked! on!', id)
-    console.log(movieList)
+  const handleDelete = (id) => {
+    // Dispatch the delete action to delete the movie from the server-side
+    dispatch(runDeleteMovie(id))
+      .then(() => {
+        // If the delete action is successful, update the state to remove the deleted movie
+        setMovies(movies.filter((movie) => movie.id !== id))
+      })
+      .catch((err) => alert(err.message))
   }
 
   return (
     <>
       <div>
-        <h1>Moooovies use right click to delete then refresh </h1>
-        {/* <button onClick={refreshAll}>Get All Widgets</button> */}
-        {/* <button onClick={handleAdd}>add Widget</button> */}
+        <h1>Moooovies</h1>
         <div className="poster-img">
           {movies.map((movie) => (
-            <>
+            <div className="movie-card" key={movie.id}>
               <img
                 className="poster"
                 src={`${movie.cover}`}
                 alt={movie.title}
-                onContextMenu={(event) => handleContextMenu(movie.id, event)}
               />
-
-              {/* <p className="title" key={movie.id}>
-                {movie.title} | | {movie.director}
-              </p> */}
-            </>
+              <div className="movie-details">
+                <h2>{movie.title}</h2>
+                <p>{movie.director}</p>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(movie.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           ))}
         </div>
       </div>
     </>
   )
-  // }
 }
