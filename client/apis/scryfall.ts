@@ -1,8 +1,7 @@
 import request from 'superagent'
-import { throttle } from 'lodash';
+import { throttle } from 'lodash'
 
-@throttle_async(100)
-export function getCompletions(name: string): Promise<string[]> {
+function rawGetCompletions(name: string): Promise<string[]> {
   return request
     .get(
       `https://api.scryfall.com/cards/autocomplete?q=${encodeURIComponent(
@@ -12,8 +11,7 @@ export function getCompletions(name: string): Promise<string[]> {
     .then((req) => req.body.data)
 }
 
-@throttle_async(100)
-export function getCardArt(
+function rawGetCardArt(
   name: string
 ): Promise<{ image: string; img_attribution: string }> {
   return request
@@ -35,7 +33,19 @@ function throttle_async<Args extends any[], Return>(wait: number) {
     const throttled = throttle(func, wait)
     return (...args: Args) => {
       const ret = throttled(...args)
-      return ret !== undefined ? ret : Promise.reject(Error('Throttled promise returned undefined'))
+      return ret !== undefined
+        ? ret
+        : (Promise.reject(
+            Error('Throttled promise returned undefined')
+          ) as Return)
     }
   }
 }
+
+export const getCompletions = throttle_async<[string], Promise<string[]>>(100)(
+  rawGetCompletions
+)
+export const getCardArt = throttle_async<
+  [string],
+  Promise<{ image: string; img_attribution: string }>
+>(500)(rawGetCardArt)
