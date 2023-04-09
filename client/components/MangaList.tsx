@@ -13,18 +13,21 @@ function MangaList() {
 
   const allMangas = useAppSelector((state) => state.mangaReducer)
   return (
-    <div className="card-container">
-      {allMangas.map((manga) => (
-        <Manga
-          key={manga.id}
-          title={manga.title}
-          books={manga.books}
-          author={manga.author}
-          location={manga.location}
-          imageSrc={manga.imageSrc}
-        />
-      ))}
-    </div>
+    <>
+      <button onClick={() => (location.href = '/manga/add')}>Add Manga</button>
+      <div className="card-container">
+        {allMangas.map((manga) => (
+          <Manga
+            key={manga.id}
+            title={manga.title}
+            books={manga.books}
+            author={manga.author}
+            location={manga.location}
+            imageSrc={manga.imageSrc}
+          />
+        ))}
+      </div>
+    </>
   )
 }
 

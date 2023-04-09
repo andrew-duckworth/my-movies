@@ -12,9 +12,9 @@ function Manga({ key, title, books, author, location, imageSrc }: Props) {
   return (
     <div className="card front">
       <a href={url}>
-        <h3>
+        <h2>
           {title} - {books}
-        </h3>
+        </h2>
         <p>Author: {author}</p>
         <p>Collection currently located at: {location}</p>
         <img src={imageSrc} alt="" />
