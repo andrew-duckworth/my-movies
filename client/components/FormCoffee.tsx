@@ -49,6 +49,7 @@ function AddMethodForm() {
           type="text"
           value={coffeeMethod.url}
           onChange={handleChange}
+          placeholder="ex:https://images...."
           required
         />
         <label htmlFor="selftext">Short Description </label>

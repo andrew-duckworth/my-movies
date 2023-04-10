@@ -70,7 +70,7 @@ export default function UpdateForm({ coffee, onClose }: Props) {
                 type="text"
                 value={updatedCoffee.url}
                 onChange={handleChange}
-                placeholder="ex:'https://images....'"
+                placeholder="ex:https://images...."
                 required
               />
               <label htmlFor="selftext">Short Description </label>
