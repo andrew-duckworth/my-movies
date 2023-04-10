@@ -4,7 +4,7 @@ import * as db from '../db/db'
 const router = express.Router()
 
 router.get('/details', (req, res) => {
-  db.getPlanetSign()
+  db.getChartJoin()
     .then((thing) => {
       res.json(thing)
     })
