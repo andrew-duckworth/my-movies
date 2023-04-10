@@ -6,6 +6,10 @@ export function getAllMoviesDB(db = connection): Promise<Movie[]> {
   return db('movies').select('*')
 }
 
+export function addMovieDB(movie: Movie, db = connection): Promise<Movie> {
+  return db('movies')
+}
+
 // export function getMovieDB(id: number, db = connection): Promise<Movie> {
 //   return db('movies').select('*').where('id', id)
 // }
