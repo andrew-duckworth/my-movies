@@ -51,6 +51,10 @@ function ChartList() {
       <div className="description">
         <h2>Big Three Signs</h2>
       </div>
+      <h3>
+        Here is where you can list your big three in your natal chart, and learn
+        about what it means for you. A few examples have been provided.
+      </h3>
       <div>
         {editForm ? (
           <form onSubmit={submitHandler}>

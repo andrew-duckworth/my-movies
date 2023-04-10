@@ -5,7 +5,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable('starsigns', function (table) {
     table.increments('id').primary()
-    table.string('sign')
+    table.string('name')
     table.string('dates')
     table.string('image')
   })
