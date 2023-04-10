@@ -6,19 +6,19 @@
   "main": "server/index.ts",
   "scripts": {
    
+    "build": "run-p build:client build:server",
+    "build:client": "npm run webpack -- --mode production",
+    "build:server": "npm run knex -- migrate:latest",
+    "start": "ts-node server/index.ts",
     "test": "jest",
-    "client:watch": "npm run webpack -- --watch",
     "test:watch": "jest --noStackTrace --watchAll",
     "dev": "run-p dev:client dev:server",
     "dev:client": "npm run webpack -- --watch",
     "dev:server": "nodemon server/index.ts",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "build": "run-p build:client build:server",
-    "build:client": "npm run webpack -- --mode production",
-    "build:server": "npm run knex -- migrate:latest",
-    "start": "node server"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+
   },
   "keywords": [
     "fullstack"
