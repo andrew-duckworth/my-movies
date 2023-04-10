@@ -21,29 +21,32 @@ function MangaList() {
         </button>
       </div>
       <div className="card-container">
-        {allMangas.map((manga) => (
-          <div className="card front" key={manga.id}>
-            {manga.edit ? (
-              <EditManga
-                id={manga.id}
-                title={manga.title}
-                books={manga.books}
-                author={manga.author}
-                location={manga.location}
-                imageSrc={manga.imageSrc}
-              />
-            ) : (
-              <Manga
-                id={manga.id}
-                title={manga.title}
-                books={manga.books}
-                author={manga.author}
-                location={manga.location}
-                imageSrc={manga.imageSrc}
-              />
-            )}
-          </div>
-        ))}
+        {allMangas.map((manga) => {
+          console.log(manga.edit)
+          return (
+            <div className="card front" key={manga.id}>
+              {manga.edit ? (
+                <EditManga
+                  id={manga.id}
+                  title={manga.title}
+                  books={manga.books}
+                  author={manga.author}
+                  location={manga.location}
+                  imageSrc={manga.imageSrc}
+                />
+              ) : (
+                <Manga
+                  id={manga.id}
+                  title={manga.title}
+                  books={manga.books}
+                  author={manga.author}
+                  location={manga.location}
+                  imageSrc={manga.imageSrc}
+                />
+              )}
+            </div>
+          )
+        })}
       </div>
     </>
   )

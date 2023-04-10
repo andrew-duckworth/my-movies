@@ -1,18 +1,18 @@
 import { Action } from '../actions/index'
 import { RECEIVE_MANGA } from '../actions/manga'
-import { Manga } from '../../common/manga'
+import { Manga, MangaEdit } from '../../common/manga'
 
-const initialState: Manga = {
+const initialState: MangaEdit = {
   id: 0,
   title: '',
   books: '',
   author: '',
   location: '',
   imageSrc: '',
-  editable: false,
+  edit: false,
 }
 
-function singleMangaReducer(state = initialState, action: Action): Manga {
+function singleMangaReducer(state = initialState, action: Action): MangaEdit {
   const { type, payload } = action
 
   switch (type) {

@@ -5,7 +5,6 @@ export interface Manga {
   author: string
   location: string
   imageSrc: string
-  editable: boolean
 }
 
 export interface Routemanga extends Manga {

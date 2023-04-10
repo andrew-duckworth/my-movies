@@ -10,7 +10,6 @@ exports.up = function (knex) {
     table.string('author')
     table.string('location')
     table.string('image_src')
-    table.boolean('editable').defaultTo(false)
   })
 }
 
