@@ -2,7 +2,7 @@ import type { ThunkAction } from '../store'
 import { Manga, MangaEdit } from '../../common/manga'
 
 import { getAllMangaApi, addMangaApi, getMangaByIdApi } from '../apis/manga'
-import { getMangaById } from '../../server/db/db'
+// import { getMangaById } from '../../server/db/db'
 
 export const REQUEST_ALL_MANGA = 'REQUEST_ALL_MANGA'
 export const RECEIVE_ALL_MANGA = 'RECEIVE_ALL_MANGA'

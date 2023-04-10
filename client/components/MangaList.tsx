@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from '../hooks/redux'
-import mangaReducer from '../reducers/manga'
+// import mangaReducer from '../reducers/manga'
 import { fetchAllManga } from '../actions/manga'
 import { useEffect, useState, FormEvent, ChangeEvent } from 'react'
 
@@ -22,7 +22,7 @@ function MangaList() {
       </div>
       <div className="card-container">
         {allMangas.map((manga) => {
-          console.log(manga.edit)
+          // console.log(manga.edit)
           return (
             <div className="card front" key={manga.id}>
               {manga.edit ? (

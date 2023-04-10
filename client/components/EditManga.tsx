@@ -1,9 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Manga } from '../../common/manga'
+// import { Manga } from '../../common/manga'
 import { updateManga, toggleEdit, deleteManga } from '../actions/manga'
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 import { updateMangaApi } from '../apis/manga'
 import { useAppDispatch } from '../hooks/redux'
+import { deleteMangaApi } from '../apis/manga'
 
 interface Props {
   id: number | undefined
@@ -38,7 +39,11 @@ function EditManga({ id, title, books, author, location, imageSrc }: Props) {
   }
 
   const handleDelete = () => {
-    dispatch(deleteManga(String(id)))
+    deleteMangaApi(String(id))
+      .then(() => {
+        dispatch(deleteManga(String(id)))
+      })
+      .catch((err) => console.log(err))
   }
 
   const handleClose = () => {
