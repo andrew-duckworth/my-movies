@@ -1,4 +1,4 @@
-import { getMovies, delMovie } from '../apis/apiClient'
+import { getMovies } from '../apis/apiClient'
 import { useEffect, useState } from 'react'
 import { runDeleteMovie } from '../actions/movies'
 import * as Types from '../models/movies'
@@ -16,7 +16,7 @@ export function Movies() {
       .catch((err) => alert(err.message))
   }, [])
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: number) => {
     // Dispatch the delete action to delete the movie from the server-side
     dispatch(runDeleteMovie(id))
       .then(() => {
@@ -45,7 +45,7 @@ export function Movies() {
                   className="delete-btn"
                   onClick={() => handleDelete(movie.id)}
                 >
-                  Delete
+                  X
                 </button>
               </div>
             </div>

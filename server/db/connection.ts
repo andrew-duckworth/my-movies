@@ -12,7 +12,7 @@ export function getMovies(db = connection): Promise<Movie[]> {
   return db('movies').select()
 }
 
-export function delMovie(id, db = connection) {
+export function delMovie(id: number, db = connection) {
   return db('movies').select().where('id', id).delete()
 }
 export default connection

@@ -1,11 +1,13 @@
 body {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   margin: 0;
   padding: 20px;
+  min-height: 100vh;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   background: rgb(14,52,60);
+  background: linear-gradient(156deg, rgba(0,29,38,1) 11%, rgba(68,61,74,1) 100%);
 }
 
 .poster {
