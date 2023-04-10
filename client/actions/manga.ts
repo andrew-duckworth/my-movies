@@ -46,7 +46,7 @@ export function requestSingleManga(id: string): MangaAction {
   }
 }
 
-export function receiveSingleManga(manga: Manga): MangaAction {
+export function receiveSingleManga(manga: MangaEdit): MangaAction {
   return {
     type: RECEIVE_MANGA,
     payload: manga,

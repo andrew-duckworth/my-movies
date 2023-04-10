@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { Manga } from '../../common/manga'
-import { updateManga } from '../actions/manga'
+import { updateManga, toggleEdit, deleteManga } from '../actions/manga'
 import { useEffect } from 'react'
 import { updateMangaApi } from '../apis/manga'
 import { useAppDispatch } from '../hooks/redux'
@@ -32,9 +32,17 @@ function EditManga({ id, title, books, author, location, imageSrc }: Props) {
         dispatch(updateManga(manga))
       })
       .then(() => {
-        location.href = '/'
+        dispatch(toggleEdit(String(id)))
       })
       .catch((err) => console.log(err))
+  }
+
+  const handleDelete = () => {
+    dispatch(deleteManga(String(id)))
+  }
+
+  const handleClose = () => {
+    dispatch(toggleEdit(String(id)))
   }
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -126,7 +134,9 @@ function EditManga({ id, title, books, author, location, imageSrc }: Props) {
         <button className="editmanga-button">Edit Manga</button>
       </form>
       <br />
-      <button onClick={() => (location.href = '/')}>Close</button>
+      <button onClick={handleDelete}>Delete</button>
+      <br />
+      <button onClick={handleClose}>Close</button>
     </div>
   )
 }
