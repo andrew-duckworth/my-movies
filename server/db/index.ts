@@ -12,7 +12,8 @@ export function getDeckById(id: number, db = conn): Promise<Deck> {
 export function addDeck(deck: DeckInfo, db = conn): Promise<Deck> {
   return db('decks')
     .insert(deck)
-    .then(([id]) => ({ id, ...deck }))
+    .returning('*')
+    .then(([deck]) => deck)
 }
 
 export function updDeck(deck: Deck, db = conn): Promise<Deck> {
