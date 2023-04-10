@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 })
 
 router.patch('/:id', (req, res) => {
-  const { id, title, books, author, location, imageSrc } = req.body
+  const { id, title, books, author, location, imageSrc, editable } = req.body
   const updatedManga = {
     id,
     title,
@@ -40,6 +40,7 @@ router.patch('/:id', (req, res) => {
     author,
     location,
     image_src: imageSrc,
+    editable,
   }
   console.log(updatedManga)
   updateManga(Number(req.params.id), updatedManga)

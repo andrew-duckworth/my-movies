@@ -23,7 +23,7 @@ function MangaList() {
       <div className="card-container">
         {allMangas.map((manga) => (
           <div className="card front" key={manga.id}>
-            {manga.editable ? (
+            {manga.edit ? (
               <EditManga
                 id={manga.id}
                 title={manga.title}
@@ -34,7 +34,7 @@ function MangaList() {
               />
             ) : (
               <Manga
-                // id={manga.id}
+                id={manga.id}
                 title={manga.title}
                 books={manga.books}
                 author={manga.author}

@@ -1,5 +1,5 @@
 import type { ThunkAction } from '../store'
-import { Manga } from '../../common/manga'
+import { Manga, MangaEdit } from '../../common/manga'
 
 import { getAllMangaApi, addMangaApi, getMangaByIdApi } from '../apis/manga'
 import { getMangaById } from '../../server/db/db'
@@ -11,16 +11,18 @@ export const RECEIVE_MANGA = 'RECEIVE_MANGA'
 export const ADD_MANGA = 'ADD_MANGA'
 export const UPDATE_MANGA = 'UPDATE_MANGA'
 export const DELETE_MANGA = 'DELETE_MANGA'
+export const TOGGLE_EDIT = 'TOGGLE_EDIT'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
 export type MangaAction =
   | { type: typeof REQUEST_ALL_MANGA; payload: null }
-  | { type: typeof RECEIVE_ALL_MANGA; payload: Manga[] }
+  | { type: typeof RECEIVE_ALL_MANGA; payload: MangaEdit[] }
   | { type: typeof REQUEST_MANGA; payload: string }
   | { type: typeof RECEIVE_MANGA; payload: Manga }
   | { type: typeof ADD_MANGA; payload: Manga }
   | { type: typeof UPDATE_MANGA; payload: Manga }
   | { type: typeof DELETE_MANGA; payload: string }
+  | { type: typeof TOGGLE_EDIT; payload: string }
   | { type: typeof SHOW_ERROR; payload: string }
 
 export function requestManga(): MangaAction {
@@ -30,7 +32,7 @@ export function requestManga(): MangaAction {
   }
 }
 
-export function receiveManga(manga: Manga[]): MangaAction {
+export function receiveManga(manga: MangaEdit[]): MangaAction {
   return {
     type: RECEIVE_ALL_MANGA,
     payload: manga,
@@ -68,6 +70,13 @@ export function updateManga(manga: Manga): MangaAction {
 export function deleteManga(id: string): MangaAction {
   return {
     type: DELETE_MANGA,
+    payload: id,
+  }
+}
+
+export function toggleEdit(id: string): MangaAction {
+  return {
+    type: TOGGLE_EDIT,
     payload: id,
   }
 }

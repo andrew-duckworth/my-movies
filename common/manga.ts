@@ -1,5 +1,5 @@
 export interface Manga {
-  id?: number
+  id: number
   title: string
   books: string
   author: string
@@ -10,6 +10,10 @@ export interface Manga {
 
 export interface Routemanga extends Manga {
   image_src?: string
+}
+
+export interface MangaEdit extends Manga {
+  edit: boolean
 }
 
 export type RawMangaArr = { data: Manga }[]

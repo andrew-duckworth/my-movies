@@ -1,4 +1,9 @@
+import { toggleEdit } from '../actions/manga'
+import { useAppDispatch } from '../hooks/redux'
+import toggleEditReducer from '../reducers/toggleEdit'
+
 interface Props {
+  id: number
   title: string
   books: string
   author: string
@@ -6,16 +11,21 @@ interface Props {
   imageSrc: string
 }
 
-function Manga({ title, books, author, location, imageSrc }: Props) {
+function Manga({ id, title, books, author, location, imageSrc }: Props) {
+  const dispatch = useAppDispatch()
+  const handleClick = () => {
+    dispatch(toggleEdit(String(id)))
+  }
   return (
-    <a href="/">
+    <>
       <h2>
         {title} - {books}
       </h2>
       <p>Author: {author}</p>
       <p>Collection currently located at: {location}</p>
       <img className="img-circle" src={imageSrc} alt="" />
-    </a>
+      <button onClick={handleClick}>Edit</button>
+    </>
   )
 }
 
