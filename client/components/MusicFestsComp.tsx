@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { fetchMusicFests } from '../actions/musicFestival'
-import { useEffect, useState } from 'react'
-import { Link, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+
 import type { MusicFestivalDetails } from '../../common/musicFestivalsTypes'
 
 function MusicFestivals() {
