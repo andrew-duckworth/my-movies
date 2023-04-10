@@ -16,3 +16,14 @@ export interface BigThreeData {
 export interface BigThree extends BigThreeData {
   id: number
 }
+
+export interface ChartData {
+  planet: string
+  sign: string
+  verb: string
+  adverb: string
+}
+
+export interface Chart extends ChartData {
+  id: number
+}

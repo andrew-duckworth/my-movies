@@ -1,4 +1,5 @@
 import * as Models from '../../common/Starsign'
+import { grabDetails } from '../apis/apiChart'
 import {
   addAUser,
   deleteAUser,
@@ -13,6 +14,7 @@ export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const ADD_ONE_USER = 'ADD_ONE_USER'
 export const DEL_ONE_USER = 'DEL_ONE_USER'
 export const UPD_ONE_USER = 'UPD_ONE_USER'
+export const RECEIVE_CHART = 'RECEIVE_CHART'
 
 export type UserAction =
   | { type: typeof RECEIVE_SIGNS; payload: Models.Starsign[] }
@@ -20,6 +22,7 @@ export type UserAction =
   | { type: typeof ADD_ONE_USER; payload: Models.BigThree }
   | { type: typeof DEL_ONE_USER; payload: number }
   | { type: typeof UPD_ONE_USER; payload: Models.BigThree }
+  | { type: typeof RECEIVE_CHART; payload: Models.Chart[] }
 
 // Simple Actions
 
@@ -55,6 +58,13 @@ export function updOneUser(user: Models.BigThree): UserAction {
   return {
     type: UPD_ONE_USER,
     payload: user,
+  }
+}
+
+export function getChartAction(chart: Models.Chart[]): UserAction {
+  return {
+    type: RECEIVE_CHART,
+    payload: chart,
   }
 }
 
@@ -111,5 +121,17 @@ export function updOneUserThunk(user: Models.BigThree): ThunkAction {
         dispatch(updOneUser(user))
       })
       .catch((err) => console.log(err.message))
+  }
+}
+
+export function getChartThunk(): ThunkAction {
+  return async (dispatch) => {
+    grabDetails()
+      .then((chart) => {
+        dispatch(getChartAction(chart))
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
   }
 }

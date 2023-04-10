@@ -27,3 +27,14 @@ export function deleteUser(id: number, db = connection): Promise<number> {
 export function updateUser(user: BigThree, db = connection): Promise<number> {
   return db('bigthree').update(user).where('id', user.id)
 }
+
+export function getPlanetSign(db = connection) {
+  return db('planets')
+    .select(
+      '*',
+      'planets.id AS planet_id',
+      'planets.name AS planet',
+      'starsigns.name AS starsign'
+    )
+    .join('starsigns', 'planets.starsigns_id', 'starsigns.id')
+}

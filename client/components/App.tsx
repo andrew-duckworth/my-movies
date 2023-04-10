@@ -5,6 +5,7 @@ import SignInfo from './SignInfo'
 
 import Nav from './Nav'
 import SignsList from './SignsList'
+import Details from './Details'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/chart" element={<ChartList />} />
           <Route path="/add" element={<AddChart />} />
           <Route path="/info" element={<SignInfo />} />
+          <Route path="/details" element={<Details />} />
         </Routes>
       </section>
     </>
