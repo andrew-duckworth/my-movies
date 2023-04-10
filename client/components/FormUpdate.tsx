@@ -13,9 +13,9 @@ export default function UpdateForm({ coffee, onClose }: Props) {
   const dispatch = useAppDispatch()
   const id = coffee.id
   const [updatedCoffee, setUpdatedCoffee] = useState({
-    name: '',
-    url: '',
-    selftext: '',
+    name: coffee.name,
+    url: coffee.url,
+    selftext: coffee.selftext,
   } as CoffeeData)
 
   const handleChange = (
@@ -60,7 +60,7 @@ export default function UpdateForm({ coffee, onClose }: Props) {
                 type="text"
                 value={updatedCoffee.name}
                 onChange={handleChange}
-                placeholder="Update the name"
+                placeholder={coffee.name}
                 required
               />
               <label htmlFor="url">Image Url </label>
@@ -80,7 +80,7 @@ export default function UpdateForm({ coffee, onClose }: Props) {
                 value={updatedCoffee.selftext}
                 className="text-input"
                 onChange={handleChange}
-                placeholder="Max 20 words"
+                placeholder="Edit your text"
                 required
               />
               <div className="button-group-update">
