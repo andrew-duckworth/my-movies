@@ -8,6 +8,7 @@ exports.up = function (knex) {
     table.string('name')
     table.string('dates')
     table.string('image')
+    table.string('adverb')
   })
 }
 

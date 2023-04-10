@@ -1,5 +1,5 @@
 export interface StarsignData {
-  sign: string
+  name: string
   dates: string
   image: string
 }
