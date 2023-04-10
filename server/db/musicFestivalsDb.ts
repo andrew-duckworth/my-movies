@@ -9,8 +9,6 @@ export function getAllFestivals(
   return db('musicFestivals').select('*')
 }
 
-// TO DO add new musicFestFunc
-
 export function addFestivalDb(
   formData: MusicFestivalData,
   db = connection
