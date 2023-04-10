@@ -10,8 +10,6 @@ function App() {
     (globalStore) => globalStore.moviesReducer as Movie[]
   )
 
-  console.log(movieList)
-
   useEffect(() => {
     dispatch(getMoviesThunk())
   }, [dispatch])
@@ -19,7 +17,7 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1>My Collection</h1>
+        <h1>My Movie Fullstack</h1>
       </header>
       <section className="main">
         {movieList.map((movie) => {
