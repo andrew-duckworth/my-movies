@@ -7,8 +7,12 @@ function HamsterList() {
   const dispatch = useAppDispatch()
   const hamsters = useAppSelector((state) => state.hamsters)
 
-  useEffect(() => {
+  const allHamsters = () => {
     dispatch(fetchAllHamsters())
+  }
+
+  useEffect(() => {
+    allHamsters()
   }, [])
 
   return (

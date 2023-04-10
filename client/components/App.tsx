@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
-import { getHamsters } from '../apis/apiClient'
+import { useState } from 'react'
 import { Hamsters } from '../../models/hamster'
 import HamsterList from './HamstersList'
 
 function App() {
-  const [hamsters, setHamsters] = useState([] as Hamsters[])
+  // const [hamsters, setHamsters] = useState([] as Hamsters[])
 
   // useEffect(() => {
   //   getHamsters()

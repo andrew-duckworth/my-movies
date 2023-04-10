@@ -1,7 +1,7 @@
 import { useAppDispatch } from '../hooks/redux'
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react'
-import { updateHamsters, runUpdateHamsters } from '../actions/hamsters'
-import updateHammies from '../apis/updHammies'
+import { runUpdateHamsters } from '../actions/hamsters'
+// import updateHammies from '../apis/updHammies'
 
 interface Props {
   name: string
