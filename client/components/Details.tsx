@@ -5,7 +5,7 @@ import { getChartThunk } from '../actions/zodiac'
 
 function Details() {
   const dispatch = useAppDispatch()
-  const charts = useAppSelector((state) => state.chart as Models.Chart[])
+  const charts = useAppSelector((state) => state.chart as Models.ChartData[])
 
   useEffect(() => {
     dispatch(getChartThunk())
