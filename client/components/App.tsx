@@ -1,15 +1,13 @@
+import { Route, Routes, Link } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '../hooks/redux'
+import { useAppDispatch } from '../hooks/redux'
 import { getMoviesThunk } from '../actions/movies'
-import { Movie } from '../../common/types'
-import OneMovie from './OneMovie'
+
+import AddMovie from './AddMovie'
+import MovieList from './MovieList'
 
 function App() {
   const dispatch = useAppDispatch()
-
-  const movieList = useAppSelector(
-    (globalStore) => globalStore.moviesReducer as Movie[]
-  )
 
   useEffect(() => {
     dispatch(getMoviesThunk())
@@ -20,11 +18,18 @@ function App() {
       <header className="header">
         <h1>My Movie Fullstack</h1>
       </header>
-      <div className="movies">
-        {movieList.map((movie) => {
-          return <OneMovie key={movie.id} movie={movie} />
-        })}
-      </div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/addmovie">Add Movie</Link>
+        </li>
+      </ul>
+      <Routes>
+        <Route path="/" element={<MovieList />}></Route>
+        <Route path="/addmovie" element={<AddMovie />}></Route>
+      </Routes>
     </>
   )
 }

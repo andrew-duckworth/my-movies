@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux'
 
 import moviesReducer from './movies'
-
-// import stuff from './stuff'
+import imdbReducer from './imdb'
 
 export default combineReducers({
-  // stuff
   moviesReducer,
+  imdbReducer,
 })
