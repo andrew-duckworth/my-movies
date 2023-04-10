@@ -24,7 +24,7 @@ function AddMethodForm() {
       .then(() => {
         setTimeout(() => {
           dispatch(fetchSetCoffee())
-        }, 1500)
+        }, 1800)
       })
       .catch((err) => err.message)
     setMethods({ name: '', url: '', selftext: '' } as CoffeeData)
@@ -49,7 +49,6 @@ function AddMethodForm() {
           type="text"
           value={coffeeMethod.url}
           onChange={handleChange}
-          placeholder="ex:'https://images....'"
           required
         />
         <label htmlFor="selftext">Short Description </label>

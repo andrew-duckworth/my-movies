@@ -43,7 +43,16 @@ export default function UpdateForm({ coffee, onClose }: Props) {
         <div className="backdrop-update">
           <div className="form-update">
             <form onSubmit={handleSubmit}>
-              <h2>Update Information</h2>
+              <div className="close-container">
+                <h2>Update Information</h2>
+                <button
+                  className="button-close"
+                  type="button"
+                  onClick={onClose}
+                >
+                  Close
+                </button>
+              </div>
               <label htmlFor="name">Method Name</label>
               <input
                 name="name"
@@ -77,13 +86,6 @@ export default function UpdateForm({ coffee, onClose }: Props) {
               <div className="button-group-update">
                 <button className="button-update" type="submit">
                   Submit
-                </button>
-                <button
-                  className="button-close"
-                  type="button"
-                  onClick={onClose}
-                >
-                  Close
                 </button>
               </div>
             </form>
