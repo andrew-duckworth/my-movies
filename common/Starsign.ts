@@ -18,12 +18,15 @@ export interface BigThree extends BigThreeData {
 }
 
 export interface ChartData {
-  planet: string
-  sign: string
-  verb: string
-  adverb: string
+  id?: number
+  planet_id: number
+  starsign_id: number
+  planet?: string
+  sign?: string
+  verb?: string
+  adverb?: string
 }
 
-export interface Chart extends ChartData {
-  id: number
-}
+// export interface Chart extends ChartData {
+//   id: number
+// }
