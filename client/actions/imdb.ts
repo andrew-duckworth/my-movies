@@ -1,8 +1,10 @@
 import { ThunkAction } from '../store'
-import { Imdb } from '../../common/types'
+import { Data, Imdb } from '../../common/types'
 import { searchMoviesAPI } from '../apis/imdb'
+import { postMovieAPI } from '../apis/movies'
 
 export const IMDB_DATA = 'IMDB_DATA'
+export const SAVE_MOVIE = 'SAVE_MOVIE'
 
 // Acction
 
@@ -13,12 +15,16 @@ export function setMovies(imdbArr: Imdb[]) {
   }
 }
 
+export function saveMovie(movie: Imdb) {
+  return {
+    type: SAVE_MOVIE,
+    payload: movie,
+  }
+}
+
 // Thuncction
 
-export function searchMoviesThunk(
-  movie: string
-  // maybe change this to an object or arr if we add dates. might still be able to stay a string with a space because of the %20 thing.
-): ThunkAction {
+export function searchMoviesThunk(movie: string): ThunkAction {
   return (dispatch) => {
     return searchMoviesAPI(
       //RENAME THIS SO IT MAKES SENSE LATER
@@ -28,5 +34,15 @@ export function searchMoviesThunk(
         dispatch(setMovies(result))
       })
       .catch((err) => console.log('fergy bad', err.message))
+  }
+}
+
+export function addMovieThunk(movie: Data): ThunkAction {
+  return (dispatch) => {
+    return postMovieAPI(movie)
+      .then((movie) => {
+        dispatch(saveMovie(movie))
+      })
+      .catch((err) => console.log('Thunk Err: ', err.message))
   }
 }

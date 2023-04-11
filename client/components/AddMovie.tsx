@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Data, Imdb, Movie } from '../../common/types'
+import { Data, Imdb } from '../../common/types'
 import { searchMoviesAPI } from '../apis/imdb'
 import { useAppDispatch } from '../hooks/redux'
 import { useNavigate } from 'react-router-dom'
+import { addMovieThunk } from '../actions/imdb'
 
 interface Form {
   title: string
