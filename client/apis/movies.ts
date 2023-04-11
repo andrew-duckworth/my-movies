@@ -1,15 +1,15 @@
 import request from 'superagent'
 import { Data, Movie } from '../../common/types'
 
-const movieURL = '/api/v1/movies'
+const url = '/api/v1/movies'
 
 export function fetchMoviesAPI(): Promise<Movie[]> {
-  return request.get(movieURL).then((res) => res.body)
+  return request.get(url).then((res) => res.body)
 }
 
 export function postMovieAPI(movie: Data) {
   return request
-    .post(movieURL)
+    .post(url)
     .send(movie)
     .then((res) => res.body)
 }
