@@ -1,6 +1,8 @@
 import { Movie } from '../../common/types'
-export type MovieAction = { type: string; payload: Movie }
 import { SHOW_MOVIES } from '../actions/movies'
+import { SAVE_MOVIE } from '../actions/imdb'
+
+export type MovieAction = { type: string; payload: Movie }
 
 const initialState = [] as Movie[]
 
@@ -12,6 +14,9 @@ export default function moviesReducer(
   switch (type) {
     case SHOW_MOVIES:
       return payload
+
+    case SAVE_MOVIE:
+      return [...state, payload]
 
     default:
       return state
