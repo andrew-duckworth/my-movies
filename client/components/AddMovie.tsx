@@ -1,6 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { Imdb } from '../../common/types'
+import { Data, Imdb, Movie } from '../../common/types'
 import { searchMoviesAPI } from '../apis/imdb'
+import { useAppDispatch } from '../hooks/redux'
+import { useNavigate } from 'react-router-dom'
 
 interface Form {
   title: string
@@ -8,6 +10,9 @@ interface Form {
 }
 
 export default function AddMovie() {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
   const [movieSearch, setMovieSearch] = useState({
     title: '',
     year: '',
@@ -31,6 +36,17 @@ export default function AddMovie() {
         setMovieResult(data)
       })
       .catch((err) => console.log('AddMovie Err: ', err.message))
+  }
+
+  const handleAdd = (movie: Imdb) => {
+    const formattedMovie: Data = {
+      imdb_id: movie.id,
+      title: movie.title,
+      image: movie.image,
+      rating: 5,
+    }
+    dispatch(addMovieThunk(formattedMovie))
+    navigate('/')
   }
 
   return (
@@ -69,6 +85,9 @@ export default function AddMovie() {
                 src={movie.image}
                 alt={`poster for the incredible ${movie.title}`}
               />
+              <button className="add-movie" onClick={() => handleAdd(movie)}>
+                Add Movie
+              </button>
             </div>
           </>
         ))}
