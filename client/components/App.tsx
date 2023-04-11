@@ -1,4 +1,5 @@
 import Albums from './Albums'
+import NewAlbum from './NewAlbum'
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
         <h1>Taylor Swift Discography</h1>
       </header>
       <section className="main">
+        <NewAlbum />
         <Albums />
       </section>
     </>

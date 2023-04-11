@@ -4,3 +4,14 @@ import { AlbumsInterface } from '../common/albums'
 export function getAllAlbums(): Promise<AlbumsInterface[]> {
   return request.get('/api/v1/albums').then((i) => i.body)
 }
+
+export function addNewAlbum(
+  newAlbum: AlbumsInterface
+): Promise<AlbumsInterface> {
+  return request
+    .post('/api/v1/albums')
+    .send(newAlbum)
+    .then((res) => {
+      return res.body
+    })
+}

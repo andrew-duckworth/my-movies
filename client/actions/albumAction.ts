@@ -2,14 +2,35 @@ import { getAllAlbums } from '../apis/apiClient'
 import { AlbumsInterface } from '../common/albums'
 import { ThunkAction } from '../store'
 
-export const GET_ALBUMS = 'GET_ALBUMS'
+import { addNewAlbum } from '../apis/apiClient'
 
-export type Action = { type: typeof GET_ALBUMS; payload: AlbumsInterface[] }
+export const GET_ALBUMS = 'GET_ALBUMS'
+export const SHOW_ERROR = 'SHOW ERROR'
+export const ADD_ALBUM = 'ADD_ALBUM'
+
+export type Action =
+  | { type: typeof GET_ALBUMS; payload: AlbumsInterface[] }
+  | { type: typeof SHOW_ERROR; payload: string }
+  | { type: typeof ADD_ALBUM; payload: AlbumsInterface }
 
 export function getAlbums(albums: AlbumsInterface[]): Action {
   return {
     type: GET_ALBUMS,
     payload: albums,
+  }
+}
+
+export function addAlbum(addAlbum: AlbumsInterface): Action {
+  return {
+    type: ADD_ALBUM,
+    payload: addAlbum,
+  }
+}
+
+export function showError(errorMessage: string): Action {
+  return {
+    type: SHOW_ERROR,
+    payload: errorMessage,
   }
 }
 
@@ -20,7 +41,19 @@ export function getAlbumsThunk(): ThunkAction {
         dispatch(getAlbums(albums))
       })
       .catch((err) => {
-        dispatch(err.message)
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function addNewAlbumThunk(album: AlbumsInterface): ThunkAction {
+  return (dispatch) => {
+    return addNewAlbum(album)
+      .then((album) => {
+        dispatch(addAlbum(album))
+      })
+      .catch((err) => {
+        console.log(err.message)
       })
   }
 }

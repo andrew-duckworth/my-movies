@@ -1,7 +1,7 @@
 import { Action } from '../actions/albumAction'
 import { AlbumsInterface } from '../common/albums'
 
-const initialState = [] as AlbumsInterface[]
+const initialState: AlbumsInterface[] = []
 
 function reducer(state = initialState, action: Action): AlbumsInterface[] {
   const { type, payload } = action
@@ -9,6 +9,9 @@ function reducer(state = initialState, action: Action): AlbumsInterface[] {
   switch (type) {
     case 'GET_ALBUMS':
       return payload
+    case 'ADD_ALBUM':
+      return [...state, payload]
+
     default:
       return state
   }
