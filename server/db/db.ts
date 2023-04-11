@@ -7,7 +7,7 @@ export function getAllMoviesDB(db = connection): Promise<Movie[]> {
 }
 
 export function addMovieDB(movie: Movie, db = connection): Promise<Movie> {
-  return db('movies')
+  return db('movies').insert(movie).returning(['id', 'title', 'image'])
 }
 
 // export function getMovieDB(id: number, db = connection): Promise<Movie> {
