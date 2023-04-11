@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { BigThreeData } from '../../common/Starsign'
+import { UserChartData } from '../../common/Starsign'
 import { useAppDispatch } from '../hooks/redux'
 import { addOneUserThunk } from '../actions/zodiac'
 import { useNavigate } from 'react-router-dom'
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 function AddChart() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const [user, setUser] = useState({} as BigThreeData)
+  const [user, setUser] = useState({} as UserChartData)
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setUser({

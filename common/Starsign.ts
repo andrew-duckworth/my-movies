@@ -6,27 +6,13 @@ export interface StarsignData {
 export interface Starsign extends StarsignData {
   id: number
 }
-export interface BigThreeData {
+export interface UserChartData {
   name: string
   sun: string
   moon: string
   rising: string
 }
 
-export interface BigThree extends BigThreeData {
+export interface UserChart extends UserChartData {
   id: number
 }
-
-export interface ChartData {
-  id?: number
-  planet_id: number
-  starsign_id: number
-  planet?: string
-  sign?: string
-  verb?: string
-  adverb?: string
-}
-
-// export interface Chart extends ChartData {
-//   id: number
-// }

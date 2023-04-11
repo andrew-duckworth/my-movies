@@ -1,5 +1,4 @@
 import * as Models from '../../common/Starsign'
-import { grabDetails } from '../apis/apiChart'
 import {
   addAUser,
   deleteAUser,
@@ -18,11 +17,10 @@ export const RECEIVE_CHART = 'RECEIVE_CHART'
 
 export type UserAction =
   | { type: typeof RECEIVE_SIGNS; payload: Models.Starsign[] }
-  | { type: typeof RECEIVE_USERS; payload: Models.BigThree[] }
-  | { type: typeof ADD_ONE_USER; payload: Models.BigThree }
+  | { type: typeof RECEIVE_USERS; payload: Models.UserChart[] }
+  | { type: typeof ADD_ONE_USER; payload: Models.UserChart }
   | { type: typeof DEL_ONE_USER; payload: number }
-  | { type: typeof UPD_ONE_USER; payload: Models.BigThree }
-  | { type: typeof RECEIVE_CHART; payload: Models.Chart[] }
+  | { type: typeof UPD_ONE_USER; payload: Models.UserChart }
 
 // Simple Actions
 
@@ -33,14 +31,14 @@ export function getSignsAction(signs: Models.Starsign[]): UserAction {
   }
 }
 
-export function getUsersAction(users: Models.BigThree[]): UserAction {
+export function getUsersAction(users: Models.UserChart[]): UserAction {
   return {
     type: RECEIVE_USERS,
     payload: users,
   }
 }
 
-export function addOneUser(user: Models.BigThree): UserAction {
+export function addOneUser(user: Models.UserChart): UserAction {
   return {
     type: ADD_ONE_USER,
     payload: user,
@@ -54,17 +52,10 @@ export function delOneUser(id: number): UserAction {
   }
 }
 
-export function updOneUser(user: Models.BigThree): UserAction {
+export function updOneUser(user: Models.UserChart): UserAction {
   return {
     type: UPD_ONE_USER,
     payload: user,
-  }
-}
-
-export function getChartAction(chart: Models.Chart[]): UserAction {
-  return {
-    type: RECEIVE_CHART,
-    payload: chart,
   }
 }
 
@@ -94,7 +85,7 @@ export function getUsersThunk(): ThunkAction {
   }
 }
 
-export function addOneUserThunk(newUser: Models.BigThreeData): ThunkAction {
+export function addOneUserThunk(newUser: Models.UserChartData): ThunkAction {
   return async (dispatch) => {
     addAUser(newUser)
       .then((user) => {
@@ -114,24 +105,12 @@ export function delOneUserThunk(id: number): ThunkAction {
   }
 }
 
-export function updOneUserThunk(user: Models.BigThree): ThunkAction {
+export function updOneUserThunk(user: Models.UserChart): ThunkAction {
   return async (dispatch) => {
     updateAUser(user)
       .then(() => {
         dispatch(updOneUser(user))
       })
       .catch((err) => console.log(err.message))
-  }
-}
-
-export function getChartThunk(): ThunkAction {
-  return async (dispatch) => {
-    grabDetails()
-      .then((chart) => {
-        dispatch(getChartAction(chart))
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
   }
 }

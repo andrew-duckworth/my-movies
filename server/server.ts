@@ -1,8 +1,7 @@
 import express from 'express'
 import path from 'path'
-import bigthree from './routes/bigthree'
+import userchart from './routes/user-chart'
 import starsigns from './routes/starsigns'
-import chart from './routes/chart'
 
 const server = express()
 
@@ -10,8 +9,7 @@ server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
 server.use('/api/v1/starsigns', starsigns)
-server.use('/api/v1/bigthree', bigthree)
-server.use('/api/v1/details', chart)
+server.use('/api/v1/usercharts', userchart)
 
 // Wildcard route
 server.get('*', (req, res) => {

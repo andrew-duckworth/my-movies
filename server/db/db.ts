@@ -1,6 +1,6 @@
 import config from './knexfile'
 import knex from 'knex'
-import { BigThree, Starsign } from '../../common/Starsign'
+import { UserChart, Starsign } from '../../common/Starsign'
 
 type Environment = 'production' | 'test' | 'development'
 const environment = (process.env.NODE_ENV as Environment) || 'development'
@@ -10,26 +10,23 @@ export function getStarsigns(db = connection): Promise<Starsign[]> {
   return db('starsigns').select()
 }
 
-export function getUsers(db = connection): Promise<BigThree[]> {
-  return db('bigthree').select()
+export function getUsers(db = connection): Promise<UserChart[]> {
+  return db('user_chart').select()
 }
 
-export function addUser(user: BigThree, db = connection): Promise<BigThree[]> {
-  return db('bigthree')
+export function addUser(
+  user: UserChart,
+  db = connection
+): Promise<UserChart[]> {
+  return db('user_chart')
     .insert(user)
     .returning(['name', 'sun', 'moon', 'rising'])
 }
 
 export function deleteUser(id: number, db = connection): Promise<number> {
-  return db('bigthree').del().where('id', id)
+  return db('user_chart').del().where('id', id)
 }
 
-export function updateUser(user: BigThree, db = connection): Promise<number> {
-  return db('bigthree').update(user).where('id', user.id)
-}
-
-export function getUserJoin(db = connection) {
-  return db('chart')
-    .select('*', 'bigthree.id AS user_id')
-    .join('chart', 'bigthree.chart_id', 'chart.id')
+export function updateUser(user: UserChart, db = connection): Promise<number> {
+  return db('user_chart').update(user).where('id', user.id)
 }

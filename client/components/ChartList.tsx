@@ -11,20 +11,20 @@ import {
 function ChartList() {
   const dispatch = useAppDispatch()
   const chartList = useAppSelector(
-    (state) => state.bigthree as Models.BigThree[]
+    (state) => state.userchart as Models.UserChart[]
   )
   const [editForm, setEditForm] = useState(false)
   const [editData, setEditData] = useState({
     sun: '',
     moon: '',
     rising: '',
-  } as Models.BigThree)
+  } as Models.UserChart)
 
   const deleteHandler = (id: number) => {
     dispatch(delOneUserThunk(id))
   }
 
-  const updateButtonHandler = (user: Models.BigThree) => {
+  const updateButtonHandler = (user: Models.UserChart) => {
     setEditData(user)
     setEditForm(!editForm)
   }
