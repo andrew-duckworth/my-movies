@@ -8,8 +8,10 @@ router.get('/', (req, res) => {
     .then((moviesArr) => {
       res.json(moviesArr)
     })
-
-    .catch(err => console.log(err.message))
+    .catch(err => {
+      // console.log(err.message)
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
 })
 
 router.post('/', (req, res) => {
@@ -18,7 +20,10 @@ router.post('/', (req, res) => {
     .then((movieArray) => {
       res.json(movieArray[0]) 
     })
-    .catch(err => console.log(err.message))
+    .catch(err => {
+      // console.log(err.message)
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
 })
 
 export default router

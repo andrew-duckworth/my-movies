@@ -1,5 +1,5 @@
 import request from "superagent";
-import {ImdbMovie} from '../../common/types'
+import { ImdbMovie } from '../../common/types'
 
 const imdbUrl = 'https://imdb-api.com/en/API/SearchMovie'
 

@@ -4,6 +4,9 @@ import type { RootState } from '../../client/store'
 import type { ThunkDispatch } from 'redux-thunk'
 import type { AnyAction } from 'redux'
 
+// For testing
+export type SelectorFunc<T> = (state: Partial<RootState>) => T
+
 // Use throughout your app instead of plain `useDispatch` and `useSelector`
 export const useAppDispatch: () => ThunkDispatch<RootState, void, AnyAction> =
   useDispatch

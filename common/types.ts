@@ -10,7 +10,6 @@ export interface Movie extends MovieData {
 }
 
 export interface ImdbMovie {
-  
   id: string
   resultType: string
   image: string

@@ -1,9 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { ImdbMovie, MovieData } from '../../common/types'
-import { searchForMovie } from '../apis/imdb'
-import { useAppDispatch } from '../hooks/redux'
-import { addMovieThunk } from '../actions/imdb'
 import { useNavigate } from 'react-router-dom'
+import { ImdbMovie, MovieData } from '../../common/types'
+import { useAppDispatch } from '../hooks/redux'
+
+import { searchForMovie } from '../apis/imdb'
+import { addMovieThunk } from '../actions/movies'
 
 function AddMovie() {
   const dispatch = useAppDispatch()
@@ -40,7 +41,7 @@ function AddMovie() {
     <>
       <p>Add a new movie</p>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='title'>Title</label>
+        <label htmlFor='title'>Title:</label>
         <input 
           type='text' 
           name='title' 
@@ -57,7 +58,7 @@ function AddMovie() {
               <img src={movie.image} alt={`poster for ${movie.title}`}></img>
               <hr />
               <div className='center-button'>
-                <button className='button' onClick={() => handleAdd(movie)}>Add Movie to database</button>
+                <button className='button' onClick={() => handleAdd(movie)}>Add {movie.title} to database</button>
               </div>
             </div>
         ))}
