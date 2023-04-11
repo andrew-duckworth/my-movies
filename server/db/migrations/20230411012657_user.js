@@ -3,11 +3,9 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.createTable('chart', function (table) {
+  return knex.schema.createTable('user', function (table) {
     table.increments('id').primary()
-    table.integer('user_id')
-    table.integer('planet_id')
-    table.integer('sign_id')
+    table.string('username')
   })
 }
 
@@ -16,5 +14,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-  return knex.schema.dropTable('chart')
+  return knex.schema.dropTable('user')
 }

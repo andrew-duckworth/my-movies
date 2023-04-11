@@ -28,8 +28,8 @@ export function updateUser(user: BigThree, db = connection): Promise<number> {
   return db('bigthree').update(user).where('id', user.id)
 }
 
-export function getChartJoin(db = connection) {
-  return db('bigthree')
-    .select('*', 'bigthree.id AS id')
+export function getUserJoin(db = connection) {
+  return db('chart')
+    .select('*', 'bigthree.id AS user_id')
     .join('chart', 'bigthree.chart_id', 'chart.id')
 }

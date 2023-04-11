@@ -4,19 +4,19 @@
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex('bigthree').del()
-  await knex('bigthree').insert([
-    { id: 1, name: 'Shadae', sun: 'Libra', moon: 'Gemini', rising: 'Aries' },
+  await knex('user_chart').del()
+  await knex('user_chart').insert([
+    { id: 1, user_id: 1, sun: 'Libra', moon: 'Gemini', rising: 'Aries' },
     {
       id: 2,
-      name: 'Hollie',
+      user_id: 2,
       sun: 'Cancer',
       moon: 'Capricorn',
       rising: 'Cancer',
     },
     {
       id: 3,
-      name: 'Jayden',
+      user_id: 3,
       sun: 'Capricorn',
       moon: 'Sagittarius',
       rising: 'Aquarius',
