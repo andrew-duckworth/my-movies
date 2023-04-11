@@ -17,6 +17,7 @@ function NewAlbumForm() {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
+    console.log('handleSubmit')
     dispatch(addNewAlbumThunk(newAlbum))
   }
   // const [allAlbums, setAllAlbums] = useState([] as string[])

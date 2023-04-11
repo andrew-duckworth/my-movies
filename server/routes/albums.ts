@@ -1,6 +1,6 @@
 import express from 'express'
+import * as db from '../db/db'
 import { getAllAlbums } from '../db/db'
-
 const router = express.Router()
 
 router.use(express.json())
@@ -13,6 +13,15 @@ router.get('/', (req, res) => {
     .catch((err) => {
       console.log(err.message)
     })
+
+  router.post('/', (req, res) => {
+    const album = req.body
+    db.addAlbum(album)
+      .then((albumArray) => {
+        res.json(albumArray[0])
+      })
+      .catch((err) => console.log(err.message))
+  })
 })
 
 export default router

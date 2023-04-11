@@ -48,6 +48,7 @@ export function getAlbumsThunk(): ThunkAction {
 
 export function addNewAlbumThunk(album: AlbumsInterface): ThunkAction {
   return (dispatch) => {
+    console.log('addNewAlbumThunk', album)
     return addNewAlbum(album)
       .then((album) => {
         dispatch(addAlbum(album))
