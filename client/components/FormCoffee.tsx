@@ -55,8 +55,8 @@ function AddMethodForm() {
         <input
           name="url"
           type="file"
-          // value={coffeeMethod.url}
-          onChange={updateFile}
+          value={coffeeMethod.url}
+          onChange={handleChange}
           placeholder="ex:https://images...."
           required
         />
