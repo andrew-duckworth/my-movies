@@ -5,7 +5,6 @@
   "repository": "https://github.com/dev-academy-challenges/my-fullstack-collection-scss",
   "main": "server/index.ts",
   "scripts": {
-    "build": "npm run webpack -- --mode production",
     "start": "ts-node server/index.ts",
     "test": "jest",
     "test:watch": "jest --noStackTrace --watchAll",
@@ -14,7 +13,10 @@
     "dev:server": "nodemon server/index.ts",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "build": "run-p build:client build:server",
+    "build:client": "npm run webpack -- --mode production",
+    "build:server": "npm run knex -- migrate:latest"
   },
   "keywords": [
     "fullstack"

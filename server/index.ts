@@ -13,3 +13,9 @@ server.listen(PORT, () => {
   console.log('Listening on port', PORT)
   console.log(process.env.IMDB_KEY)
 })
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  const envConfig = require('dotenv').config()
+
+  if (envConfig.error) throw envConfig.error
+}
