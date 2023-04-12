@@ -12,14 +12,6 @@ function AddMethodForm() {
     selftext: '',
   } as CoffeeData
 
-  // const [pic, setPic] = useState(null as null | File)
-
-  //   const [coffeeMethod, setMethods] = useState({
-  //   name: '',
-  //   url: '',
-  //   selftext: '',
-  // } as CoffeeData)
-
   const [coffeeData, setCoffeeData] = useState<{
     image: object
     data: CoffeeData
