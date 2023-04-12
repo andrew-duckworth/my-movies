@@ -6,7 +6,11 @@ import { addNewAlbumThunk } from '../actions/albumAction'
 function NewAlbumForm() {
   const dispatch = useAppDispatch()
 
-  const [newAlbum, setNewAlbum] = useState({} as AlbumsInterface)
+  const [newAlbum, setNewAlbum] = useState({
+    name: '',
+    year: 0,
+    image: '',
+  })
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setNewAlbum({

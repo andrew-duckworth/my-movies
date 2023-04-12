@@ -17,7 +17,7 @@ function Albums() {
   // }, [])
   useEffect(() => {
     dispatch(getAlbumsThunk())
-  })
+  }, [dispatch])
   return (
     <div>
       {albums.map((album) => {
