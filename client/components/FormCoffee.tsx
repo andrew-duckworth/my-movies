@@ -20,11 +20,6 @@ function AddMethodForm() {
   //   selftext: '',
   // } as CoffeeData)
 
-  // const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const fileArr = e.target.files as FileList
-  //   const file = fileArr[0]
-  //   setCoffeeData(file)
-  // }
   const [coffeeData, setCoffeeData] = useState<{
     image: object
     data: CoffeeData
@@ -40,6 +35,15 @@ function AddMethodForm() {
         ...prevCoffeeData.data,
         [name]: value,
       },
+    }))
+  }
+
+  const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
+    const fileArr = e.target.files as FileList
+    const file = fileArr[0]
+    setCoffeeData((prevCoffeeData) => ({
+      ...prevCoffeeData,
+      image: file, // Update the image property with the new File object
     }))
   }
 
