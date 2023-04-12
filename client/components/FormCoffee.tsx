@@ -6,7 +6,6 @@ import { CoffeeData } from '../models/Coffee'
 function AddMethodForm() {
   const dispatch = useAppDispatch()
 
-  const [pic, setPic] = useState(null as null | File)
   const [coffeeMethod, setMethods] = useState({
     name: '',
     url: '',
@@ -18,12 +17,6 @@ function AddMethodForm() {
   ) => {
     const { name, value } = e.target
     setMethods({ ...coffeeMethod, [name]: value })
-  }
-
-  const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const fileArr = e.target.files as FileList
-    const file = fileArr[0]
-    setPic(file)
   }
 
   const handleSubmit = (e: FormEvent) => {
@@ -54,9 +47,9 @@ function AddMethodForm() {
         <label htmlFor="url">Image Url </label>
         <input
           name="url"
-          type="file"
-          // value={coffeeMethod.url}
-          onChange={updateFile}
+          type="text"
+          value={coffeeMethod.url}
+          onChange={handleChange}
           placeholder="ex:https://images...."
           required
         />
