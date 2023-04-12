@@ -58,7 +58,7 @@ function AddMethodForm() {
       .catch((err) => err.message)
     setCoffeeData({
       ...coffeeData,
-      data: { name: '', url: '', selftext: '' } as CoffeeData,
+      data: dataEmpty,
     })
   }
 
