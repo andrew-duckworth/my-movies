@@ -37,7 +37,7 @@ export default function SingleCoffee(props: Props) {
                 onClick={() => {
                   setToggle(!toggle)
                 }}
-                className="button-card"
+                className="button-card-update"
               >
                 Update
               </button>

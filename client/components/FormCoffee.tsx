@@ -6,36 +6,56 @@ import { CoffeeData } from '../models/Coffee'
 function AddMethodForm() {
   const dispatch = useAppDispatch()
 
-  const [pic, setPic] = useState(null as null | File)
-  const [coffeeMethod, setMethods] = useState({
+  const dataEmpty = {
     name: '',
     url: '',
     selftext: '',
-  } as CoffeeData)
+  } as CoffeeData
+
+  // const [pic, setPic] = useState(null as null | File)
+
+  //   const [coffeeMethod, setMethods] = useState({
+  //   name: '',
+  //   url: '',
+  //   selftext: '',
+  // } as CoffeeData)
+
+  // const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
+  //   const fileArr = e.target.files as FileList
+  //   const file = fileArr[0]
+  //   setCoffeeData(file)
+  // }
+  const [coffeeData, setCoffeeData] = useState<{
+    image: object
+    data: CoffeeData
+  }>({ image: {}, data: dataEmpty })
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target
-    setMethods({ ...coffeeMethod, [name]: value })
-  }
-
-  const updateFile = (e: ChangeEvent<HTMLInputElement>) => {
-    const fileArr = e.target.files as FileList
-    const file = fileArr[0]
-    setPic(file)
+    setCoffeeData((prevCoffeeData) => ({
+      ...prevCoffeeData,
+      data: {
+        ...prevCoffeeData.data,
+        [name]: value,
+      },
+    }))
   }
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    dispatch(fetchAddCoffee(coffeeMethod))
+    dispatch(fetchAddCoffee(coffeeData.data))
       .then(() => {
         setTimeout(() => {
           dispatch(fetchSetCoffee())
         }, 1800)
       })
       .catch((err) => err.message)
-    setMethods({ name: '', url: '', selftext: '' } as CoffeeData)
+    setCoffeeData({
+      ...coffeeData,
+      data: { name: '', url: '', selftext: '' } as CoffeeData,
+    })
   }
 
   return (
@@ -46,7 +66,7 @@ function AddMethodForm() {
         <input
           name="name"
           type="text"
-          value={coffeeMethod.name}
+          value={coffeeData.data.name}
           onChange={handleChange}
           placeholder="Your badass brew method"
           required
@@ -54,8 +74,8 @@ function AddMethodForm() {
         <label htmlFor="url">Image Url </label>
         <input
           name="url"
-          type="file"
-          value={coffeeMethod.url}
+          type="text"
+          value={coffeeData.data.url}
           onChange={handleChange}
           placeholder="ex:https://images...."
           required
@@ -63,7 +83,7 @@ function AddMethodForm() {
         <label htmlFor="selftext">Short Description </label>
         <textarea
           name="selftext"
-          value={coffeeMethod.selftext}
+          value={coffeeData.data.selftext}
           className="text-input"
           onChange={handleChange}
           placeholder="Max 20 words"

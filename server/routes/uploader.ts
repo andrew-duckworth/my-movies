@@ -15,9 +15,8 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const image = req.files?.image as UploadedFile
-    const fileType = image.mimetype.split('/')[1]
     const fileData = image.data
-    const name = `${Date.now()}.${fileType}`
+    const name = image.name
 
     await writeFile(join(__dirname, '../public/images', name), fileData)
 
