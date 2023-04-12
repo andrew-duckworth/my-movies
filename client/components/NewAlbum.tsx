@@ -65,7 +65,7 @@ function NewAlbumForm() {
               required
             />
             <br></br>
-            <label htmlFor="image">Album cover: </label>
+            <label htmlFor="image">Album cover URL: </label>
             <input
               id="image"
               name="image"

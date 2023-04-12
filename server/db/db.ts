@@ -11,3 +11,5 @@ export function addAlbum(
 ): Promise<AlbumsInterface[]> {
   return db('albums').insert(album).returning(['name', 'year', 'image'])
 }
+
+export function deleteAlbum()
