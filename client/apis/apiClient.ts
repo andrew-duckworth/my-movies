@@ -7,7 +7,7 @@ export function getMovies(): Promise<Movie[]> {
   return request.get(movieUrl).then((res) => res.body)
 }
 
-export function delMovie(id: number) {
+export function delMovie(id) {
   return request.del(`${movieUrl}${id}`).then((res) => {
     console.log('API response', res.body)
     return res.body

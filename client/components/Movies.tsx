@@ -1,27 +1,27 @@
-import { getMovies } from '../apis/apiClient'
-import { useEffect, useState } from 'react'
-import { runDeleteMovie } from '../actions/movies'
-import * as Types from '../models/movies'
+// import { getMovies } from '../apis/apiClient'
+import { useEffect } from 'react'
+import { runDeleteMovie, getMoviesThunk } from '../actions/movies'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { Movie } from '../models/movies'
 // import { useNavigate } from 'react-router-dom'
 
 export function Movies() {
-  const [movies, setMovies] = useState([] as Types.Movie[])
+  // const [movies, setMovies] = useState([] as Types.Movie[])
+  const movies = useAppSelector((state) => state.moobies as Movie[])
   // const navigate = useNavigate()
+
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    getMovies()
-      .then((all) => setMovies(all))
-      .catch((err) => alert(err.message))
-  }, [])
+    dispatch(getMoviesThunk())
+  }, [dispatch])
 
   const handleDelete = (id: number) => {
     // Dispatch the delete action to delete the movie from the server-side
     dispatch(runDeleteMovie(id))
       .then(() => {
         // If the delete action is successful, update the state to remove the deleted movie
-        setMovies(movies.filter((movie) => movie.id !== id))
+        // movies(movies.filter((movie) => movie.id !== id))
       })
       .catch((err) => alert(err.message))
   }
@@ -29,7 +29,7 @@ export function Movies() {
   return (
     <>
       <div>
-        <h1>Moooovies</h1>
+        <h1 className="titles">Moooovies</h1>
         <div className="poster-img">
           {movies.map((movie) => (
             <div className="movie-card" key={movie.id}>
