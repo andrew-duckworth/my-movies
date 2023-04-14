@@ -4,8 +4,26 @@ body {
   left: 0;
   margin: 0;
   padding: 20px;
+  color: azure;
+  // background-color: black;
+  background-image: url(https://j.gifs.com/v1PopA.gif);
+  display: flex;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.indiv {
+  margin: 10px;
+  height: 200px;
+  img {
+    height: 250px;
+    width: 180px;
+  }
+}
 
 

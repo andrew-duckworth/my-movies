@@ -21,16 +21,16 @@ export function Game() {
   }
 
   return (
-    <div>
-      <p>will be a list of games</p>
+    <div className="container">
+      {/* <p>will be a list of games</p> */}
       {games.map((games) => {
         return (
-          <div key={games.id}>
+          <div key={games.id} className="indiv">
             <h3>{games.title}</h3>
             <img src={games.cover} alt="should be something" />
             <ul>
               {/* <li>Id: {games.id}</li> */}
-              <li>Dev: {games.dev}</li>
+              {/* <li>Dev: {games.dev}</li> */}
               {/* <li>Cover: {games.cover}</li> */}
             </ul>
             <button onClick={() => handleDel(games.id)}>delete</button>
