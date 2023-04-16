@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { getAlbumsThunk } from '../actions/albumAction'
+import { deleteAlbumThunk, getAlbumsThunk } from '../actions/albumAction'
 import { useAppDispatch } from '../hooks/redux'
 import { useAppSelector } from '../hooks/redux'
 
@@ -8,13 +8,17 @@ function Albums() {
   const dispatch = useAppDispatch()
   const albums = useAppSelector((state) => state.albumReducer)
 
-  // useEffect(() => {
-  //   getAllAlbums()
-  //     .then((albumsArr) => {
-  //       setAlbums(albumsArr)
-  //     })
-  //     .catch((err) => console.log(err.message))
-  // }, [])
+  const handleDelete = (id: number) => {
+    dispatch(deleteAlbumThunk(id))
+      .then(() => {
+        dispatch({
+          type: 'DEL_ALBUM',
+          payload: id,
+        })
+      })
+      .catch((err) => alert(err.message))
+  }
+
   useEffect(() => {
     dispatch(getAlbumsThunk())
   }, [dispatch])
@@ -27,6 +31,13 @@ function Albums() {
             <p>Album name: {album.name}</p>
             <p>Year of release: {album.year}</p>
             <img src={album.image} alt={'Cover of ' + album.name} />
+            <br></br>
+            <button
+              className="delete-btn"
+              onClick={() => handleDelete(album.id)}
+            >
+              Delete this album
+            </button>
             <br></br>
           </div>
         )

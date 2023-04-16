@@ -15,3 +15,7 @@ export function addNewAlbum(
       return res.body
     })
 }
+
+export function deleteAlbum(id: number) {
+  return request.delete(`${id}`).then((res) => res.body)
+}
