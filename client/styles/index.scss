@@ -1,11 +1,31 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #1d1919;
+}
+
+#dark body {
+  height: 100%;
+  margin: 0;
+  background-color: #1d1919;
+}
+
+#light body {
+  height: 100%;
+  margin: 0;
+  background-color: #f3ebf6;
+}
+
+
+
 .App {
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  // font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #light body {
@@ -17,7 +37,6 @@
   margin: 0;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #e2e2e2;
-  
 }
 
 #dark body {
@@ -27,25 +46,25 @@
   margin: 0;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #e2e2e2;
-  
 }
 
 #dark html {
- font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
- background-color: #1d1919;
- overflow-x: hidden;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #1d1919;
+  overflow-x: hidden;
 }
 
 #light html {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #f3ebf6;
   overflow-x: hidden;
- }
+}
 
 .movie-container {
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  max-width: 1200px;
 }
 
 #light .movie {
@@ -62,15 +81,13 @@
   border-radius: 20px;
 }
 
-
 .movie:hover {
-    box-shadow: 8px 8px 15px 1px #8d8d8d;
+  box-shadow: 8px 8px 15px 1px #8d8d8d;
 }
 
 .movie img {
   max-width: 250px;
 }
-
 
 #dark .title {
   text-align: center;
@@ -94,7 +111,6 @@
 
 .switch {
   display: flex;
- 
   height: 100px;
   justify-content: center;
   align-items: center;
@@ -124,6 +140,40 @@
 
 #dark h2 {
   color: antiquewhite;
-
 }
 
+#dark p {
+  color: antiquewhite;
+}
+
+#dark label {
+ color: antiquewhite;
+}
+
+/* Media queries for responsive design */
+@media only screen and (max-width: 768px) {
+  .movie-container {
+    max-width: 80vw;
+  }
+  
+  .movie img {
+    max-width: 150px;
+  }
+  
+  #dark h1,
+  #light h1 {
+    font-size: 40px;
+  }
+  
+  #dark .movie,
+  #light .movie {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .switch {
+    height: 50px;
+ 
+  }
+}
