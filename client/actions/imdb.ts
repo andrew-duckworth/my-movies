@@ -1,6 +1,7 @@
 import { ThunkAction } from '../store'
 import { ImdbMovie, MovieData } from '../../common/types'
-import { deleteMovie, searchForMovie } from '../apis/imdb'
+import { searchForMovie } from '../apis/imdb'
+import { deleteMovie } from '../apis/movies'
 import { postOneMovie } from '../apis/movies'
 
 export const IMDB_DATA = 'IMDB_DATA'

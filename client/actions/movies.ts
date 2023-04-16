@@ -1,5 +1,5 @@
 import { ThunkAction } from '../store'
-import type { Movie } from '../../common/types'
+import { ImdbMovie, MovieData, Movie } from '../../common/types'
 import { fetchMovies } from '../apis/movies'
 
 export const SHOW_MOVIES = 'SHOW_MOVIES'
@@ -9,35 +9,16 @@ export const SHOW_MOVIES = 'SHOW_MOVIES'
 export function getMoviesAction(movies: Movie[]) {
   return {
     type: SHOW_MOVIES,
-    payload: movies
+    payload: movies,
   }
 }
 
 // Thuncctions
 
 export function getMoviesThunk(): ThunkAction {
-  return (dispatch) => { // <- why? - pretty much just calling a function
-    return fetchMovies() // get data from the API
-      .then(movies => { // take the data from the API/our databse
-        dispatch(getMoviesAction(movies)) // dispatch the simple action
-        // with the movie array as the payload
-      })
-      // .catch(err => console.log(err.message))
+  return (dispatch) => {
+    return fetchMovies().then((movies) => {
+      dispatch(getMoviesAction(movies))
+    })
   }
 }
-
-
-/*
-export function getMoviesThunk() {
-  return thunccyBoi()
-}
-
-function thunccyBoi() {
-  return fetchMovies() // get data from the API
-      .then(movies => { // take the data from the API/our databse
-        getMoviesAction(movies) // dispatch the simple action
-        // with the movie array as the payload
-      })
-      // .catch(err => console.log(err.message))
-}
-*/

@@ -14,16 +14,22 @@ function SingleMovie({ movie }: { movie: Movie }) {
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
-  const handleDelete = (id: number) => {
-    dispatch(deleteMovieThunk(id))
-    navigate('/')
+  const handleDelete = async (id: number) => {
+    try {
+      await dispatch(deleteMovieThunk(id))
+      navigate('/')
+    } catch (err: any) {
+      console.log(err.message)
+    }
   }
 
   return (
     <div className="movie">
       <h2 className="title">{movie.title}</h2>
       <img src={movie.image} alt={`poster for ${movie.title}`}></img>
-      <button onClick={() => handleDelete(movie.id)}>Delete movie</button>
+      <div>
+        <button onClick={() => handleDelete(movie.id)}>Delete movie</button>
+      </div>
     </div>
   )
 }

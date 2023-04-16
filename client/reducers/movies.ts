@@ -15,16 +15,12 @@ export default function moviesReducer(
       return payload
 
     case SAVE_ONE_MOVIE:
-      return [...state, payload] // creates array with old state movies,adds the payload. PAYLOAD NEED TO LOOK LIKE MOVIE OBJECT
+      return [...state, payload]
 
     case DEL_ONE_MOVIE:
-      return state.filter((movie) => {
-        movie.id !== payload
-      })
+      return [...state].filter((movie) => movie.id !== action.payload)
 
     default:
       return state
   }
 }
-
-// export default moviesReducer
