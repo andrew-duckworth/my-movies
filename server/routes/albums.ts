@@ -13,15 +13,15 @@ router.get('/', (req, res) => {
     .catch((err) => {
       console.log(err.message)
     })
+})
 
-  router.post('/', (req, res) => {
-    const album = req.body
-    db.addAlbum(album)
-      .then((albumArray) => {
-        res.json(albumArray[0])
-      })
-      .catch((err) => console.log(err.message))
-  })
+router.post('/', (req, res) => {
+  const album = req.body
+  db.addAlbum(album)
+    .then((albumArray) => {
+      res.json(albumArray[0])
+    })
+    .catch((err) => console.log(err.message))
 })
 
 export default router
