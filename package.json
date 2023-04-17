@@ -5,7 +5,7 @@
   "repository": "https://github.com/dev-academy-challenges/my-fullstack-collection-scss",
   "main": "server/index.ts",
   "scripts": {
-    "start": "node server",
+    "start": "ts-node server",
     "build": "run-p build:client build:server",
     "build:client": "npm run webpack -- --mode production",
     "build:server": "npm run knex -- migrate:latest",
