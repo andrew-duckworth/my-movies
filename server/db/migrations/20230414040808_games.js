@@ -3,7 +3,7 @@ exports.up = (knex) => {
     table.increments().primary()
     table.string('title')
     table.string('dev')
-    table.string('cover')
+    table.text('cover')
   })
 }
 
