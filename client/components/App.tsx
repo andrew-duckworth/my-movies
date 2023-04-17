@@ -36,7 +36,9 @@ function App() {
             checked={theme === 'dark'}
             aria-label={theme}
           />
-          <label>{theme === 'light' ? 'Light Mode' : 'Dark Mode'}</label>
+          <div aria-label={theme} id="switch-colour">
+            {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
+          </div>
         </div>
       </nav>
 

@@ -16,7 +16,9 @@ html, body {
   background-color: #f3ebf6;
 }
 
-
+h1 {
+  color: aqua;
+}
 
 .App {
   // width: 100vw;
@@ -128,12 +130,12 @@ html, body {
   color: white;
 }
 
-#dark h1 {
+#dark nav h1 {
   color: antiquewhite;
   font-size: 60px;
 }
 
-#light h1 {
+#light nav h1 {
   color: black;
   font-size: 60px;
 }
@@ -148,6 +150,38 @@ html, body {
 
 #dark label {
  color: antiquewhite;
+}
+
+#dark nav {
+  height: 100%;
+  margin: 0;
+  background-color: #1d1919;
+  color: antiquewhite;
+  
+}
+
+#dark h1 .first-heading {
+  color: antiquewhite;
+}
+
+#light h1 .first-heading {
+  color: black;
+}
+
+#light nav {
+  height: 100%;
+  margin: 0;
+  background-color: #f3ebf6;
+  color: black;
+}
+
+footer {
+color:aqua;
+}
+
+#switch-colour {
+  color: aqua;
+
 }
 
 /* Media queries for responsive design */

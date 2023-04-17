@@ -55,7 +55,7 @@ function AddMovie() {
           value={movieSearch}
           onChange={handleChange}
         />
-        <input type="submit" />
+        <button>Submit</button>
       </form>
 
       <div className="movie-container">
