@@ -24,13 +24,23 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div className="App" id={theme}>
+      <header role="banner">
         <h1 className="firstHeading">Movies to watch next</h1>
+      </header>
+
+      <nav role="navigation">
         <button onClick={() => setShowAdd(!showAdd)}> Add New Movie </button>
         <div className="switch">
-          <label> {theme === 'light' ? 'Light Mode' : 'Dark Mode'}</label>
-          <ReactSwitch onChange={toggleTheme} checked={theme === 'dark'} />
+          <ReactSwitch
+            onChange={toggleTheme}
+            checked={theme === 'dark'}
+            aria-label={theme}
+          />
+          <label>{theme === 'light' ? 'Light Mode' : 'Dark Mode'}</label>
         </div>
+      </nav>
+
+      <div className="App" id={theme}>
         {showAdd ? (
           <AddMovie />
         ) : (
@@ -41,6 +51,8 @@ function App() {
           </div>
         )}
       </div>
+
+      <footer role="contentinfo">Footer</footer>
     </ThemeContext.Provider>
   )
 }
