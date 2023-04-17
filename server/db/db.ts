@@ -12,4 +12,6 @@ export function addAlbum(
   return db('albums').insert(album).returning(['name', 'year', 'image'])
 }
 
-export function deleteAlbum()
+export function deleteAlbum(id: number, db = connection) {
+  return db('albums').where('id', id).delete()
+}
