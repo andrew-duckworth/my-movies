@@ -1,5 +1,5 @@
 exports.seed = (knex) => {
-  return knex('Games').insert([
+  return knex('games').insert([
     {
       id: 1,
       title: 'God Of War',
