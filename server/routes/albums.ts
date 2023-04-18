@@ -24,4 +24,10 @@ router.post('/', (req, res) => {
     .catch((err) => console.log(err.message))
 })
 
+router.delete('/:id', (req, res) => {
+  const id = Number(req.params.id)
+  db.deleteAlbum(id)
+    .then(() => res.status(200).send('Deleted!'))
+    .catch((err) => err.message)
+})
 export default router
