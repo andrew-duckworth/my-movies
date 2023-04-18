@@ -1,12 +1,11 @@
 import express from 'express'
 import * as db from '../db/db'
-import { getAllAlbums } from '../db/db'
 const router = express.Router()
 
 router.use(express.json())
 
 router.get('/', (req, res) => {
-  getAllAlbums()
+  db.getAllAlbums()
     .then((albums) => {
       res.json(albums)
     })
