@@ -59,7 +59,7 @@ exports.seed = (knex) => {
     {
       id: 9,
       name: 'Evermore',
-      year: 2020,Albums
+      year: 2020,
       image: '/photos/image_9.png',
     },
 

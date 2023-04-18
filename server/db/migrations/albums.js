@@ -8,5 +8,5 @@ exports.up = (knex) => {
 }
 
 exports.down = (knex) => {
-  return knex.schema.dropTable('Albums')
+  return knex.schema.dropTable('albums')
 }
