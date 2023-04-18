@@ -1,5 +1,5 @@
 exports.seed = (knex) => {
-  return knex('Albums').insert([
+  return knex('albums').insert([
     {
       id: 1,
       name: 'Taylor Swift',
@@ -59,7 +59,7 @@ exports.seed = (knex) => {
     {
       id: 9,
       name: 'Evermore',
-      year: 2020,
+      year: 2020,Albums
       image: '/photos/image_9.png',
     },
 
