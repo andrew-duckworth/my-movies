@@ -5,6 +5,7 @@ import { Movie } from '../../common/types'
 import SingleMovie from './SingleMovie'
 import AddMovie from './AddMovie'
 import ReactSwitch from 'react-switch'
+import Nav from './Nav'
 
 export const ThemeContext = createContext<null>(null)
 
@@ -28,6 +29,7 @@ function App() {
         <h1 className="firstHeading">Movies to watch next</h1>
       </header>
 
+      <Nav />
       <nav role="navigation">
         <button onClick={() => setShowAdd(!showAdd)}> Add New Movie </button>
         <div className="switch">
