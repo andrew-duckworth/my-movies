@@ -1,20 +1,22 @@
-html, body {
+html {
   height: 100%;
   margin: 0;
   background-color: #1d1919;
 }
 
-#dark body {
-  height: 100%;
-  margin: 0;
-  background-color: #1d1919;
-}
 
-#light body {
-  height: 100%;
-  margin: 0;
-  background-color: #f3ebf6;
-}
+
+// #dark body {
+//   height: 100%;
+//   margin: 0;
+//   background-color: #1d1919;
+// }
+
+// #light body {
+//   height: 100%;
+//   margin: 0;
+//   background-color: #f3ebf6;
+// }
 
 h1 {
   color: aqua;
@@ -29,6 +31,8 @@ h1 {
   flex-direction: column;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+
 
 #light body {
   position: absolute;
@@ -50,17 +54,17 @@ h1 {
   background-color: #e2e2e2;
 }
 
-#dark html {
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #1d1919;
-  overflow-x: hidden;
-}
+// #dark html {
+//   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+//   background-color: #1d1919;
+//   overflow-x: hidden;
+// }
 
-#light html {
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #f3ebf6;
-  overflow-x: hidden;
-}
+// #light html {
+//   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+//   background-color: #f3ebf6;
+//   overflow-x: hidden;
+// }
 
 .movie-container {
   display: flex;
@@ -111,12 +115,15 @@ h1 {
   overflow-x: hidden;
 }
 
+
 .switch {
   display: flex;
   height: 100px;
   justify-content: center;
   align-items: center;
+  background-color: #030303;
 }
+
 
 .switch label {
   margin: 10px;
