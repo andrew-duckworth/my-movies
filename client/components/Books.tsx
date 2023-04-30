@@ -16,8 +16,7 @@ function Books() {
 
   function usePlaceholder(el: SyntheticEvent<HTMLImageElement>) {
     if (el.currentTarget.naturalWidth < 2) {
-      el.currentTarget.src =
-        'https://savanisbookshop.com/uploads/image/savanisbookshop.jpeg'
+      el.currentTarget.src = 'images/book-placeholder.png'
     }
   }
 

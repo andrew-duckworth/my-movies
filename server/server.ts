@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 import bookRoutes from './routes/bookRoutes'
 import gameRoutes from './routes/gameRoutes'
+import './env'
 
 const server = express()
 

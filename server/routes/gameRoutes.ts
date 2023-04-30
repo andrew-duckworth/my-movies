@@ -3,8 +3,6 @@ import { getAllGames, deleteGame, addGame } from '../db/db'
 import { Game, Gamedata } from '../../common/interfaces'
 import request from 'superagent'
 
-const server = express()
-
 const router = express.Router()
 
 router.use(express.json())
@@ -14,8 +12,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  console.log('posted')
-  const key = '&key=f5d35997743c4c2ca13f7f8936a30ef8'
+  const key = process.env.RAWG_KEY
   const gameData = {
     name: '',
     released: '',
@@ -23,7 +20,7 @@ router.post('/', (req, res) => {
   }
 
   return request
-    .get(`https://rawg.io/api/games/?search=${req.body.searchStr}${key}`)
+    .get(`https://rawg.io/api/games/?search=${req.body.searchStr}&key=${key}`)
     .then((rawData) => {
       console.log(rawData.body.results[0])
       gameData.name = rawData.body.results[0].name

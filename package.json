@@ -1,8 +1,8 @@
 {
-  "name": "ryans-wishlist",
+  "name": "wall-of-desire",
   "version": "1.0.0",
-  "description": "It's a silly little wishlist app making unnecessary use of APIs",
-  "repository": "https://github.com/dev-academy-challenges/my-fullstack-collection-scss",
+  "description": "A wishlist app and experiment in tailwind and api-database interactions",
+  "repository": "https://github.com/Ryan-Kendrick/wall-of-desire",
   "engines": {
     "node": "18.x"
   },
@@ -24,8 +24,8 @@
   "keywords": [
     "fullstack"
   ],
-  "author": "Dev Academy Aotearoa",
-  "license": "ISC",
+  "author": "Ryan Kendrick",
+  "license": "GPL-3",
   "babel": {
     "presets": [
       "@babel/preset-typescript",
@@ -82,18 +82,19 @@
     "react-router-dom": "^6.4.2",
     "redux": "^4.1.1",
     "redux-thunk": "^2.4.2",
+    "sqlite3": "^5.1.2",
     "style-loader": "^3.3.2",
     "supertest": "^6.2.2",
     "ts-jest": "^29.0.3",
     "typescript": "~4.8.4",
     "webpack": "^5.69.1",
-    "sqlite3": "^5.1.2",
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
     "@devacademy/eslint-config": "^1.8.0",
     "@redux-devtools/extension": "^3.2.3",
     "css-loader": "^6.7.3",
+    "dotenv-vault-core": "^0.7.0",
     "express": "^4.17.2",
     "knex": "^2.3.0",
     "pg": "^8.10.0",
