@@ -29,7 +29,7 @@ function App() {
         <h1 className="firstHeading">Movies to watch next</h1>
       </header>
 
-      <Nav />
+      {/* <Nav /> */}
       <nav role="navigation">
         <button onClick={() => setShowAdd(!showAdd)}> Add New Movie </button>
         <div className="switch">
@@ -38,7 +38,7 @@ function App() {
             checked={theme === 'dark'}
             aria-label={theme}
           />
-          <div aria-label={theme} id="switch-colour">
+          <div aria-label={theme} className="switch-colour">
             {theme === 'light' ? 'Light Mode' : 'Dark Mode'}
           </div>
         </div>
