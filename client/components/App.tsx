@@ -23,10 +23,12 @@ function App() {
     dispatch(getMoviesThunk())
   }, [dispatch]) // why? -> when the page renders, dispatch isnt a thing then it is defined, and this useEffect is triggered
 
+  // -- check body/html targeting --//
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <header role="banner">
-        <h1 className="firstHeading" id={theme}>
+        <h1 className="welcome" id={theme}>
           Movies to watch next
         </h1>
       </header>
