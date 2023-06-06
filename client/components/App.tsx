@@ -26,7 +26,9 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <header role="banner">
-        <h1 className="firstHeading">Movies to watch next</h1>
+        <h1 className="firstHeading" id={theme}>
+          Movies to watch next
+        </h1>
       </header>
 
       {/* <Nav /> */}
